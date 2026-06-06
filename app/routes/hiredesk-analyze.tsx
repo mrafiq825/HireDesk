@@ -31,7 +31,7 @@ const HireDeskAnalyze = () => {
   const [fitStatus, setFitStatus] = useState("");
   const [reasoning, setReasoning] = useState("");
   const [roleRecommendations, setRoleRecommendationsState] = useState<any[]>(
-    []
+    [],
   );
 
   const setRoleRecommendations = (value: any[]) => {
@@ -103,7 +103,7 @@ const HireDeskAnalyze = () => {
       try {
         const savedTargetRole = localStorage.getItem("hiredesk_targetRole");
         const savedJobDescription = localStorage.getItem(
-          "hiredesk_jobDescription"
+          "hiredesk_jobDescription",
         );
 
         if (savedTargetRole) setTargetRole(savedTargetRole);
@@ -114,12 +114,12 @@ const HireDeskAnalyze = () => {
         const savedReasoning = localStorage.getItem("hiredesk_reasoning");
         const savedBestFitRole = localStorage.getItem("hiredesk_bestFitRole");
         const savedRoleRecommendations = localStorage.getItem(
-          "hiredesk_roleRecommendations"
+          "hiredesk_roleRecommendations",
         );
         const savedQuestions = localStorage.getItem("hiredesk_questions");
         const savedResumeScore = localStorage.getItem("hiredesk_resumeScore");
         const savedPersonalityInsights = localStorage.getItem(
-          "hiredesk_personalityInsights"
+          "hiredesk_personalityInsights",
         );
         const savedCareerPath = localStorage.getItem("hiredesk_careerPath");
 
@@ -277,7 +277,7 @@ const HireDeskAnalyze = () => {
       const responseData = await aiService.hireDeskAnalyze(
         file,
         targetRole,
-        jobDescription
+        jobDescription,
       );
 
       setFitStatus(responseData.fit_status || "");
@@ -291,7 +291,7 @@ const HireDeskAnalyze = () => {
       setCareerPath(responseData.careerPath || null);
 
       setToastMessage(
-        "Resume analyzed successfully! AI insights generated. Scroll down to see the analysis."
+        "Resume analyzed successfully! AI insights generated. Scroll down to see the analysis.",
       );
       setToastType("success");
       setShowToast(true);
@@ -360,7 +360,6 @@ const HireDeskAnalyze = () => {
           </div>
           <div className="absolute inset-0 bg-grid-slate-700/[0.04] bg-[size:20px_20px]"></div>
         </div>
-
         <nav className="relative z-50 backdrop-blur-xl bg-slate-900/80 border-b border-slate-700/50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-14 sm:h-16">
@@ -397,7 +396,6 @@ const HireDeskAnalyze = () => {
                   HireDesk
                 </h1>
               </div>
-
               <div className="hidden md:block">
                 <div className="text-center">
                   <h1 className="text-xl font-bold bg-gradient-to-r from-indigo-300 via-purple-300 to-indigo-300 bg-clip-text text-transparent">
@@ -408,7 +406,6 @@ const HireDeskAnalyze = () => {
                   </p>
                 </div>
               </div>
-
               <div className="relative">
                 <button
                   onClick={toggleProfileDropdown}
@@ -444,7 +441,6 @@ const HireDeskAnalyze = () => {
                     />
                   </svg>
                 </button>
-
                 {showProfileDropdown && (
                   <div
                     ref={dropdownRef}
@@ -514,7 +510,7 @@ const HireDeskAnalyze = () => {
               <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 bg-white/5 rounded-full blur-2xl sm:blur-3xl"></div>
             </div>
 
-            <div className="relative z-10 px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-16">
+            <div className="relative z-10 px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-5">
               <div className="max-w-4xl mx-auto text-center">
                 <div className="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-4 sm:mb-6">
                   <svg
@@ -537,12 +533,11 @@ const HireDeskAnalyze = () => {
                   <span className="text-white">Analysis Hub</span>
                 </h1>
 
-                <p className="text-base sm:text-lg md:text-xl text-indigo-100 mb-6 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-2 sm:px-0">
+                <p className="text-base sm:text-lg md:text-xl text-indigo-100 mb-2 sm:mb-8 max-w-2xl mx-auto leading-relaxed px-2 sm:px-0">
                   Transform your hiring process with AI-driven insights. Upload
                   resumes, analyze candidates, and make confident hiring
                   decisions with our intelligent recruitment platform.
                 </p>
-
                 <div className="flex flex-wrap justify-center gap-2 sm:gap-3 md:gap-4 mb-6 sm:mb-8 px-2 sm:px-0">
                   <div className="flex items-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg sm:rounded-xl bg-white/10 backdrop-blur-sm border border-white/20">
                     <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-400 rounded-full mr-2 sm:mr-3 animate-pulse"></div>
@@ -563,7 +558,6 @@ const HireDeskAnalyze = () => {
                     </span>
                   </div>
                 </div>
-
                 <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-1 text-yellow-300 px-2 sm:px-0">
                   <div className="flex items-center">
                     {[...Array(5)].map((_, i) => (
@@ -584,9 +578,9 @@ const HireDeskAnalyze = () => {
               </div>
             </div>
           </div>
-          <section className="mb-12 sm:mb-16">
-            <div className="text-center mb-8 sm:mb-12">
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 sm:mb-4 px-4 sm:px-0">
+          <section className="mb-5 sm:mb-10">
+            <div className="text-center mb-0 sm:mb-10">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-0 sm:mb-4 px-4 sm:px-0">
                 <span className="bg-gradient-to-r from-indigo-300 to-purple-300 bg-clip-text text-transparent">
                   AI-Powered Features
                 </span>
@@ -596,7 +590,6 @@ const HireDeskAnalyze = () => {
                 your recruitment process
               </p>
             </div>
-
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
               {features.map((feature, index) => (
                 <div

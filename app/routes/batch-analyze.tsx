@@ -37,7 +37,7 @@ const BatchAnalyze = () => {
   const [batchResults, setBatchResults] = useState<BatchAnalysisResult[]>([]);
   const [usageStats, setUsageStats] = useState<UsageStats | null>(null);
   const [upgradePrompt, setUpgradePrompt] = useState<UpgradePrompt | null>(
-    null
+    null,
   );
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
   const [showRateLimitModal, setShowRateLimitModal] = useState(false);
@@ -100,7 +100,7 @@ const BatchAnalyze = () => {
       try {
         localStorage.setItem(
           "batch-analyze-results",
-          JSON.stringify(batchResults)
+          JSON.stringify(batchResults),
         );
       } catch (error) {
         console.warn("Failed to persist batch results:", error);
@@ -108,12 +108,12 @@ const BatchAnalyze = () => {
           localStorage.removeItem("batch-analyze-results");
           localStorage.setItem(
             "batch-analyze-results",
-            JSON.stringify(batchResults)
+            JSON.stringify(batchResults),
           );
         } catch (retryError) {
           console.error(
             "Failed to persist batch results after retry:",
-            retryError
+            retryError,
           );
         }
       }
@@ -202,7 +202,7 @@ const BatchAnalyze = () => {
       const responseData: BatchAnalysisResponse = await aiService.batchAnalyze(
         files,
         targetRole || undefined,
-        jobDescription || undefined
+        jobDescription || undefined,
       );
 
       if (responseData.usage_stats) {
@@ -311,7 +311,7 @@ const BatchAnalyze = () => {
       if (
         currentFiles.some(
           (existingFile) =>
-            existingFile.name === file.name && existingFile.size === file.size
+            existingFile.name === file.name && existingFile.size === file.size,
         )
       ) {
         setError({
@@ -473,7 +473,6 @@ const BatchAnalyze = () => {
                     />
                   </svg>
                 </button>
-
                 {showProfileDropdown && (
                   <div
                     ref={dropdownRef}
@@ -543,7 +542,7 @@ const BatchAnalyze = () => {
               <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 bg-white/5 rounded-full blur-2xl sm:blur-3xl"></div>
             </div>
 
-            <div className="relative z-10 px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-16">
+            <div className="relative z-10 px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-5">
               <div className="max-w-4xl mx-auto text-center">
                 <div className="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-4 sm:mb-6">
                   <svg
@@ -663,7 +662,6 @@ const BatchAnalyze = () => {
                 capabilities
               </p>
             </div>
-
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
               {batchFeatures.map((feature, index) => (
                 <div
@@ -671,14 +669,12 @@ const BatchAnalyze = () => {
                   className="group relative overflow-hidden rounded-xl sm:rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-slate-700/50 hover:border-green-500/50 transition-all duration-500 hover:-translate-y-1 sm:hover:-translate-y-2"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
                   <div className="relative p-4 sm:p-6 md:p-8">
                     <div className="flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-xl sm:rounded-2xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
                       <div className="text-green-400 group-hover:text-green-300 transition-colors">
                         {feature.icon()}
                       </div>
                     </div>
-
                     <h3 className="text-lg sm:text-xl font-bold text-white mb-2 sm:mb-3 group-hover:text-green-300 transition-colors">
                       {feature.title}
                     </h3>
@@ -706,7 +702,6 @@ const BatchAnalyze = () => {
                 simultaneously for efficient candidate screening
               </p>
             </div>
-
             <div className="relative">
               <div className="relative mx-auto max-w-5xl">
                 <div className="absolute -inset-2 sm:-inset-4 bg-gradient-to-r from-green-500/20 via-emerald-500/20 to-teal-500/20 rounded-[1.5rem] sm:rounded-[2rem] blur-xl sm:blur-2xl"></div>
@@ -735,19 +730,16 @@ const BatchAnalyze = () => {
                         </div>
                         <div className="absolute inset-0 bg-green-500/20 rounded-2xl sm:rounded-3xl blur-2xl sm:blur-3xl"></div>
                       </div>
-
                       <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4 sm:mb-6">
                         <span className="bg-gradient-to-r from-green-300 via-emerald-300 to-teal-300 bg-clip-text text-transparent">
                           Batch Resume Analysis
                         </span>
                       </h3>
-
                       <p className="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mb-8 sm:mb-12 leading-relaxed">
                         Upload 2-10 resumes and get comprehensive AI analysis
                         for each candidate simultaneously
                       </p>
                     </div>
-
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 mb-8 sm:mb-12">
                       <div className="space-y-4 sm:space-y-6">
                         <div className="group relative">
@@ -782,7 +774,6 @@ const BatchAnalyze = () => {
                             />
                           </div>
                         </div>
-
                         <div className="group relative">
                           <div className="absolute -inset-0.5 bg-gradient-to-r from-emerald-500 to-teal-600 rounded-xl sm:rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
                           <div className="relative bg-slate-800/80 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-slate-600/50 hover:border-green-500/50 transition-all duration-300">
@@ -851,7 +842,7 @@ const BatchAnalyze = () => {
                                 aria-label="Upload resume files (2-5 PDF or Word documents, max 10MB each)"
                                 onChange={(e) => {
                                   const files = Array.from(
-                                    e.target.files || []
+                                    e.target.files || [],
                                   );
                                   if (files.length > 0) {
                                     handleAddFiles(files);
@@ -866,7 +857,6 @@ const BatchAnalyze = () => {
                                 {currentFiles.length}/5 selected)
                               </p>
                             </div>
-
                             {currentFiles.length > 0 && (
                               <div className="mt-4 space-y-2">
                                 <p className="text-sm text-slate-400">
@@ -927,7 +917,6 @@ const BatchAnalyze = () => {
                             )}
                           </div>
                         </div>
-
                         <div className="text-center">
                           <button
                             onClick={() => {
@@ -1189,7 +1178,7 @@ const BatchAnalyze = () => {
                               <p className="text-xl sm:text-2xl font-bold text-green-400">
                                 {
                                   batchResults.filter(
-                                    (r) => r.status === "success"
+                                    (r) => r.status === "success",
                                   ).length
                                 }
                               </p>
@@ -1201,7 +1190,7 @@ const BatchAnalyze = () => {
                               <p className="text-xl sm:text-2xl font-bold text-red-400">
                                 {
                                   batchResults.filter(
-                                    (r) => r.status === "error"
+                                    (r) => r.status === "error",
                                   ).length
                                 }
                               </p>
@@ -1214,10 +1203,10 @@ const BatchAnalyze = () => {
                                 {batchResults.length > 0
                                   ? Math.round(
                                       (batchResults.filter(
-                                        (r) => r.status === "success"
+                                        (r) => r.status === "success",
                                       ).length /
                                         batchResults.length) *
-                                        100
+                                        100,
                                     )
                                   : 0}
                                 %

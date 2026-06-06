@@ -22,8 +22,7 @@ const Home = () => {
     <div className="min-h-screen bg-linear-to-b from-slate-950 via-slate-900 to-slate-950 relative overflow-hidden">
       <Navbar />
       <div className="absolute inset-0 bg-grid-white/[0.02] opacity-50"></div>
-      {/* Hero Section */}
-      <section className="pt-32 pb-32 px-4 sm:px-6 lg:px-8 relative z-10 overflow-hidden">
+      <section className="pt-20 pb-0 px-4 sm:px-6 lg:px-8 relative z-10 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="text-center space-y-8">
             <div className="space-y-4">
@@ -65,13 +64,11 @@ const Home = () => {
                 From 100 applicants to your perfect hire in hours, not weeks.
               </span>
             </p>
-
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
               <Link
                 to="/dashboard"
                 className="group relative px-12 py-5 md:px-14 md:py-6 font-bold text-lg text-white rounded-2xl overflow-hidden shadow-2xl"
               >
-                {" "}
                 <div className="absolute inset-0 bg-linear-to-br from-blue-600 via-blue-500 to-purple-600"></div>
                 <div className="absolute inset-0 bg-linear-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-30"></div>
                 <div className="absolute inset-0 bg-linear-to-r from-transparent via-white to-transparent opacity-0 group-hover:opacity-20 group-hover:translate-x-full"></div>
@@ -96,26 +93,24 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="py-24 px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* The Challenge */}
+      <section className="py-5 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>
               <span className="inline-block text-sm font-semibold text-blue-400 mb-4 px-3 py-1 bg-blue-400/10 rounded-full">
                 THE CHALLENGE
               </span>
-
-              <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight">
+              <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-0 leading-tight">
                 The Hiring Problem
                 <span className="block text-red-400">
                   Every Recruiter Faces
                 </span>
               </h2>
-
-              <p className="text-gray-300 text-lg mb-10 leading-relaxed">
+              <p className="text-gray-300 text-lg mb-5 leading-relaxed">
                 Recruiting shouldn't consume your entire workweek. Traditional
                 hiring methods leave money on the table and talent in the trash.
               </p>
-
               <div className="space-y-5">
                 <div className="flex items-start gap-4 p-5 rounded-xl bg-linear-to-r from-red-500/10 to-transparent border border-red-500/20">
                   <div className="shrink-0">
@@ -174,7 +169,6 @@ const Home = () => {
                     </p>
                   </div>
                 </div>
-
                 <div className="flex items-start gap-4 p-5 rounded-xl bg-linear-to-r from-yellow-500/10 to-transparent border border-yellow-500/20">
                   <div className="shrink-0">
                     <div className="flex items-center justify-center h-10 w-10 rounded-lg bg-yellow-600/20 border border-yellow-500/30">
@@ -223,7 +217,6 @@ const Home = () => {
                       Wasted per hiring cycle
                     </p>
                   </div>
-
                   <div className="space-y-4">
                     <div className="space-y-2">
                       <div className="flex justify-between items-center">
@@ -238,7 +231,6 @@ const Home = () => {
                         <div className="h-full w-5/6 bg-linear-to-r from-red-600 to-red-500 rounded-full"></div>
                       </div>
                     </div>
-
                     <div className="space-y-2">
                       <div className="flex justify-between items-center">
                         <span className="text-gray-300 font-medium">
@@ -252,7 +244,6 @@ const Home = () => {
                         <div className="h-full w-1/4 bg-linear-to-r from-orange-600 to-orange-500 rounded-full"></div>
                       </div>
                     </div>
-
                     <div className="space-y-2">
                       <div className="flex justify-between items-center">
                         <span className="text-gray-300 font-medium">
@@ -267,7 +258,6 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
-
                   <div className="mt-8 pt-8 border-t border-gray-700/50">
                     <div className="flex items-center gap-3 text-emerald-400">
                       <svg
@@ -294,13 +284,13 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="py-24 px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* CAPABILITIES */}
+      <section className="py-5 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
+          <div className="text-center mb-5">
             <span className="inline-block text-sm font-semibold text-blue-400 mb-4 px-3 py-1 bg-blue-400/10 rounded-full">
               CAPABILITIES
             </span>
-
             <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
               Four Tools Built for
               <span className="block text-transparent bg-linear-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text">
@@ -312,7 +302,6 @@ const Home = () => {
               tool for each moment in your hiring workflow
             </p>
           </div>
-
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="group relative">
               <div className="absolute inset-0 bg-linear-to-br from-blue-600/20 to-purple-600/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100"></div>
@@ -344,7 +333,6 @@ const Home = () => {
                 </p>
               </div>
             </div>
-
             <div className="group relative">
               <div className="absolute inset-0 bg-linear-to-br from-purple-600/20 to-pink-600/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100"></div>
               <div className="relative h-full bg-linear-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-8 rounded-2xl border border-purple-500/20 flex flex-col">
@@ -375,7 +363,6 @@ const Home = () => {
                 </p>
               </div>
             </div>
-
             <div className="group relative">
               <div className="absolute inset-0 bg-linear-to-br from-amber-600/20 to-orange-600/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100"></div>
               <div className="relative h-full bg-linear-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-8 rounded-2xl border border-amber-500/20 flex flex-col">
@@ -406,7 +393,6 @@ const Home = () => {
                 </p>
               </div>
             </div>
-
             <div className="group relative">
               <div className="absolute inset-0 bg-linear-to-br from-emerald-600/20 to-cyan-600/10 rounded-2xl blur-xl opacity-0 group-hover:opacity-100"></div>
               <div className="relative h-full bg-linear-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-8 rounded-2xl border border-emerald-500/20 flex flex-col">
@@ -440,14 +426,13 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      <section className="py-24 px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* WORKFLOW */}
+      <section className="py-5 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
+          <div className="text-center mb-5">
             <span className="inline-block text-sm font-semibold text-purple-400 mb-4 px-3 py-1 bg-purple-400/10 rounded-full">
               WORKFLOW
             </span>
-
             <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
               How Top Companies
               <span className="block text-transparent bg-linear-to-r from-purple-400 via-blue-400 to-cyan-400 bg-clip-text">
@@ -459,7 +444,6 @@ const Home = () => {
               process
             </p>
           </div>
-
           <div className="space-y-6">
             <div className="group relative">
               <div className="absolute inset-0 bg-linear-to-r from-blue-600/10 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
@@ -507,7 +491,6 @@ const Home = () => {
                 </div>
               </div>
             </div>
-
             <div className="group relative">
               <div className="absolute inset-0 bg-linear-to-r from-purple-600/10 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
               <div className="relative bg-linear-to-r from-purple-500/10 to-purple-500/0 backdrop-blur-xl p-8 md:p-12 rounded-3xl border border-purple-400/20 group-hover:border-purple-400/40 transition-all duration-300 overflow-hidden">
@@ -554,7 +537,6 @@ const Home = () => {
                 </div>
               </div>
             </div>
-
             <div className="group relative">
               <div className="absolute inset-0 bg-linear-to-r from-amber-600/10 to-transparent rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"></div>
               <div className="relative bg-linear-to-r from-amber-500/10 to-amber-500/0 backdrop-blur-xl p-8 md:p-12 rounded-3xl border border-amber-400/20 group-hover:border-amber-400/40 transition-all duration-300 overflow-hidden">
@@ -651,10 +633,10 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      <section className="py-24 px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* ADVANTAGES */}
+      <section className="py-5 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
+          <div className="text-center mb-5">
             <span className="inline-block text-sm font-semibold text-emerald-400 mb-4 px-3 py-1 bg-emerald-400/10 rounded-full">
               ADVANTAGES
             </span>
@@ -669,7 +651,6 @@ const Home = () => {
               Complete AI-powered hiring toolkit built for modern recruiters
             </p>
           </div>
-
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="group relative h-full">
               <div className="absolute inset-0 bg-linear-to-br from-blue-600/20 to-blue-600/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -689,7 +670,7 @@ const Home = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4">
+                <h3 className="text-2xl font-bold text-white mb-2">
                   AI-Powered Insights
                 </h3>
                 <p className="text-gray-300 leading-relaxed grow">
@@ -700,7 +681,6 @@ const Home = () => {
                 </p>
               </div>
             </div>
-
             <div className="group relative h-full">
               <div className="absolute inset-0 bg-linear-to-br from-purple-600/20 to-purple-600/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative h-full bg-linear-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/50 group-hover:border-purple-400/40 transition-all duration-300 flex flex-col">
@@ -719,7 +699,7 @@ const Home = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4">
+                <h3 className="text-2xl font-bold text-white mb-2">
                   Lightning Fast
                 </h3>
                 <p className="text-gray-300 leading-relaxed grow">
@@ -729,7 +709,6 @@ const Home = () => {
                 </p>
               </div>
             </div>
-
             <div className="group relative h-full">
               <div className="absolute inset-0 bg-linear-to-br from-emerald-600/20 to-emerald-600/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative h-full bg-linear-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/50 group-hover:border-emerald-400/40 transition-all duration-300 flex flex-col">
@@ -748,7 +727,7 @@ const Home = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4">
+                <h3 className="text-2xl font-bold text-white mb-2">
                   Data-Driven Decisions
                 </h3>
                 <p className="text-gray-300 leading-relaxed grow">
@@ -758,7 +737,6 @@ const Home = () => {
                 </p>
               </div>
             </div>
-
             <div className="group relative h-full">
               <div className="absolute inset-0 bg-linear-to-br from-pink-600/20 to-pink-600/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative h-full bg-linear-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/50 group-hover:border-pink-400/40 transition-all duration-300 flex flex-col">
@@ -777,7 +755,7 @@ const Home = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4">
+                <h3 className="text-2xl font-bold text-white mb-2">
                   Smart Questions
                 </h3>
                 <p className="text-gray-300 leading-relaxed grow">
@@ -787,7 +765,6 @@ const Home = () => {
                 </p>
               </div>
             </div>
-
             <div className="group relative h-full">
               <div className="absolute inset-0 bg-linear-to-br from-orange-600/20 to-orange-600/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative h-full bg-linear-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/50 group-hover:border-orange-400/40 transition-all duration-300 flex flex-col">
@@ -806,7 +783,7 @@ const Home = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4">
+                <h3 className="text-2xl font-bold text-white mb-2">
                   70% Time Savings
                 </h3>
                 <p className="text-gray-300 leading-relaxed grow">
@@ -816,7 +793,6 @@ const Home = () => {
                 </p>
               </div>
             </div>
-
             <div className="group relative h-full">
               <div className="absolute inset-0 bg-linear-to-br from-cyan-600/20 to-cyan-600/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative h-full bg-linear-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/50 group-hover:border-cyan-400/40 transition-all duration-300 flex flex-col">
@@ -835,7 +811,7 @@ const Home = () => {
                     />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-white mb-4">
+                <h3 className="text-2xl font-bold text-white mb-2">
                   Persistent Results
                 </h3>
                 <p className="text-gray-300 leading-relaxed grow">
@@ -848,14 +824,13 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      <section className="py-24 px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* TESTIMONIALS */}
+      <section className="py-5 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
+          <div className="text-center mb-5">
             <span className="inline-block text-sm font-semibold text-pink-400 mb-4 px-3 py-1 bg-pink-400/10 rounded-full">
               TESTIMONIALS
             </span>
-
             <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
               Trusted by Industry
               <span className="block text-transparent bg-linear-to-r from-pink-400 via-orange-400 to-yellow-400 bg-clip-text">
@@ -866,7 +841,6 @@ const Home = () => {
               Join 500+ companies revolutionizing their hiring process
             </p>
           </div>
-
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             <div className="group relative">
               <div className="absolute inset-0 bg-linear-to-br from-blue-600/20 to-blue-600/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -896,7 +870,6 @@ const Home = () => {
                 </div>
               </div>
             </div>
-
             <div className="group relative">
               <div className="absolute inset-0 bg-linear-to-br from-purple-600/20 to-purple-600/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative bg-linear-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/50 group-hover:border-purple-400/40 transition-all duration-300">
@@ -924,7 +897,6 @@ const Home = () => {
                 </div>
               </div>
             </div>
-
             <div className="group relative">
               <div className="absolute inset-0 bg-linear-to-br from-emerald-600/20 to-emerald-600/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative bg-linear-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/50 group-hover:border-emerald-400/40 transition-all duration-300">
@@ -951,7 +923,6 @@ const Home = () => {
               </div>
             </div>
           </div>
-
           <div className="relative">
             <div className="absolute inset-0 bg-linear-to-r from-blue-600/20 via-purple-600/20 to-pink-600/20 rounded-3xl blur-2xl opacity-50"></div>
             <div className="relative bg-linear-to-r from-blue-500/10 to-pink-500/10 backdrop-blur-xl rounded-3xl p-8 md:p-16 border border-gray-700/50 overflow-hidden">
@@ -992,13 +963,13 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section className="py-24 px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* SUCCESS METRICS */}
+      <section className="py-5 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
+          <div className="text-center mb-5">
             <span className="inline-block text-sm font-semibold text-yellow-400 mb-4 px-3 py-1 bg-yellow-400/10 rounded-full">
               SUCCESS METRICS
             </span>
-
             <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
               Real Results from
               <span className="block text-transparent bg-linear-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text">
@@ -1010,7 +981,6 @@ const Home = () => {
               HireDesk's AI-powered platform
             </p>
           </div>
-
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
             <div className="group relative">
               <div className="absolute inset-0 bg-linear-to-br from-blue-600/20 to-blue-600/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -1024,7 +994,6 @@ const Home = () => {
                 </div>
               </div>
             </div>
-
             <div className="group relative">
               <div className="absolute inset-0 bg-linear-to-br from-emerald-600/20 to-emerald-600/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative bg-linear-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-6 rounded-2xl border border-gray-700/50 group-hover:border-emerald-400/40 transition-all duration-300 text-center">
@@ -1037,7 +1006,6 @@ const Home = () => {
                 </div>
               </div>
             </div>
-
             <div className="group relative">
               <div className="absolute inset-0 bg-linear-to-br from-purple-600/20 to-purple-600/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative bg-linear-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-6 rounded-2xl border border-gray-700/50 group-hover:border-purple-400/40 transition-all duration-300 text-center">
@@ -1050,7 +1018,6 @@ const Home = () => {
                 </div>
               </div>
             </div>
-
             <div className="group relative">
               <div className="absolute inset-0 bg-linear-to-br from-pink-600/20 to-pink-600/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative bg-linear-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-6 rounded-2xl border border-gray-700/50 group-hover:border-pink-400/40 transition-all duration-300 text-center">
@@ -1064,13 +1031,11 @@ const Home = () => {
               </div>
             </div>
           </div>
-
           <div className="grid md:grid-cols-2 gap-8">
             <div className="group relative">
               <div className="absolute inset-0 bg-linear-to-br from-blue-600/20 to-purple-600/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative bg-linear-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-gray-700/50 group-hover:border-blue-400/40 transition-all duration-300 overflow-hidden">
                 <div className="absolute -top-20 -right-20 w-64 h-64 bg-blue-600/5 rounded-full blur-3xl"></div>
-
                 <div className="relative">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-12 h-12 bg-linear-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
@@ -1085,7 +1050,6 @@ const Home = () => {
                       </p>
                     </div>
                   </div>
-
                   <div className="mb-6">
                     <div className="flex items-center gap-2 mb-3">
                       <svg
@@ -1103,7 +1067,6 @@ const Home = () => {
                       "From 3 weeks to 3 days for senior developer hiring"
                     </h4>
                   </div>
-
                   <div className="grid grid-cols-3 gap-4 mb-6">
                     <div className="text-center p-3 bg-blue-500/10 rounded-lg">
                       <div className="text-lg font-bold text-blue-300">21</div>
@@ -1126,14 +1089,12 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
-
                   <p className="text-gray-300 leading-relaxed">
                     "HireDesk transformed our hiring process. We used to spend
                     weeks reviewing resumes manually. Now with Smart Screening
                     and Find Best Fit, we can evaluate 15 candidates in a day
                     with confidence. The AI insights are incredibly accurate."
                   </p>
-
                   <div className="mt-6 pt-6 border-t border-gray-700/50">
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-gray-400">Tools Used:</span>
@@ -1150,12 +1111,10 @@ const Home = () => {
                 </div>
               </div>
             </div>
-
             <div className="group relative">
               <div className="absolute inset-0 bg-linear-to-br from-emerald-600/20 to-cyan-600/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative bg-linear-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-gray-700/50 group-hover:border-emerald-400/40 transition-all duration-300 overflow-hidden">
                 <div className="absolute -top-20 -right-20 w-64 h-64 bg-emerald-600/5 rounded-full blur-3xl"></div>
-
                 <div className="relative">
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-12 h-12 bg-linear-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center">
@@ -1170,7 +1129,6 @@ const Home = () => {
                       </p>
                     </div>
                   </div>
-
                   <div className="mb-6">
                     <div className="flex items-center gap-2 mb-3">
                       <svg
@@ -1188,7 +1146,6 @@ const Home = () => {
                       "Eliminated unconscious bias in executive hiring"
                     </h4>
                   </div>
-
                   <div className="grid grid-cols-3 gap-4 mb-6">
                     <div className="text-center p-3 bg-emerald-500/10 rounded-lg">
                       <div className="text-lg font-bold text-emerald-300">
@@ -1211,7 +1168,6 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
-
                   <p className="text-gray-300 leading-relaxed">
                     "As a financial institution, diversity and inclusion are
                     critical. HireDesk's objective AI analysis helped us
@@ -1219,7 +1175,6 @@ const Home = () => {
                     The detailed personality insights and structured evaluation
                     criteria gave us confidence in our decisions."
                   </p>
-
                   <div className="mt-6 pt-6 border-t border-gray-700/50">
                     <div className="flex items-center justify-between text-sm">
                       <span className="text-gray-400">Tools Used:</span>
@@ -1237,42 +1192,15 @@ const Home = () => {
               </div>
             </div>
           </div>
-
-          <div className="mt-16 text-center">
-            <h3 className="text-2xl font-bold text-white mb-8">
-              Trusted Across Industries
-            </h3>
-            <div className="flex flex-wrap justify-center gap-4">
-              <div className="px-4 py-2 bg-linear-to-r from-blue-500/10 to-blue-600/10 border border-blue-400/20 rounded-full text-blue-300 text-sm font-medium">
-                Technology
-              </div>
-              <div className="px-4 py-2 bg-linear-to-r from-emerald-500/10 to-emerald-600/10 border border-emerald-400/20 rounded-full text-emerald-300 text-sm font-medium">
-                Finance
-              </div>
-              <div className="px-4 py-2 bg-linear-to-r from-purple-500/10 to-purple-600/10 border border-purple-400/20 rounded-full text-purple-300 text-sm font-medium">
-                Healthcare
-              </div>
-              <div className="px-4 py-2 bg-linear-to-r from-orange-500/10 to-orange-600/10 border border-orange-400/20 rounded-full text-orange-300 text-sm font-medium">
-                Retail
-              </div>
-              <div className="px-4 py-2 bg-linear-to-r from-pink-500/10 to-pink-600/10 border border-pink-400/20 rounded-full text-pink-300 text-sm font-medium">
-                Consulting
-              </div>
-              <div className="px-4 py-2 bg-linear-to-r from-cyan-500/10 to-cyan-600/10 border border-cyan-400/20 rounded-full text-cyan-300 text-sm font-medium">
-                Manufacturing
-              </div>
-            </div>
-          </div>
         </div>
       </section>
-
-      <section className="py-24 px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* COMPATIBILITY */}
+      <section className="py-5 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
+          <div className="text-center mb-5">
             <span className="inline-block text-sm font-semibold text-orange-400 mb-4 px-3 py-1 bg-orange-400/10 rounded-full">
               COMPATIBILITY
             </span>
-
             <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
               Works Everywhere
               <span className="block text-transparent bg-linear-to-r from-orange-400 via-red-400 to-pink-400 bg-clip-text">
@@ -1284,7 +1212,6 @@ const Home = () => {
               support for all major resume formats
             </p>
           </div>
-
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             <div className="group relative">
               <div className="absolute inset-0 bg-linear-to-br from-blue-600/20 to-blue-600/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -1329,7 +1256,6 @@ const Home = () => {
                 </div>
               </div>
             </div>
-
             <div className="group relative">
               <div className="absolute inset-0 bg-linear-to-br from-emerald-600/20 to-emerald-600/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative bg-linear-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/50 group-hover:border-emerald-400/40 transition-all duration-300">
@@ -1371,7 +1297,6 @@ const Home = () => {
                 </div>
               </div>
             </div>
-
             <div className="group relative">
               <div className="absolute inset-0 bg-linear-to-br from-purple-600/20 to-purple-600/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative bg-linear-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/50 group-hover:border-purple-400/40 transition-all duration-300">
@@ -1416,7 +1341,6 @@ const Home = () => {
               </div>
             </div>
           </div>
-
           <div className="relative">
             <div className="absolute inset-0 bg-linear-to-r from-blue-600/10 via-purple-600/10 to-emerald-600/10 rounded-3xl blur-2xl opacity-50"></div>
             <div className="relative bg-linear-to-r from-slate-800/80 to-slate-900/80 backdrop-blur-xl rounded-3xl p-8 md:p-12 border border-gray-700/50 overflow-hidden">
@@ -1458,14 +1382,13 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-      <section className="py-24 px-4 sm:px-6 lg:px-8 relative z-10">
+      {/* FAQs */}
+      <section className="py-5 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-20">
+          <div className="text-center mb-5">
             <span className="inline-block text-sm font-semibold text-emerald-400 mb-4 px-3 py-1 bg-emerald-400/10 rounded-full">
-              FAQ
+              FAQs
             </span>
-
             <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
               Frequently Asked
               <span className="block text-transparent bg-linear-to-r from-emerald-400 via-cyan-400 to-blue-400 bg-clip-text">
@@ -1477,7 +1400,6 @@ const Home = () => {
               transform your hiring process
             </p>
           </div>
-
           <div className="grid md:grid-cols-2 gap-8">
             <div className="group relative">
               <div className="absolute inset-0 bg-linear-to-br from-blue-600/20 to-blue-600/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -1496,7 +1418,6 @@ const Home = () => {
                 </p>
               </div>
             </div>
-
             <div className="group relative">
               <div className="absolute inset-0 bg-linear-to-br from-purple-600/20 to-purple-600/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative bg-linear-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/50 group-hover:border-purple-400/40 transition-all duration-300">
@@ -1513,7 +1434,6 @@ const Home = () => {
                 </p>
               </div>
             </div>
-
             <div className="group relative">
               <div className="absolute inset-0 bg-linear-to-br from-emerald-600/20 to-emerald-600/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative bg-linear-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/50 group-hover:border-emerald-400/40 transition-all duration-300">
@@ -1531,7 +1451,6 @@ const Home = () => {
                 </p>
               </div>
             </div>
-
             <div className="group relative">
               <div className="absolute inset-0 bg-linear-to-br from-amber-600/20 to-amber-600/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative bg-linear-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/50 group-hover:border-amber-400/40 transition-all duration-300">
@@ -1549,7 +1468,6 @@ const Home = () => {
                 </p>
               </div>
             </div>
-
             <div className="group relative">
               <div className="absolute inset-0 bg-linear-to-br from-pink-600/20 to-pink-600/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative bg-linear-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/50 group-hover:border-pink-400/40 transition-all duration-300">
@@ -1566,7 +1484,6 @@ const Home = () => {
                 </p>
               </div>
             </div>
-
             <div className="group relative">
               <div className="absolute inset-0 bg-linear-to-br from-cyan-600/20 to-cyan-600/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className="relative bg-linear-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/50 group-hover:border-cyan-400/40 transition-all duration-300">
@@ -1585,9 +1502,8 @@ const Home = () => {
               </div>
             </div>
           </div>
-
           <div className="text-center mt-16">
-            <p className="text-gray-300 mb-6">Still have questions?</p>
+            <p className="text-gray-300 mb-2">Still have questions?</p>
             <Link
               to="/contact"
               className="inline-flex items-center gap-2 px-6 py-3 bg-linear-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-xl hover:from-blue-500 hover:to-purple-500 transition-all duration-300 hover:-translate-y-1"
@@ -1607,163 +1523,6 @@ const Home = () => {
               </svg>
               Contact Our Team
             </Link>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-24 px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <span className="inline-block text-sm font-semibold text-cyan-400 mb-4 px-3 py-1 bg-cyan-400/10 rounded-full">
-              SECURITY & PRIVACY
-            </span>
-
-            <h2 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-              Your Data is
-              <span className="block text-transparent bg-linear-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text">
-                Safe With Us
-              </span>
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Enterprise-grade security with complete privacy protection for
-              your candidate data
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="group relative h-full">
-              <div className="absolute inset-0 bg-linear-to-br from-blue-600/20 to-blue-600/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative h-full bg-linear-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/50 group-hover:border-blue-400/40 transition-all duration-300 flex flex-col">
-                <div className="w-16 h-16 bg-linear-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  End-to-End Encryption
-                </h3>
-                <p className="text-gray-300 leading-relaxed grow">
-                  All data is encrypted using AES-256 encryption in transit and
-                  at rest. Your files are protected with bank-level security
-                  standards.
-                </p>
-              </div>
-            </div>
-
-            <div className="group relative h-full">
-              <div className="absolute inset-0 bg-linear-to-br from-emerald-600/20 to-emerald-600/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative h-full bg-linear-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/50 group-hover:border-emerald-400/40 transition-all duration-300 flex flex-col">
-                <div className="w-16 h-16 bg-linear-to-br from-emerald-500 to-emerald-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  GDPR Compliant
-                </h3>
-                <p className="text-gray-300 leading-relaxed grow">
-                  We comply with GDPR and other privacy regulations. You control
-                  your data, and we never share candidate information without
-                  explicit permission.
-                </p>
-              </div>
-            </div>
-
-            <div className="group relative h-full">
-              <div className="absolute inset-0 bg-linear-to-br from-purple-600/20 to-purple-600/0 rounded-2xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className="relative h-full bg-linear-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl p-8 rounded-2xl border border-gray-700/50 group-hover:border-purple-400/40 transition-all duration-300 flex flex-col">
-                <div className="w-16 h-16 bg-linear-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-2xl font-bold text-white mb-4">
-                  Auto Data Deletion
-                </h3>
-                <p className="text-gray-300 leading-relaxed grow">
-                  Uploaded files are automatically deleted after 30 days. You
-                  can manually delete data anytime, and we maintain no permanent
-                  copies of your candidate files.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="mt-16 text-center">
-            <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-              <div className="flex items-center gap-2 text-gray-400">
-                <svg
-                  className="w-6 h-6 text-emerald-400"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span className="text-sm">SOC 2 Type II</span>
-              </div>
-              <div className="flex items-center gap-2 text-gray-400">
-                <svg
-                  className="w-6 h-6 text-blue-400"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span className="text-sm">GDPR Compliant</span>
-              </div>
-              <div className="flex items-center gap-2 text-gray-400">
-                <svg
-                  className="w-6 h-6 text-purple-400"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                    clipRule="evenodd"
-                  />
-                </svg>
-                <span className="text-sm">AES-256 Encryption</span>
-              </div>
-            </div>
           </div>
         </div>
       </section>

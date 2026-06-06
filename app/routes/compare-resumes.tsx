@@ -87,7 +87,7 @@ const CompareResumes = () => {
       try {
         localStorage.setItem(
           "compare-resumes-results",
-          JSON.stringify(comparisonResults)
+          JSON.stringify(comparisonResults),
         );
       } catch (error) {
         console.warn("Failed to persist comparison results:", error);
@@ -95,12 +95,12 @@ const CompareResumes = () => {
           localStorage.removeItem("compare-resumes-results");
           localStorage.setItem(
             "compare-resumes-results",
-            JSON.stringify(comparisonResults)
+            JSON.stringify(comparisonResults),
           );
         } catch (retryError) {
           console.error(
             "Failed to persist comparison results after retry:",
-            retryError
+            retryError,
           );
         }
       }
@@ -181,7 +181,7 @@ const CompareResumes = () => {
       setComparisonResults(responseData);
 
       setToastMessage(
-        `Successfully compared ${responseData.comparison_summary?.total_submitted || files.length} candidates!`
+        `Successfully compared ${responseData.comparison_summary?.total_submitted || files.length} candidates!`,
       );
       setToastType("success");
       setShowToast(true);
@@ -247,7 +247,7 @@ const CompareResumes = () => {
       if (
         currentFiles.some(
           (existingFile) =>
-            existingFile.name === file.name && existingFile.size === file.size
+            existingFile.name === file.name && existingFile.size === file.size,
         )
       ) {
         setError({
@@ -470,7 +470,7 @@ const CompareResumes = () => {
               <div className="absolute -bottom-20 sm:-bottom-40 -left-20 sm:-left-40 w-40 h-40 sm:w-80 sm:h-80 bg-white/5 rounded-full blur-2xl sm:blur-3xl"></div>
             </div>
 
-            <div className="relative z-10 px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-16">
+            <div className="relative z-10 px-4 sm:px-6 md:px-8 py-8 sm:py-12 md:py-5">
               <div className="max-w-4xl mx-auto text-center">
                 <div className="inline-flex items-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 mb-4 sm:mb-6">
                   <svg
@@ -571,15 +571,12 @@ const CompareResumes = () => {
                 and AI-powered insights
               </p>
             </div>
-
             <div className="relative">
               <div className="relative mx-auto max-w-5xl">
                 <div className="absolute -inset-2 sm:-inset-4 bg-linear-to-r from-purple-500/20 via-pink-500/20 to-violet-500/20 rounded-3xl sm:rounded-4xl blur-xl sm:blur-2xl"></div>
                 <div className="absolute -inset-1 sm:-inset-2 bg-linear-to-r from-purple-600/10 via-pink-600/10 to-violet-600/10 rounded-2xl sm:rounded-3xl blur-lg sm:blur-xl"></div>
-
                 <div className="relative bg-linear-to-br from-slate-800/90 via-slate-800/95 to-slate-900/90 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-slate-700/50 overflow-hidden shadow-2xl">
                   <div className="absolute inset-0 bg-linear-to-br from-purple-500/5 to-pink-500/5"></div>
-
                   <div className="relative p-6 sm:p-8 md:p-12">
                     <div className="text-center mb-8 sm:mb-12">
                       <div className="relative inline-block mb-6 sm:mb-8">
@@ -876,4 +873,3 @@ const CompareResumes = () => {
 };
 
 export default CompareResumes;
-

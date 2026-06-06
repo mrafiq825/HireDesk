@@ -33,16 +33,16 @@ const Footer = () => {
             </p>
             <div className="flex gap-3">
               <a
-                href="https://twitter.com"
+                href="https://www.linkedin.com/in/mrafiq825/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-lg bg-gray-800/50 hover:bg-blue-600 text-gray-400 hover:text-white flex items-center justify-center transition-all duration-300 border border-gray-700/50 hover:border-blue-500/50 font-semibold transform hover:scale-110 cursor-pointer"
-                title="Twitter"
+                title="LinkedIn"
               >
-                X
+                in
               </a>
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/profile.php?id=100069771234437&mibextid=wwXIfr&mibextid=wwXIfr"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-lg bg-gray-800/50 hover:bg-blue-600 text-gray-400 hover:text-white flex items-center justify-center transition-all duration-300 border border-gray-700/50 hover:border-blue-500/50 font-semibold transform hover:scale-110 cursor-pointer"
@@ -51,17 +51,16 @@ const Footer = () => {
                 f
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://x.com/mrafiq825"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-lg bg-gray-800/50 hover:bg-blue-600 text-gray-400 hover:text-white flex items-center justify-center transition-all duration-300 border border-gray-700/50 hover:border-blue-500/50 font-semibold transform hover:scale-110 cursor-pointer"
-                title="LinkedIn"
+                title="Twitter"
               >
-                in
+                X
               </a>
             </div>
           </div>
-
           <div>
             <h4 className="text-sm font-semibold text-white mb-4 flex items-center gap-2 uppercase tracking-wide">
               <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
@@ -159,9 +158,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
       <div className="border-t border-slate-800/50" />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-gray-500 text-center md:text-left">

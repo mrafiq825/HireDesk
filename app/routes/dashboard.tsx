@@ -125,7 +125,6 @@ const Dashboard = () => {
                     />
                   </svg>
                 </button>
-
                 {showProfileDropdown && (
                   <div
                     ref={dropdownRef}
@@ -175,16 +174,16 @@ const Dashboard = () => {
             </div>
           </div>
         </nav>
-        <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
-          <div className="mb-12 sm:mb-16">
+        <main className="relative z-10 max-w-7xl mx-auto px-0 sm:px-6 lg:px-8 py-0 sm:py-5">
+          <div className="mb-10 sm:mb-5">
             <div className="max-w-4xl">
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex items-center gap-3 mb-2">
                 <div className="h-1 w-12 bg-gradient-to-r from-blue-500 to-cyan-400 rounded-full"></div>
                 <span className="text-sm font-semibold text-blue-400 tracking-wider">
                   HIRING INTELLIGENCE
                 </span>
               </div>
-              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4 tracking-tight leading-tight">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-2 tracking-tight leading-tight">
                 Power Your Hiring
               </h2>
               <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl">
@@ -194,7 +193,6 @@ const Dashboard = () => {
               </p>
             </div>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 mb-12">
             <Link
               to="/hiredesk-analyze"

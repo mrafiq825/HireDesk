@@ -76,7 +76,7 @@ aiApi.interceptors.request.use(
     }
     return config;
   },
-  (error: AxiosError) => Promise.reject(error)
+  (error: AxiosError) => Promise.reject(error),
 );
 
 // Response interceptor to handle errors
@@ -92,7 +92,7 @@ aiApi.interceptors.response.use(
     }
 
     return Promise.reject(error);
-  }
+  },
 );
 
 // Interface for AI API error responses
@@ -118,7 +118,7 @@ export const aiService = {
   async hireDeskAnalyze(
     file: File,
     targetRole: string,
-    jobDescription: string
+    jobDescription: string,
   ): Promise<HireDeskAnalyzeResponse> {
     try {
       const formData = new FormData();
@@ -133,7 +133,7 @@ export const aiService = {
           headers: {
             "Content-Type": "multipart/form-data",
           },
-        }
+        },
       );
 
       if (!response.data) {
@@ -144,7 +144,7 @@ export const aiService = {
     } catch (error: any) {
       const errorMessage = extractErrorMessage(
         error,
-        "Failed to analyze resume"
+        "Failed to analyze resume",
       );
 
       // Create structured error response
@@ -169,7 +169,7 @@ export const aiService = {
   async batchAnalyze(
     files: File[],
     targetRole?: string,
-    jobDescription?: string
+    jobDescription?: string,
   ): Promise<BatchAnalysisResponse> {
     try {
       const formData = new FormData();
@@ -193,7 +193,7 @@ export const aiService = {
           headers: {
             "Content-Type": "multipart/form-data",
           },
-        }
+        },
       );
 
       if (!response.data) {
@@ -255,7 +255,7 @@ export const aiService = {
     } catch (error: any) {
       const errorMessage = extractErrorMessage(
         error,
-        "Resume comparison failed"
+        "Resume comparison failed",
       );
 
       // Create structured error response
@@ -281,7 +281,7 @@ export const aiService = {
   async selectCandidates(
     files: File[],
     jobTitle: string,
-    keywords: string
+    keywords: string,
   ): Promise<{
     job_title: string;
     keywords: string[];
@@ -318,7 +318,7 @@ export const aiService = {
     } catch (error: any) {
       const errorMessage = extractErrorMessage(
         error,
-        "Candidate selection failed"
+        "Candidate selection failed",
       );
 
       // Create structured error response
