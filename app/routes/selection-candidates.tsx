@@ -100,7 +100,7 @@ const SelectionCandidates = () => {
             jobTitle,
             keywords,
             showResults,
-          })
+          }),
         );
       } catch (err) {
         console.error("Error saving form state:", err);
@@ -113,7 +113,7 @@ const SelectionCandidates = () => {
       try {
         sessionStorage.setItem(
           RESULTS_STORAGE_KEY,
-          JSON.stringify(selectionResponse)
+          JSON.stringify(selectionResponse),
         );
       } catch (err) {
         console.error("Error saving results:", err);
@@ -250,13 +250,13 @@ const SelectionCandidates = () => {
       const response = await aiService.selectCandidates(
         selectedFiles,
         jobTitle,
-        keywords
+        keywords,
       );
 
       setSelectionResponse(response);
       setShowResults(true);
       setToastMessage(
-        "Candidates evaluated successfully! View the results below."
+        "Candidates evaluated successfully! View the results below.",
       );
       setToastType("success");
       setShowToast(true);
@@ -266,7 +266,7 @@ const SelectionCandidates = () => {
         setShowRateLimitModal(true);
       } else {
         setToastMessage(
-          err.message || "Failed to analyze candidates. Try again."
+          err.message || "Failed to analyze candidates. Try again.",
         );
         setToastType("error");
         setShowToast(true);
@@ -422,11 +422,11 @@ const SelectionCandidates = () => {
           </div>
         </nav>
 
-        <main className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24">
+        <main className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-0 py-16 sm:py-5">
           {!showResults ? (
             <>
-              <div className="mb-12">
-                <h2 className="text-3xl sm:text-4xl font-semibold text-white mb-4">
+              <div className="mb-5">
+                <h2 className="text-3xl sm:text-4xl font-semibold text-white mb-2">
                   Candidate Selection & Screening
                 </h2>
                 <p className="text-slate-400 max-w-2xl">
@@ -435,10 +435,9 @@ const SelectionCandidates = () => {
                   based on keyword matching and skill alignment.
                 </p>
               </div>
-
               <form
                 onSubmit={handleSubmit}
-                className="bg-slate-900/40 border border-slate-800 rounded-2xl p-8"
+                className="bg-slate-900/40 border border-slate-800 rounded-2xl p-5"
               >
                 <div className="mb-8">
                   <label className="block text-sm font-semibold text-white mb-4">
@@ -630,28 +629,6 @@ const SelectionCandidates = () => {
             </>
           ) : selectionResponse ? (
             <>
-              <div className="mb-8">
-                <button
-                  onClick={handleReset}
-                  className="flex items-center gap-2 px-4 py-2 text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-lg transition-colors duration-200"
-                >
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                    />
-                  </svg>
-                  Analyze More
-                </button>
-              </div>
-
               <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
                 <div className="bg-slate-900/40 border border-slate-800 rounded-xl p-6">
                   <p className="text-slate-400 text-sm mb-2">Total Analyzed</p>
@@ -678,7 +655,7 @@ const SelectionCandidates = () => {
                       ? Math.round(
                           (selectionResponse.fit_count /
                             selectionResponse.total_candidates) *
-                            100
+                            100,
                         )
                       : 0}
                     %
@@ -714,7 +691,6 @@ const SelectionCandidates = () => {
                   </div>
                 </div>
               </div>
-
               <div className="space-y-4">
                 <h3 className="text-lg font-semibold text-white mb-4">
                   Candidate Results
@@ -744,14 +720,12 @@ const SelectionCandidates = () => {
                         {result.status === "FIT" ? "✓ FIT" : "✕ REJECT"}
                       </span>
                     </div>
-
                     <p className="text-slate-300 text-sm leading-relaxed">
                       {result.message}
                     </p>
                   </div>
                 ))}
               </div>
-
               <div className="mt-12 flex gap-4 justify-center">
                 <button
                   onClick={handleReset}
@@ -759,12 +733,6 @@ const SelectionCandidates = () => {
                 >
                   Analyze More
                 </button>
-                <Link
-                  to="/dashboard"
-                  className="px-6 py-3 bg-slate-700 hover:bg-slate-600 text-white font-semibold rounded-lg transition-colors duration-200"
-                >
-                  Back to Dashboard
-                </Link>
               </div>
             </>
           ) : null}
@@ -781,7 +749,6 @@ const SelectionCandidates = () => {
             }
           />
         )}
-
         <RateLimitModal
           isOpen={showRateLimitModal}
           onClose={() => setShowRateLimitModal(false)}
@@ -794,4 +761,3 @@ const SelectionCandidates = () => {
 };
 
 export default SelectionCandidates;
-
