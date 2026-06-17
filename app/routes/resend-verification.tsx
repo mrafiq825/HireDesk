@@ -6,12 +6,14 @@ import NavbarWithModal from "@layout/Navbar";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Resend Verification - HireDesk" },
+    { title: "Resend Verification Email — HireDesk" },
     {
       name: "description",
       content:
-        "Resend your email verification link to complete your registration.",
+        "Didn't receive your verification email? Enter your address to get a new secure activation link sent instantly to your inbox.",
     },
+    { name: "robots", content: "noindex, nofollow" },
+    { tagName: "link", rel: "canonical", href: "https://hiredesk.vercel.app/resend-verification" },
   ];
 }
 

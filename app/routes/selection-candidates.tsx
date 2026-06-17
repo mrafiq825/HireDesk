@@ -10,12 +10,14 @@ import RateLimitModal from "@ui/RateLimitModal";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "HireDesk - Selection & Team Building" },
+    { title: "Quick Screen — AI-Powered FIT/REJECT Candidate Evaluation | HireDesk" },
     {
       name: "description",
       content:
-        "Analyze and select candidates with AI-powered FIT/REJECT decisions based on job requirements.",
+        "Upload up to 5 resumes with a job title and required keywords. HireDesk's AI delivers instant FIT or REJECT decisions with clear reasoning for each candidate.",
     },
+    { name: "robots", content: "noindex, nofollow" },
+    { tagName: "link", rel: "canonical", href: "https://hiredesk.vercel.app/selection-candidates" },
   ];
 }
 

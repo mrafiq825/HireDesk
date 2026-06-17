@@ -14,12 +14,14 @@ import type {
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "HireDesk - Chat" },
+    { title: "HireDesk Chat — AI Recruiter Co-pilot for Screening & Interviews" },
     {
       name: "description",
       content:
-        "Conversational HireDesk experience for screening, interviews, postings, and candidate matching.",
+        "Chat with HireDesk's AI co-pilot to generate screening questions, draft interview prompts, create job postings, and match candidates to roles in real time.",
     },
+    { name: "robots", content: "noindex, nofollow" },
+    { tagName: "link", rel: "canonical", href: "https://hiredesk.vercel.vercel.app/hiredesk-chat" },
   ];
 }
 

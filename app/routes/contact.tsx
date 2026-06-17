@@ -4,14 +4,110 @@ import type { Route } from "./+types/contact";
 import { useForm, ValidationError } from "@formspree/react";
 import { useToast } from "@contexts/ToastContext";
 
+const SITE_URL = "https://hiredesk.vercel.app";
+const PAGE_TITLE =
+  "Contact HireDesk — Get Help with AI Resume Screening & Hiring Tools";
+const PAGE_DESCRIPTION =
+  "Questions about HireDesk's AI-powered hiring tools? Contact our team for help with Smart Review, Smart Screening, Find Best Fit, or Quick Screen. We respond within 24 hours. Upgrade to Premium or Enterprise for unlimited analyses.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ContactPage",
+      name: "Contact HireDesk",
+      url: `${SITE_URL}/contact`,
+      description: PAGE_DESCRIPTION,
+      mainEntity: {
+        "@type": "Organization",
+        name: "HireDesk",
+        email: "rafkhan9323@gmail.com",
+        url: SITE_URL,
+      },
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "When should I use Smart Review?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Use Smart Review (Individual Deep Analysis) for final-round candidates or key positions requiring comprehensive evaluation. It provides personality insights, leadership assessments, career trajectory analysis, resume scoring, and tailored interview questions.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What is the best way to handle large applicant pools?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "For large applicant pools (20+ candidates), start with Smart Screening (Batch Processing) to analyze 2-10 resumes simultaneously. This provides consistent evaluation criteria and automated ranking to quickly identify top candidates for further review.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How does Find Best Fit help with final decisions?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Find Best Fit (Side-by-Side Comparison) allows you to visually compare 2-5 top candidates using intelligent ranking algorithms. Perfect for making objective final decisions when you have multiple strong applicants with similar qualifications.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "When should I use Selection & Team Building?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Use Selection & Team Building for rapid candidate screening (1-5 resumes). It provides quick FIT/REJECT decisions based on job title and required keywords, perfect for fast-paced hiring cycles where you need immediate decisions on candidate suitability.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Can I combine different analysis methods in my hiring process?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Absolutely! Many recruiters use Selection & Team Building for rapid pre-screening, Smart Screening for initial evaluation, Find Best Fit for comparing finalists, and Smart Review for deep analysis of selected candidates. This multi-stage approach ensures thorough evaluation at each hiring phase.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What is the difference between the four analysis methods?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Smart Review provides comprehensive individual analysis, Smart Screening handles bulk processing (2-10 resumes), Find Best Fit compares candidates side-by-side (2-5), and Selection & Team Building offers quick FIT/REJECT decisions (1-5). Each serves different stages of your hiring funnel.",
+          },
+        },
+      ],
+    },
+  ],
+};
+
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Contact Us - HireDesk" },
+    { title: PAGE_TITLE },
+    { name: "description", content: PAGE_DESCRIPTION },
+
+    // Canonical
+    { tagName: "link", rel: "canonical", href: `${SITE_URL}/contact` },
+
+    // Open Graph
+    { property: "og:url", content: `${SITE_URL}/contact` },
+    { property: "og:title", content: PAGE_TITLE },
+    { property: "og:description", content: PAGE_DESCRIPTION },
+    { property: "og:type", content: "website" },
+
+    // Twitter Card
+    { name: "twitter:title", content: PAGE_TITLE },
+    { name: "twitter:description", content: PAGE_DESCRIPTION },
+
+    // Keywords
     {
-      name: "description",
+      name: "keywords",
       content:
-        "Get in touch with HireDesk. We're here to help with your hiring needs.",
+        "contact HireDesk, AI hiring support, resume screening help, recruitment tool support, upgrade hiring plan, HireDesk FAQ",
     },
+
+    // JSON-LD structured data (FAQPage + ContactPage)
+    { "script:ld+json": JSON.stringify(jsonLd) },
   ];
 }
 

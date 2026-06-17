@@ -7,12 +7,14 @@ import NavbarWithModal from "@layout/Navbar";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Forgot Password - HireDesk" },
+    { title: "Reset Your Password — HireDesk" },
     {
       name: "description",
       content:
-        "Reset your HireDesk account password by entering your email address.",
+        "Forgot your HireDesk password? Enter your email to receive a secure reset link and regain access to your AI-powered hiring platform.",
     },
+    { name: "robots", content: "noindex, nofollow" },
+    { tagName: "link", rel: "canonical", href: "https://hiredesk.vercel.app/forgot-password" },
   ];
 }
 

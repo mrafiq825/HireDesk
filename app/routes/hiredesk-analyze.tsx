@@ -12,13 +12,15 @@ import { ResumeAnalysisDisplay } from "@analysis/ResumeAnalysisDisplay";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "HireDesk - Smart Review" },
+    { title: "Smart Review — AI Resume Analysis & Interview Questions | HireDesk" },
     {
       name: "description",
       content:
-        "AI-powered resume analysis and interview question generation for smarter hiring decisions.",
+        "Upload a resume for deep AI analysis. Get candidate fit score, personality insights, leadership assessment, career trajectory, and tailored interview questions in seconds.",
     },
-  ];
+    { name: "robots", content: "noindex, nofollow" },
+    { tagName: "link", rel: "canonical", href: "https://hiredesk.vercel.app/hiredesk-analyze" },
+  ]; 
 }
 
 const HireDeskAnalyze = () => {

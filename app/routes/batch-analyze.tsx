@@ -18,12 +18,14 @@ import type {
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "HireDesk - Smart Screening" },
+    { title: "Smart Screening — Batch AI Resume Analysis for 2–10 Candidates | HireDesk" },
     {
       name: "description",
       content:
-        "Batch analyze multiple resumes with AI-powered screening - process 2-5 resumes per batch with intelligent analysis.",
+        "Upload 2-10 resumes simultaneously for AI-powered batch analysis. Get consistent ranking scores, top candidate highlights, and comparative insights in minutes, not days.",
     },
+    { name: "robots", content: "noindex, nofollow" },
+    { tagName: "link", rel: "canonical", href: "https://hiredesk.app/batch-analyze" },
   ];
 }
 

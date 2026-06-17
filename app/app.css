@@ -108,3 +108,48 @@ h6 {
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
+
+/* ─── Performance: below-fold content ───────────────────────────────────────
+   Tells the browser it can skip rendering off-screen sections until needed.
+   Apply .below-fold to sections that are not in the initial viewport.        */
+.below-fold {
+  content-visibility: auto;
+  /* Estimated height prevents layout shift when section renders */
+  contain-intrinsic-size: 0 500px;
+}
+
+/* ─── Accessibility: Respect user motion preferences ────────────────────────
+   Users who set "Reduce motion" in OS settings will not see animations.
+   This is also a WCAG 2.1 success criterion (2.3.3 Animation from Interactions). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-float,
+  .animate-pulse,
+  .animate-spin,
+  .animate-bounce {
+    animation: none !important;
+  }
+}
+
+/* ─── Focus Visible: Keyboard navigation accessibility ──────────────────────
+   Clear focus rings for keyboard users without impacting mouse users. */
+:focus-visible {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ─── Smooth scrolling (only for users who haven't opted out) ───────────── */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}

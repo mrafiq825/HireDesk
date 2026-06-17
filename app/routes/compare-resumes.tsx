@@ -12,12 +12,14 @@ import type { CompareResumesResponse } from "@app-types";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "HireDesk - Find Best Fit" },
+    { title: "Find Best Fit — Side-by-Side Candidate Comparison | HireDesk" },
     {
       name: "description",
       content:
-        "Compare multiple candidates side-by-side with advanced ranking algorithms - coming soon to HireDesk.",
+        "Compare 2-5 finalists side-by-side with HireDesk's AI ranking algorithm. Get objective scores, skill gap analysis, and a clear top-candidate recommendation to make confident final hiring decisions.",
     },
+    { name: "robots", content: "noindex, nofollow" },
+    { tagName: "link", rel: "canonical", href: "https://hiredesk.vercel.app/compare-resumes" },
   ];
 }
 

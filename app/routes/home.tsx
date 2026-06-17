@@ -3,16 +3,77 @@ import type { Route } from "./+types/home";
 import Navbar from "@layout/Navbar";
 import Footer from "@layout/Footer";
 
-export function meta({}: Route.MetaArgs) {
-  return [
+const SITE_URL = "https://hiredesk.vercel.app";
+const PAGE_TITLE =
+  "HireDesk — AI-Powered Hiring Platform: Smart Review, Screening, Comparison & Selection";
+const PAGE_DESCRIPTION =
+  "Transform your entire hiring workflow with HireDesk's four AI-powered tools. Deep individual analysis, batch screening (2-10 resumes), side-by-side candidate comparison, and instant binary screening. Join 500+ companies saving 70% hiring time.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      title:
-        "HireDesk - AI-Powered Hiring Platform: Smart Review, Screening, Comparison & Selection",
+      "@type": "WebApplication",
+      name: "HireDesk",
+      url: SITE_URL,
+      description: PAGE_DESCRIPTION,
+      applicationCategory: "BusinessApplication",
+      operatingSystem: "Web",
+      offers: {
+        "@type": "Offer",
+        price: "0",
+        priceCurrency: "USD",
+        description: "Free plan — 10 resume analyses per user",
+      },
+      featureList: [
+        "AI Resume Analysis",
+        "Batch Resume Screening",
+        "Candidate Comparison",
+        "Smart Interview Questions",
+        "Personality & Leadership Insights",
+      ],
     },
     {
-      name: "description",
+      "@type": "Organization",
+      name: "HireDesk",
+      url: SITE_URL,
+      sameAs: [
+        "https://x.com/mrafiq825",
+        "https://www.linkedin.com/in/mrafiq825/",
+        "https://www.instagram.com/dmrafiq825/",
+      ],
+    },
+  ],
+};
+
+export function meta({}: Route.MetaArgs) {
+  return [
+    { title: PAGE_TITLE },
+    { name: "description", content: PAGE_DESCRIPTION },
+
+    // Canonical
+    { tagName: "link", rel: "canonical", href: `${SITE_URL}/` },
+
+    // Open Graph
+    { property: "og:url", content: `${SITE_URL}/` },
+    { property: "og:title", content: PAGE_TITLE },
+    { property: "og:description", content: PAGE_DESCRIPTION },
+    { property: "og:type", content: "website" },
+
+    // Twitter Card
+    { name: "twitter:title", content: PAGE_TITLE },
+    { name: "twitter:description", content: PAGE_DESCRIPTION },
+
+    // Keywords
+    {
+      name: "keywords",
       content:
-        "Transform your entire hiring workflow with HireDesk's four AI-powered tools. Deep individual analysis, batch screening (2-10 resumes), side-by-side candidate comparison, and instant binary screening. Join 500+ companies saving 70% hiring time.",
+        "AI hiring platform, resume screening software, AI recruitment tool, candidate comparison, batch resume analysis, smart hiring, HireDesk, HR technology, talent acquisition AI",
+    },
+
+    // JSON-LD structured data
+    {
+      "script:ld+json": JSON.stringify(jsonLd),
     },
   ];
 }

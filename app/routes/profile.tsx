@@ -7,11 +7,14 @@ import type { Route } from "./+types/profile";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "HireDesk - Profile" },
+    { title: "My Profile — Usage Analytics & Account Settings | HireDesk" },
     {
       name: "description",
-      content: "View and manage your HireDesk profile information.",
+      content:
+        "View your HireDesk profile, track feature usage across Smart Review, Smart Screening, Find Best Fit, and Quick Screen, and manage your account password and details.",
     },
+    { name: "robots", content: "noindex, nofollow" },
+    { tagName: "link", rel: "canonical", href: "https://hiredesk.vercel.app/profile" },
   ];
 }
 

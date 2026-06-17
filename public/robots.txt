@@ -1,0 +1,19 @@
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /contact
+
+# Private authenticated pages — do not index
+Disallow: /dashboard
+Disallow: /hiredesk-analyze
+Disallow: /hiredesk-chat
+Disallow: /batch-analyze
+Disallow: /compare-resumes
+Disallow: /selection-candidates
+Disallow: /profile
+Disallow: /forgot-password
+Disallow: /reset-password
+Disallow: /verify-email
+Disallow: /resend-verification
+
+Sitemap: https://hiredesk.vercel.app/sitemap.xml

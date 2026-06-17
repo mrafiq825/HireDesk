@@ -9,12 +9,15 @@ import type { LoginFormData } from "@app-types";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "HireDesk - Login" },
+    { title: "Sign In to HireDesk — AI-Powered Hiring Platform" },
     {
       name: "description",
       content:
-        "Log in to your HireDesk account and access the AI-powered recruitment platform to hire top talent to your team.",
+        "Log in to your HireDesk account and access AI-powered resume screening, candidate comparison, and batch analysis tools to hire top talent faster.",
     },
+    // Auth pages should not be indexed — no SEO value + private content
+    { name: "robots", content: "noindex, nofollow" },
+    { tagName: "link", rel: "canonical", href: "https://hiredesk.vercel.app/login" },
   ];
 }
 

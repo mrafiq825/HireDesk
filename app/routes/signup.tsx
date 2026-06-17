@@ -11,12 +11,15 @@ import type { SignUpFormData } from "@app-types";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "HireDesk - Sign Up" },
+    { title: "Create Your HireDesk Account — Start Hiring Smarter Today" },
     {
       name: "description",
       content:
-        "Create your account on HireDesk and unlock access to our AI-powered recruitment platform to find top talent for your team.",
+        "Sign up for HireDesk and get 10 free AI-powered resume analyses. Screen candidates, compare applicants, and make data-driven hiring decisions in minutes — not weeks.",
     },
+    // Auth pages should not be indexed
+    { name: "robots", content: "noindex, nofollow" },
+    { tagName: "link", rel: "canonical", href: "https://hiredesk.vercel.app/signup" },
   ];
 }
 

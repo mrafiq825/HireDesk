@@ -6,12 +6,15 @@ import { useState, useEffect, useRef } from "react";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "HireDesk - Dashboard" },
+    { title: "HireDesk — Your Hiring Dashboard" },
     {
       name: "description",
       content:
-        "Your HireDesk dashboard - choose from Smart Review, Smart Screening, or Find Best Fit for your hiring needs.",
+        "Your HireDesk dashboard — choose from Smart Review, Smart Screening, Find Best Fit, or Quick Screen to accelerate your hiring workflow.",
     },
+    // Private authenticated page — do not index
+    { name: "robots", content: "noindex, nofollow" },
+    { tagName: "link", rel: "canonical", href: "https://hiredesk.vercel.app/dashboard" },
   ];
 }
 

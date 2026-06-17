@@ -6,12 +6,14 @@ import NavbarWithModal from "@layout/Navbar";
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Verify Email - HireDesk" },
+    { title: "Verify Your Email — HireDesk Account Activation" },
     {
       name: "description",
       content:
-        "Verify your email address to complete your HireDesk registration.",
+        "Click the link in your inbox to verify your email address and activate your HireDesk account. Verification links are valid for 24 hours.",
     },
+    { name: "robots", content: "noindex, nofollow" },
+    { tagName: "link", rel: "canonical", href: "https://hiredesk.vercel.app/verify-email" },
   ];
 }
 

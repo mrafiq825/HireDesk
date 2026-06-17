@@ -2,14 +2,61 @@ import Footer from "~/components/layout/Footer";
 import type { Route } from "../routes/+types/about";
 import Navbar from "@layout/Navbar";
 
+const SITE_URL = "https://hiredesk.app";
+const PAGE_TITLE =
+  "About HireDesk — AI-Powered Hiring Platform Built for Recruiters";
+const PAGE_DESCRIPTION =
+  "Discover how HireDesk's four AI-powered tools — Smart Review, Smart Screening, Find Best Fit, and Quick Screen — transform your hiring workflow. Built exclusively for recruiters and HR teams to save 70% hiring time.";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "HireDesk",
+  url: SITE_URL,
+  description: PAGE_DESCRIPTION,
+  foundingDate: "2024",
+  applicationCategory: "HR Technology, AI Recruitment",
+  sameAs: [
+    "https://x.com/mrafiq825",
+    "https://www.linkedin.com/in/mrafiq825/",
+    "https://www.instagram.com/dmrafiq825/",
+  ],
+  knowsAbout: [
+    "AI Resume Screening",
+    "Candidate Evaluation",
+    "HR Technology",
+    "Talent Acquisition",
+    "Recruitment Automation",
+  ],
+};
+
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "About HireDesk - AI-Powered Hiring Platform" },
+    { title: PAGE_TITLE },
+    { name: "description", content: PAGE_DESCRIPTION },
+
+    // Canonical
+    { tagName: "link", rel: "canonical", href: `${SITE_URL}/about` },
+
+    // Open Graph
+    { property: "og:url", content: `${SITE_URL}/about` },
+    { property: "og:title", content: PAGE_TITLE },
+    { property: "og:description", content: PAGE_DESCRIPTION },
+    { property: "og:type", content: "website" },
+
+    // Twitter Card
+    { name: "twitter:title", content: PAGE_TITLE },
+    { name: "twitter:description", content: PAGE_DESCRIPTION },
+
+    // Keywords
     {
-      name: "description",
+      name: "keywords",
       content:
-        "Discover HireDesk's four AI-powered tools: Smart Review for deep analysis, Smart Screening for batch processing, Find Best Fit for candidate comparison, and Quick Screen for binary evaluation. Transform your entire hiring workflow.",
+        "HireDesk about, AI hiring assistant, resume analysis platform, smart screening tool, recruiter AI, HR automation, talent acquisition technology",
     },
+
+    // JSON-LD structured data
+    { "script:ld+json": JSON.stringify(jsonLd) },
   ];
 }
 

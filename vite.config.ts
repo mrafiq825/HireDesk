@@ -20,6 +20,48 @@ export default defineConfig(({ command, mode }) => {
       port: 3000,
       host: "0.0.0.0",
     },
+    // ─── Build Performance ────────────────────────────────────────────────────
+    build: {
+      // Raise warning only for chunks genuinely too large (600 kB)
+      chunkSizeWarningLimit: 600,
+      // Split CSS per async chunk for better caching
+      cssCodeSplit: true,
+      rollupOptions: {
+        output: {
+          // Split vendor code into cacheable, named chunks.
+          // When only app code changes, browser can reuse cached vendor bundles.
+          manualChunks(id) {
+            if (id.includes("node_modules")) {
+              if (id.includes("react-dom") || id.includes("react/")) {
+                return "vendor-react";
+              }
+              if (id.includes("react-router") || id.includes("@react-router")) {
+                return "vendor-router";
+              }
+              if (id.includes("axios")) {
+                return "vendor-axios";
+              }
+              if (id.includes("@emailjs") || id.includes("@formspree")) {
+                return "vendor-forms";
+              }
+              // Everything else in a general vendor chunk
+              return "vendor";
+            }
+          },
+        },
+      },
+    },
+    // ─── Dev cold-start optimization ─────────────────────────────────────────
+    optimizeDeps: {
+      include: [
+        "react",
+        "react-dom",
+        "react-router",
+        "axios",
+        "@emailjs/browser",
+        "@formspree/react",
+      ],
+    },
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "./app"),
