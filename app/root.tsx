@@ -37,8 +37,15 @@ export const links: Route.LinksFunction = () => [
     rel: "stylesheet",
     href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap",
     media: "print",
-    // @ts-ignore — onload trick for async CSS loading
-    onLoad: "this.media='all'",
+    onLoad: () => {
+      const link = document.querySelector<HTMLLinkElement>(
+        'link[href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap"]',
+      );
+
+      if (link) {
+        link.media = "all";
+      }
+    },
   },
 ];
 
@@ -63,7 +70,10 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta property="og:image" content={DEFAULT_OG_IMAGE} />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="HireDesk — AI-Powered Hiring Platform" />
+        <meta
+          property="og:image:alt"
+          content="HireDesk — AI-Powered Hiring Platform"
+        />
 
         {/* === Default Twitter Card (overridden per-route) === */}
         <meta name="twitter:card" content="summary_large_image" />

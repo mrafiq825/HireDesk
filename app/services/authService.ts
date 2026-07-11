@@ -73,7 +73,7 @@ api.interceptors.request.use(
     }
     return config;
   },
-  (error: AxiosError) => Promise.reject(error)
+  (error: AxiosError) => Promise.reject(error),
 );
 
 api.interceptors.response.use(
@@ -112,28 +112,27 @@ api.interceptors.response.use(
         originalRequest.headers.Authorization = `Bearer ${accessToken}`;
         return api.request(originalRequest);
       } catch (refreshError) {
-        localStorage.removeItem("accessToken");
-        if (!window.location.pathname.includes("/login")) {
-          window.location.href = "/login";
-        }
+        // Keep the current session state intact unless the refresh endpoint explicitly
+        // confirms the token is invalid. The UI can show the real error instead of
+        // forcing an unwanted redirect during an upload/analyze flow.
         return Promise.reject(refreshError);
       }
     }
 
     return Promise.reject(error);
-  }
+  },
 );
 
 export const authService = {
   async register(
-    userData: RegisterRequest
+    userData: RegisterRequest,
   ): Promise<{ accessToken: string; user: User }> {
     try {
       localStorage.removeItem("accessToken");
 
       const response = await authApi.post<AuthResponse>(
         "/auth/register",
-        userData
+        userData,
       );
 
       if (!response.data.success || !response.data.data) {
@@ -148,21 +147,21 @@ export const authService = {
     } catch (error: any) {
       const errorMessage = extractErrorMessage(
         error,
-        "Registration failed. Please try again."
+        "Registration failed. Please try again.",
       );
       throw new Error(errorMessage);
     }
   },
 
   async login(
-    credentials: LoginRequest
+    credentials: LoginRequest,
   ): Promise<{ accessToken: string; user: User }> {
     try {
       localStorage.removeItem("accessToken");
 
       const response = await authApi.post<AuthResponse>(
         "/auth/login",
-        credentials
+        credentials,
       );
 
       if (!response.data.success || !response.data.data) {
@@ -181,7 +180,7 @@ export const authService = {
         error.response?.data?.requiresVerification
       ) {
         const verificationError = new Error(
-          error.response.data.message || "Please verify your email first"
+          error.response.data.message || "Please verify your email first",
         ) as any;
         verificationError.requiresVerification = true;
         verificationError.email = credentials.email;
@@ -190,14 +189,14 @@ export const authService = {
 
       const errorMessage = extractErrorMessage(
         error,
-        "Login failed. Please check your credentials and try again."
+        "Login failed. Please check your credentials and try again.",
       );
       throw new Error(errorMessage);
     }
   },
 
   async verifyEmail(
-    token: string
+    token: string,
   ): Promise<{ accessToken: string; user: User }> {
     try {
       const response = await authApi.post<AuthResponse>("/auth/verify-email", {
@@ -216,7 +215,7 @@ export const authService = {
     } catch (error: any) {
       const errorMessage = extractErrorMessage(
         error,
-        "Email verification failed. The link may have expired."
+        "Email verification failed. The link may have expired.",
       );
       throw new Error(errorMessage);
     }
@@ -226,18 +225,18 @@ export const authService = {
     try {
       const response = await authApi.post<AuthResponse>(
         "/auth/resend-verification",
-        { email }
+        { email },
       );
 
       if (!response.data.success) {
         throw new Error(
-          response.data.message || "Failed to resend verification email"
+          response.data.message || "Failed to resend verification email",
         );
       }
     } catch (error: any) {
       const errorMessage = extractErrorMessage(
         error,
-        "Failed to resend verification email. Please try again."
+        "Failed to resend verification email. Please try again.",
       );
       throw new Error(errorMessage);
     }
@@ -247,18 +246,18 @@ export const authService = {
     try {
       const response = await authApi.post<AuthResponse>(
         "/auth/forgot-password",
-        { email }
+        { email },
       );
 
       if (!response.data.success) {
         throw new Error(
-          response.data.message || "Failed to send password reset email"
+          response.data.message || "Failed to send password reset email",
         );
       }
     } catch (error: any) {
       const errorMessage = extractErrorMessage(
         error,
-        "Failed to send password reset email. Please try again."
+        "Failed to send password reset email. Please try again.",
       );
       throw new Error(errorMessage);
     }
@@ -267,12 +266,12 @@ export const authService = {
   async resetPasswordWithToken(
     token: string,
     newPassword: string,
-    confirmPassword: string
+    confirmPassword: string,
   ): Promise<void> {
     try {
       const response = await authApi.post<AuthResponse>(
         "/auth/reset-password-with-token",
-        { token, newPassword, confirmPassword }
+        { token, newPassword, confirmPassword },
       );
 
       if (!response.data.success) {
@@ -281,7 +280,7 @@ export const authService = {
     } catch (error: any) {
       const errorMessage = extractErrorMessage(
         error,
-        "Password reset failed. Please try again."
+        "Password reset failed. Please try again.",
       );
       throw new Error(errorMessage);
     }
@@ -309,7 +308,7 @@ export const authService = {
     } catch (error: any) {
       const errorMessage = extractErrorMessage(
         error,
-        "Failed to load profile. Please try again."
+        "Failed to load profile. Please try again.",
       );
       throw new Error(errorMessage);
     }
@@ -319,7 +318,7 @@ export const authService = {
     try {
       const response = await api.post<AuthResponse>(
         "/auth/reset-password",
-        resetData
+        resetData,
       );
 
       if (!response.data.success) {
@@ -328,7 +327,7 @@ export const authService = {
     } catch (error: any) {
       const errorMessage = extractErrorMessage(
         error,
-        "Password reset failed. Please try again."
+        "Password reset failed. Please try again.",
       );
       throw new Error(errorMessage);
     }
@@ -338,7 +337,7 @@ export const authService = {
     try {
       const response = await api.put<AuthResponse>(
         "/auth/update-profile",
-        updateData
+        updateData,
       );
 
       if (!response.data.success || !response.data.data) {
@@ -349,7 +348,7 @@ export const authService = {
     } catch (error: any) {
       const errorMessage = extractErrorMessage(
         error,
-        "Profile update failed. Please try again."
+        "Profile update failed. Please try again.",
       );
       throw new Error(errorMessage);
     }
@@ -416,7 +415,7 @@ export const authService = {
     } catch (error: any) {
       const errorMessage = extractErrorMessage(
         error,
-        "Session expired. Please log in again."
+        "Session expired. Please log in again.",
       );
       throw new Error(errorMessage);
     }

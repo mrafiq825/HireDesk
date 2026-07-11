@@ -72,23 +72,17 @@ assistantApi.interceptors.request.use(
     }
     return config;
   },
-  (error: AxiosError) => Promise.reject(error)
+  (error: AxiosError) => Promise.reject(error),
 );
 
 // Response interceptor to handle errors
 assistantApi.interceptors.response.use(
   (response: AxiosResponse) => response,
   (error: AxiosError) => {
-    // Handle 401 Unauthorized
-    if (error.response?.status === 401) {
-      localStorage.removeItem("accessToken");
-      if (!window.location.pathname.includes("/login")) {
-        window.location.href = "/login";
-      }
-    }
-
+    // Preserve the current session so chat and analysis flows can surface the
+    // backend error instead of forcefully redirecting the user.
     return Promise.reject(error);
-  }
+  },
 );
 
 // Service methods for AI Assistant API
@@ -102,7 +96,7 @@ export const assistantService = {
     try {
       const response = await assistantApi.post<HireDeskQueryResponse>(
         "/hiredesk/query",
-        payload
+        payload,
       );
 
       if (!response.data) {
@@ -113,7 +107,7 @@ export const assistantService = {
     } catch (error: any) {
       const errorMessage = extractErrorMessage(
         error,
-        "Failed to process HireDesk query"
+        "Failed to process HireDesk query",
       );
 
       const structuredError = {
@@ -144,7 +138,7 @@ export const assistantService = {
     } catch (error: any) {
       const errorMessage = extractErrorMessage(
         error,
-        "Failed to fetch HireDesk status"
+        "Failed to fetch HireDesk status",
       );
 
       const structuredError = {

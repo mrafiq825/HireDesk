@@ -83,14 +83,9 @@ aiApi.interceptors.request.use(
 aiApi.interceptors.response.use(
   (response: AxiosResponse) => response,
   (error: AxiosError) => {
-    // Handle 401 Unauthorized
-    if (error.response?.status === 401) {
-      localStorage.removeItem("accessToken");
-      if (!window.location.pathname.includes("/login")) {
-        window.location.href = "/login";
-      }
-    }
-
+    // Preserve the current session unless the backend explicitly invalidates it.
+    // The upload/analyze page should surface the error response instead of being
+    // redirected away from the page unexpectedly.
     return Promise.reject(error);
   },
 );
