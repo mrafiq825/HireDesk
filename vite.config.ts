@@ -32,7 +32,11 @@ export default defineConfig(({ command, mode }) => {
           // When only app code changes, browser can reuse cached vendor bundles.
           manualChunks(id) {
             if (id.includes("node_modules")) {
-              if (id.includes("react-dom") || id.includes("react/")) {
+              if (
+                id.includes("node_modules/react-dom/") ||
+                id.includes("node_modules/react/") ||
+                id.includes("node_modules/scheduler/")
+              ) {
                 return "vendor-react";
               }
               if (id.includes("react-router") || id.includes("@react-router")) {
@@ -43,6 +47,9 @@ export default defineConfig(({ command, mode }) => {
               }
               if (id.includes("@emailjs") || id.includes("@formspree")) {
                 return "vendor-forms";
+              }
+              if (id.includes("@stripe")) {
+                return "vendor-stripe";
               }
               // Everything else in a general vendor chunk
               return "vendor";
