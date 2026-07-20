@@ -84,7 +84,29 @@ const Home = () => {
       <Navbar />
       <div className="absolute inset-0 bg-grid-white/[0.02] opacity-50"></div>
       <section className="pt-20 pb-0 px-4 sm:px-6 lg:px-8 relative z-10 overflow-hidden">
-        <div className="max-w-7xl mx-auto">
+        {/* Background Video */}
+        <div className="absolute inset-0 pointer-events-none z-0">
+          <video
+            ref={(el) => {
+              if (el) {
+                el.play().catch((err) => {
+                  console.error("Autoplay failed or blocked:", err);
+                });
+              }
+            }}
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover opacity-25"
+          >
+            <source src="/hero-background.mp4" type="video/mp4" />
+            <source src="/hero-background.mov" type="video/quicktime" />
+          </video>
+          <div className="absolute inset-0 bg-linear-to-b from-transparent via-slate-950/40 to-slate-950"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center space-y-8">
             <div className="space-y-4">
               <h1 className="font-serif text-7xl md:text-9xl lg:text-10xl font-black text-white leading-none tracking-tighter">
