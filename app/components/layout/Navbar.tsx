@@ -81,24 +81,15 @@ const Navbar = ({ onOpenTips }: NavbarProps) => {
           <div className="flex items-center gap-3">
             <Link
               to="/"
-              className="group flex items-center gap-2.5 px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-blue-500/50 border border-blue-400/30 hover:border-blue-300/50"
+              className="group flex items-center hover:opacity-95 transition-opacity transform hover:scale-102 duration-300"
             >
-              <div className="w-7 h-7 rounded-lg bg-white/10 backdrop-blur-sm flex items-center justify-center group-hover:bg-white/20 transition-all duration-300 border border-white/20 group-hover:border-white/30">
+              <div className="h-10 bg-white rounded-xl px-3 flex items-center justify-center shadow-lg shadow-white/5 border border-white/10 group-hover:border-white/20 transition-all duration-300">
                 <img
                   src="/logo/logo.png"
                   alt="HireDesk Logo"
-                  className="w-5 h-5 object-contain filter brightness-0 invert"
+                  className="h-8 w-auto object-contain"
                 />
               </div>
-              <div className="flex flex-col">
-                <span className="text-sm font-bold text-white leading-tight">
-                  Hire<span className="text-blue-200">Desk</span>
-                </span>
-                <span className="text-xs font-medium text-blue-100 opacity-90 leading-tight">
-                  AI Hiring
-                </span>
-              </div>
-              <div className="hidden sm:block ml-1 w-1.5 h-1.5 rounded-full bg-blue-300 group-hover:bg-white transition-colors animate-pulse group-hover:animate-bounce"></div>
             </Link>
           </div>
 

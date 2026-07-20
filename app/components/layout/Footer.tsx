@@ -11,20 +11,14 @@ const Footer = () => {
           <div>
             <Link
               to="/"
-              className="inline-flex items-center gap-2.5 mb-6 group hover:opacity-80 transition-opacity cursor-pointer"
+              className="inline-flex items-center mb-6 hover:opacity-95 transition-opacity cursor-pointer"
             >
-              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center group-hover:bg-blue-700 transition-colors duration-300 transform group-hover:scale-110">
+              <div className="h-12 bg-white rounded-xl px-4 flex items-center justify-center shadow-lg shadow-white/5 border border-white/10 transition-all duration-300">
                 <img
                   src="/logo/logo.png"
                   alt="HireDesk Logo"
-                  className="w-6 h-6 object-contain filter brightness-0 invert"
+                  className="h-8 w-auto object-contain"
                 />
-              </div>
-              <div className="flex flex-col">
-                <span className="text-lg font-bold text-white">
-                  Hire<span className="text-blue-400">Desk</span>
-                </span>
-                <span className="text-xs text-blue-300">AI Hiring</span>
               </div>
             </Link>
             <p className="text-sm leading-relaxed text-gray-400 mb-6">
