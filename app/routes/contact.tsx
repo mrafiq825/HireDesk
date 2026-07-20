@@ -103,7 +103,7 @@ export function meta({}: Route.MetaArgs) {
     {
       name: "keywords",
       content:
-        "contact HireDesk, AI hiring support, resume screening help, recruitment tool support, upgrade hiring plan, HireDesk FAQ",
+        "Contact Us, HireDesk, AI Hiring Assistant, Contact HireDesk, contact HireDesk support, resume screening help, recruitment tool support, HireDesk FAQ",
     },
 
     // JSON-LD structured data (FAQPage + ContactPage)

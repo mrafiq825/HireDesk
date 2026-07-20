@@ -18,6 +18,10 @@ export function meta({}: Route.MetaArgs) {
     // Auth pages should not be indexed — no SEO value + private content
     { name: "robots", content: "noindex, nofollow" },
     { tagName: "link", rel: "canonical", href: "https://hiredesk.vercel.app/login" },
+    {
+      name: "keywords",
+      content: "Login, HireDesk",
+    },
   ];
 }
 

@@ -15,6 +15,10 @@ export function meta({}: Route.MetaArgs) {
     },
     { name: "robots", content: "noindex, nofollow" },
     { tagName: "link", rel: "canonical", href: "https://hiredesk.vercel.app/profile" },
+    {
+      name: "keywords",
+      content: "Profile, Manage Profile, Change Password, Change Name, Logout",
+    },
   ];
 }
 

@@ -68,7 +68,7 @@ export function meta({}: Route.MetaArgs) {
     {
       name: "keywords",
       content:
-        "AI hiring platform, resume screening software, AI recruitment tool, candidate comparison, batch resume analysis, smart hiring, HireDesk, HR technology, talent acquisition AI",
+        "Resume Review AI, Candidate Screening Software, AI Resume Analysis, Applicant Tracking System, Talent Intelligence Platform, Resume Intelligence, AI hiring platform, recruitment tool, batch resume analysis, HireDesk, HR technology",
     },
 
     // JSON-LD structured data
