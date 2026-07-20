@@ -11,15 +11,13 @@ const Footer = () => {
           <div>
             <Link
               to="/"
-              className="inline-flex items-center mb-6 hover:opacity-95 transition-opacity cursor-pointer"
+              className="inline-flex items-center mb-6 hover:opacity-80 transition-opacity cursor-pointer"
             >
-              <div className="h-12 bg-white rounded-xl px-4 flex items-center justify-center shadow-lg shadow-white/5 border border-white/10 transition-all duration-300">
-                <img
-                  src="/logo/logo.png"
-                  alt="HireDesk Logo"
-                  className="h-8 w-auto object-contain"
-                />
-              </div>
+              <img
+                src="/logo/logo.png"
+                alt="HireDesk Logo"
+                className="h-10 w-auto object-contain filter brightness-0 invert"
+              />
             </Link>
             <p className="text-sm leading-relaxed text-gray-400 mb-6">
               AI-powered hiring assistant that transforms recruitment with

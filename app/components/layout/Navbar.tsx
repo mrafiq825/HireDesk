@@ -81,15 +81,13 @@ const Navbar = ({ onOpenTips }: NavbarProps) => {
           <div className="flex items-center gap-3">
             <Link
               to="/"
-              className="group flex items-center hover:opacity-95 transition-opacity transform hover:scale-102 duration-300"
+              className="flex items-center hover:opacity-80 transition-opacity duration-300"
             >
-              <div className="h-10 bg-white rounded-xl px-3 flex items-center justify-center shadow-lg shadow-white/5 border border-white/10 group-hover:border-white/20 transition-all duration-300">
-                <img
-                  src="/logo/logo.png"
-                  alt="HireDesk Logo"
-                  className="h-8 w-auto object-contain"
-                />
-              </div>
+              <img
+                src="/logo/logo.png"
+                alt="HireDesk Logo"
+                className="h-9 w-auto object-contain filter brightness-0 invert"
+              />
             </Link>
           </div>
 
