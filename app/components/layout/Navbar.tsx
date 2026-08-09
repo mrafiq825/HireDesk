@@ -131,9 +131,8 @@ const Navbar = ({ onOpenTips }: NavbarProps) => {
                   </div>
                   <span className="font-medium">{user?.name}</span>
                   <svg
-                    className={`w-4 h-4 transition-transform duration-200 ${
-                      isUserMenuOpen ? "rotate-180" : ""
-                    }`}
+                    className={`w-4 h-4 transition-transform duration-200 ${isUserMenuOpen ? "rotate-180" : ""
+                      }`}
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -180,20 +179,12 @@ const Navbar = ({ onOpenTips }: NavbarProps) => {
                 )}
               </div>
             ) : (
-              <>
-                <Link
-                  to="/login"
-                  className="text-gray-300 hover:text-blue-400 transition-colors duration-200 font-medium"
-                >
-                  Login
-                </Link>
-                <Link
-                  to="/signup"
-                  className="bg-linear-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 font-medium shadow-md hover:shadow-lg"
-                >
-                  Sign Up
-                </Link>
-              </>
+              <Link
+                to="/login"
+                className="bg-[#624B4F] hover:bg-[#523e42] text-white px-5 py-2 rounded-xl transition-all duration-200 font-semibold shadow-md hover:shadow-lg transform hover:scale-105 flex items-center gap-2"
+              >
+                <span>Get Started</span>
+              </Link>
             )}
           </div>
 
@@ -350,22 +341,26 @@ const Navbar = ({ onOpenTips }: NavbarProps) => {
                     </button>
                   </>
                 ) : (
-                  <>
-                    <Link
-                      to="/login"
-                      className="block px-3 py-2 text-gray-300 hover:text-blue-400 hover:bg-gray-700 rounded-md transition-colors duration-200 font-medium"
-                      onClick={() => setIsMenuOpen(false)}
+                  <Link
+                    to="/login"
+                    className="flex items-center justify-center gap-2 mx-3 mt-2 bg-[#624B4F] hover:bg-[#523e42] text-white px-4 py-2.5 rounded-lg transition-all duration-200 font-semibold text-center shadow-md"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
                     >
-                      Login
-                    </Link>
-                    <Link
-                      to="/signup"
-                      className="block mx-3 mt-2 bg-linear-to-r from-blue-600 to-purple-600 text-white px-3 py-2 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 font-medium text-center"
-                      onClick={() => setIsMenuOpen(false)}
-                    >
-                      Sign Up
-                    </Link>
-                  </>
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
+                      />
+                    </svg>
+                    <span>Sign In / Register</span>
+                  </Link>
                 )}
               </div>
             </div>
