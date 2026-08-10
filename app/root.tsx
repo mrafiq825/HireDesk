@@ -19,6 +19,10 @@ const SITE_NAME = "HireDesk";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
 
 export const links: Route.LinksFunction = () => [
+  // Favicon & Icon links
+  { rel: "icon", href: "/favicon.ico", sizes: "any" },
+  { rel: "icon", type: "image/svg+xml", href: "/logo/logo-icon.svg" },
+  { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
   // Preconnect to Google Fonts servers for faster DNS + TLS
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {

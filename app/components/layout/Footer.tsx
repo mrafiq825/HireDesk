@@ -14,9 +14,9 @@ const Footer = () => {
               className="inline-flex items-center mb-6 hover:opacity-80 transition-opacity cursor-pointer"
             >
               <img
-                src="/logo/logo.png"
+                src="/logo/logo-transparent.png"
                 alt="HireDesk Logo"
-                className="h-10 w-auto object-contain filter brightness-0 invert"
+                className="h-10 w-auto object-contain transition-transform duration-300 hover:scale-105"
               />
             </Link>
             <p className="text-sm leading-relaxed text-gray-400 mb-6">

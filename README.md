@@ -1,677 +1,670 @@
-# HireDesk - AI-Powered Recruitment Platform
+# HireDesk - AI-Powered Recruitment & Candidate Analysis Platform
 
 ![HireDesk Logo](public/logo/logo.png)
 
-## HireDesk
+Transform your hiring process with modern AI-powered candidate analysis, resume parsing, batch candidate evaluation, and automated interview question generation.
 
-Transform your hiring process with AI-powered candidate analysis
+[![React](https://img.shields.io/badge/React-19.1.0-61DAFB.svg?style=flat&logo=react)](https://react.dev/)
+[![React Router](https://img.shields.io/badge/React_Router-7.9.1-CA4245.svg?style=flat&logo=reactrouter)](https://reactrouter.com/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.8.3-3178C6.svg?style=flat&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.1.4-06B6D4.svg?style=flat&logo=tailwindcss)](https://tailwindcss.com/)
+[![Vite](https://img.shields.io/badge/Vite-6.3.3-646CFF.svg?style=flat&logo=vite)](https://vitejs.dev/)
+[![Vitest](https://img.shields.io/badge/Vitest-3.2.4-6E9F18.svg?style=flat&logo=vitest)](https://vitest.dev/)
+[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED.svg?style=flat&logo=docker)](https://www.docker.com/)
 
-[![React](https://img.shields.io/badge/React-19.1.0-blue.svg)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.8.3-blue.svg)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.1.4-38B2AC.svg)](https://tailwindcss.com/)
-[![React Router](https://img.shields.io/badge/React_Router-7.7.1-CA4245.svg)](https://reactrouter.com/)
-[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED.svg)](https://www.docker.com/)
+---
 
-## 🌟 Overview
+## Table of Contents
 
-HireDesk is a modern, AI-powered recruitment platform that revolutionizes the hiring process. Upload resumes, analyze candidates with advanced AI, generate tailored interview questions, and make data-driven hiring decisions with confidence.
+- [Overview](#-overview)
+- [Key Features](#-key-features)
+- [Architecture & Tech Stack](#-architecture--tech-stack)
+- [Complete Application Flow & User Journeys](#-complete-application-flow--user-journeys)
+  - [1. User Onboarding & Authentication Flow](#1-user-onboarding--authentication-flow)
+  - [2. Single Resume Analysis Flow](#2-single-resume-analysis-flow)
+  - [3. Batch Resume Processing Flow](#3-batch-resume-processing-flow)
+  - [4. Multi-Resume Comparison Flow](#4-multi-resume-comparison-flow)
+  - [5. Candidate Selection Engine Flow](#5-candidate-selection-engine-flow)
+  - [6. Interactive AI HR Assistant Flow](#6-interactive-ai-hr-assistant-flow)
+  - [7. User Profile & Usage Limits Flow](#7-user-profile--usage-limits-flow)
+- [Project Directory Structure](#-project-directory-structure)
+- [Prerequisites & Installation](#-prerequisites--installation)
+- [Environment Configuration](#-environment-configuration)
+- [Available Scripts](#-available-scripts)
+- [API Services & Endpoints](#-api-services--endpoints)
+- [Data Persistence & State Management](#-data-persistence--state-management)
+- [UI/UX Design System](#-uiux-design-system)
+- [Deployment Guide](#-deployment-guide)
+  - [Local Production Server](#local-production-server)
+  - [Docker & Docker Hub](#docker--docker-hub)
+  - [Docker Compose Profiles](#docker-compose-profiles)
+- [Testing & Quality Assurance](#-testing--quality-assurance)
+- [Security & Production Readiness](#-security--production-readiness)
+- [Contributing](#-contributing)
+- [License & Support](#-license--support)
 
-### Key Features
+---
 
-- AI-Powered Resume Analysis\*\*: Intelligent parsing and candidate profiling
-- Smart Skills Matching\*\*: Automated matching of candidate skills to job requirements
-- Interview Question Generation\*\*: AI-generated, role-specific interview questions
-- Candidate Scoring\*\*: Comprehensive fit analysis with detailed reasoning
-- Data Persistence\*\*: All analysis results persist across browser sessions
-- Secure Authentication\*\*: User registration and login system
-- Responsive Design\*\*: Modern, mobile-first UI with glassmorphism effects
-- Real-time Processing\*\*: Fast, efficient analysis with loading states
+## Overview
 
-## Quick Start
+**HireDesk** is an enterprise-grade, AI-driven recruitment web application built to streamline candidate screening and evaluation. By combining advanced natural language parsing with automated fit scoring, HireDesk allows recruiters, hiring managers, and HR teams to extract key candidate metadata, compare candidates side-by-side, evaluate resumes against specific job role criteria, and generate tailored, role-specific interview questions in seconds.
+
+Designed with a modern, responsive **Glassmorphism Dark UI**, HireDesk offers real-time analysis feedback, local state persistence across sessions, and full multi-file processing capability.
+
+---
+
+## Key Features
+
+- **Single Resume AI Analysis**: Detailed candidate profiling, overall fit scoring (FIT/UNFIT/PARTIAL), work experience breakdown, missing skills detection, personality insights, and career path recommendations.
+- **Batch Resume Processing**: Upload and evaluate up to 5 resumes simultaneously with aggregated batch summaries, candidate ranking, and instant modal deep-dives.
+- **Side-by-Side Resume Comparison**: Compare candidate qualifications in a unified comparative matrix with score rankings and relative strength analyses.
+- **Candidate Selection Engine**: Fast-pass candidate screening by evaluating resumes against specific job titles and comma-separated mandatory skill keywords.
+- **Interactive AI HR Assistant (EvaAI)**: Chat-based assistant for generating custom screening criteria, drafting job descriptions, formulating interview questions, and analyzing candidate matches.
+- **Authentication & Access Control**: Complete user authentication system with email/password signup, email verification, password reset, JWT token storage, and protected routes.
+- **Usage Tracking & Quota Limits**: Dynamic tracking of uploaded files and batch limits with automatic upgrade alerts.
+- **Session Persistence**: All analysis reports, comparative outputs, and chat histories automatically persist in local storage.
+
+---
+
+## Architecture & Tech Stack
+
+HireDesk is built as a single-page application (SPA) with Server-Side Rendering (SSR) support using React Router v7 and Vite.
+
+```
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                            HireDesk React Frontend                          │
+│                                                                             │
+│  ┌───────────────────────┐  ┌───────────────────────┐  ┌─────────────────┐  │
+│  │   React 19 + Vite 6   │  │   React Router v7     │  │  Tailwind CSS 4 │  │
+│  │  Component Structure  │  │   App Routes / Pages  │  │   Dark Theme    │  │
+│  └───────────┬───────────┘  └───────────┬───────────┘  └────────┬────────┘  │
+│              │                          │                       │           │
+│  ┌───────────┴──────────────────────────┴───────────────────────┴────────┐  │
+│  │                     Contexts & State Management                      │  │
+│  │       • AuthContext (JWT / User State)    • ToastContext (UI Alerts) │  │
+│  └──────────────────────────────────┬───────────────────────────────────┘  │
+│                                     │                                       │
+│  ┌──────────────────────────────────┴───────────────────────────────────┐  │
+│  │                 Axios API Service Layer & Interceptors               │  │
+│  │       • Bearer Token Authentication      • Standardized Error Catch  │  │
+│  └──────┬───────────────────────────┬───────────────────────────┬───────┘  │
+└─────────┼───────────────────────────┼───────────────────────────┼───────────┘
+          │                           │                           │
+          ▼                           ▼                           ▼
+┌──────────────────┐        ┌──────────────────┐        ┌──────────────────┐
+│   Auth Service   │        │   AI Analysis    │        │   AI Assistant   │
+│   (User & JWT)   │        │     Engine       │        │     (EvaAI)      │
+│ jobpsych-auth    │        │  hiredesk-ai     │        │    evaai-seven   │
+└──────────────────┘        └──────────────────┘        └──────────────────┘
+```
+
+### Core Technologies
+
+| Technology | Version | Purpose |
+| :--- | :--- | :--- |
+| **React** | `^19.1.0` | Component-based UI engine |
+| **React Router** | `^7.9.1` | Full-stack routing framework with SSR & route matching |
+| **TypeScript** | `^5.8.3` | Type safety and strict data contract definitions |
+| **Tailwind CSS** | `^4.1.4` | Utility-first styling with high-performance CSS engine |
+| **Vite** | `^6.3.3` | Next-generation frontend build tool and dev server |
+| **Axios** | `^1.12.2` | HTTP client with request/response interceptors |
+| **Vitest** | `^3.2.4` | Blazing fast unit and component testing runner |
+| **Docker** | `20-alpine` | Containerized production deployment pipeline |
+
+---
+
+## Complete Application Flow & User Journeys
+
+### 1. User Onboarding & Authentication Flow
+
+```
+[ Visitor ] ──► Landing Page (/) ──► Click "Sign Up" / "Login"
+                     │
+                     ▼
+             [/signup Page] ──► Submits Register Form (name, email, password, company)
+                     │
+                     ▼
+             [Auth Service] ──► Sends Verification Email (JWT Token)
+                     │
+                     ▼
+             [/verify-email] ──► Validates Token ──► Activates User Account
+                     │
+                     ▼
+             [/login Page] ──► Enters Credentials ──► Receives Access Token
+                     │
+                     ▼
+             [AuthContext] ──► Stores Token in LocalStorage ──► Navigates to [/dashboard]
+```
+
+1. **Registration**: User inputs account details on `/signup`. `authService.register()` sends registration payload to `API_AUTH_URL`.
+2. **Email Verification**: User receives a verification email and completes activation via `/verify-email?token=...`.
+3. **Login & Session Management**: User authenticates on `/login`. The returned JWT `accessToken` is stored in `localStorage`. `AuthContext` injects the token into all subsequent Axios HTTP requests via an Authorization header (`Bearer <token>`).
+4. **Profile Management**: On `/profile`, users can view their company credentials, monitor uploaded file limits, and update their password.
+
+---
+
+### 2. Single Resume Analysis Flow
+
+```
+[ Dashboard / Navbar ] ──► Navigate to [/hiredesk-analyze]
+                                  │
+                                  ▼
+                    [ Upload Resume & Job Details ]
+              • File: PDF / DOC / DOCX (max 10MB)
+              • Input: Target Role (e.g., Senior React Dev)
+              • Input: Job Description (optional)
+                                  │
+                                  ▼
+                        Click "Analyze Candidate"
+                                  │
+                                  ▼
+                    [ aiService.hireDeskAnalyze() ]
+              POST /hiredesk-analyze (Multipart Form Data)
+                                  │
+                                  ▼
+                    [ Detailed Analysis Dashboard ]
+       ┌──────────────────────────────────────────────────────────┐
+       │ 1. Overall Fit Status (FIT / UNFIT / PARTIAL)            │
+       │ 2. Match Score & AI Reasoning                            │
+       │ 3. Parsed Candidate Resume Data (Skills, Experience, Edu)│
+       │ 4. Smart Role Recommendations & Missing Skill Breakdown  │
+       │ 5. AI Generated Technical & Behavioral Questions         │
+       │ 6. Candidate Personality Insights                        │
+       │ 7. Suggested Career Path Trajectory                      │
+       └──────────────────────────────────────────────────────────┘
+                                  │
+                                  ▼
+               Saved to LocalStorage (hiredesk_last_analysis)
+```
+
+1. **Input Submission**: User navigates to `/hiredesk-analyze` and uploads a candidate resume along with a target job title and job description.
+2. **Processing**: The frontend transmits the file via `FormData` to `/hiredesk-analyze`.
+3. **Visualization**:
+   - **Fit Badge & Score**: Visual indicator showing fit level and detailed rationale.
+   - **Resume Extraction**: Categorized view of candidate personal info, work experience timeline, education, and extracted skills.
+   - **Interview Generator**: Tabbed list of generated Technical, Behavioral, and Scenario-Based interview questions with one-click copy functionality.
+   - **Insights & Growth**: Graphs and breakdown cards for personality traits, work style, leadership score, and career trajectory.
+4. **Persistence**: Analysis results remain stored in `localStorage` under `hiredesk_last_analysis`, allowing users to revisit results without re-uploading.
+
+---
+
+### 3. Batch Resume Processing Flow
+
+```
+[/batch-analyze Page] ──► Upload 2 to 5 Resumes (Drag & Drop)
+                              │
+                              ▼
+                Set Target Role & Job Description
+                              │
+                              ▼
+                Click "Run Batch Analysis"
+                              │
+                              ▼
+                  [ aiService.batchAnalyze() ]
+                  POST /batch-analyze
+                              │
+                              ▼
+                ┌─────────────────────────────┐
+                │    Batch Summary Bar        │
+                │  Total | Success | Failed   │
+                └──────────────┬──────────────┘
+                               │
+                               ▼
+            ┌───────────────────────────────────┐
+            │     Candidate Cards Grid          │
+            │ Candidate A | Candidate B | ...   │
+            └──────────────────┬────────────────┘
+                               │
+                               ▼
+            Click "View Full Analysis" on Candidate
+                               │
+                               ▼
+                 [ Candidate Detail Modal ]
+        Full score breakdown, recommendations & questions
+```
+
+1. **Multi-File Upload**: User selects 2-5 candidate files on `/batch-analyze`.
+2. **Batch Execution**: Files are sent in a single multipart request to `/batch-analyze`.
+3. **Summary & Cards**: The system renders high-level statistics (successful parses, failure rate, score averages) and candidate summary cards with individual fit status labels.
+4. **Modal Deep Dive**: Clicking any candidate card launches a comprehensive `BatchDetailModal` containing full candidate metrics.
+
+---
+
+### 4. Multi-Resume Comparison Flow
+
+```
+[/compare-resumes Page] ──► Upload 2 to 5 Resumes
+                               │
+                               ▼
+                 Click "Compare Candidates"
+                               │
+                               ▼
+                 [ aiService.compareResumes() ]
+                 POST /compare-resumes
+                               │
+                               ▼
+               ┌──────────────────────────────┐
+               │    Ranked Leaderboard        │
+               │  #1 Candidate A (92% Score)  │
+               │  #2 Candidate B (84% Score)  │
+               └───────────────┬──────────────┘
+                               │
+                               ▼
+             ┌──────────────────────────────────┐
+             │   Side-by-Side Comparison Matrix │
+             │ Technical Skills | Experience    │
+             │ Education        | Strengths     │
+             └──────────────────────────────────┘
+```
+
+1. **Upload Candidates**: User submits candidate files for head-to-head comparison.
+2. **Ranking Engine**: The API returns candidate scores, comparative strengths, weaknesses, and a recommended winner.
+3. **Side-by-Side Matrix**: Displays a structured comparison table allowing hiring managers to evaluate candidates against identical parameters simultaneously.
+
+---
+
+### 5. Candidate Selection Engine Flow
+
+```
+[/selection-candidates Page] ──► Upload Candidate Resumes (1-5 Files)
+                                       │
+                                       ▼
+                       Specify Job Title & Skill Keywords
+                    (e.g., "React Developer", "TypeScript, GraphQL, Node.js")
+                                       │
+                                       ▼
+                       Click "Evaluate Candidates"
+                                       │
+                                       ▼
+                       [ aiService.selectCandidates() ]
+                       POST /selection-candidate
+                                       │
+                                       ▼
+                     ┌───────────────────────────────────┐
+                     │     Candidate Selection Results   │
+                     │ Candidate 1: FIT   - Reason...    │
+                     │ Candidate 2: REJECT- Reason...    │
+                     └───────────────────────────────────┘
+```
+
+1. **Filtering Setup**: Recruiter provides candidate files and defines strict filtering parameters (Job Title + Mandatory Skill Keywords).
+2. **Automated Filtering**: The API evaluates every resume against the keywords and returns an instant `FIT` or `REJECT` decision accompanied by justification.
+
+---
+
+### 6. Interactive AI HR Assistant Flow
+
+```
+[/hiredesk-chat Page] ──► Select Query Type & Context
+        ┌───────────────────────────────────────────────────────────┐
+        │ Types: Candidate Screening | Interview Questions |        │
+        │        Job Posting Draft   | Candidate Match Query        │
+        └─────────────────────────────┬─────────────────────────────┘
+                                      │
+                                      ▼
+                        Type Message or Click Quick Prompt
+                                      │
+                                      ▼
+                       [ assistantService.query() ]
+                       POST /hiredesk/query
+                                      │
+                                      ▼
+                        Real-time AI Chat Response
+                    Formatted markdown response with context
+```
+
+1. **Assistant Setup**: Hiring manager opens `/hiredesk-chat` and checks real-time operational status of EvaAI (`assistantService.getStatus()`).
+2. **Query Execution**: User selects query category (Screening, Interview Questions, Job Posting, Candidate Match) and enters custom prompts or selects quick prompt shortcuts.
+3. **Conversational Insights**: AI outputs structured HR recommendations, complete job description drafts, or interview scoring rubrics.
+
+---
+
+### 7. User Profile & Usage Limits Flow
+
+```
+[/profile Page] ──► View User Details & Subscription Quota
+                          │
+                          ▼
+            ┌─────────────────────────────┐
+            │ Total Files Uploaded: 18    │
+            │ Limit: 25 Files             │
+            │ Approaching Limit Alert!    │
+            └─────────────┬───────────────┘
+                          │
+                          ▼
+             Update Password / Account Credentials
+                          │
+                          ▼
+                [ UpgradeModal Trigger ]
+          Prompted when upload quota limit is reached
+```
+
+---
+
+## 📁 Project Directory Structure
+
+```bash
+frontend/
+├── app/                              # Core React Application Source Code
+│   ├── app.css                       # Global CSS & Tailwind Custom Styling Rules
+│   ├── root.tsx                      # Root Application Layout & HTML Shell
+│   ├── routes.ts                     # React Router v7 Route Mapping Manifest
+│   ├── components/                   # Modular UI Component Tree
+│   │   ├── analysis/                 # Resume analysis visualizers (Score, Personality, Trajectory)
+│   │   ├── assistant/                # AI HR Chat components (ChatWindow, Messages, Prompts)
+│   │   ├── auth/                     # Authentication components (AuthCard, LoginForm, SignupForm)
+│   │   ├── batch/                    # Batch processing UI (BatchUploader, Cards, Summary)
+│   │   ├── comparison/               # Resume comparison UI (ComparisonMatrix, Leaderboard)
+│   │   ├── layout/                   # Layout wrappers (Navbar, Footer, UserMenu, PageContainer)
+│   │   ├── modals/                   # System modals (UpgradeModal, TermsModal, LimitWarning)
+│   │   ├── resume/                   # Single resume UI (FileUploader, Questions, SkillsMatch)
+│   │   ├── toast/                    # Notification alert system (ToastContainer, ToastItem)
+│   │   └── ui/                       # Reusable UI Primitives (Button, Card, Badge, Modal, Input)
+│   ├── contexts/                     # Application State Context Providers
+│   │   ├── AuthContext.tsx           # Authentication, User State & JWT Token Lifecycle
+│   │   └── ToastContext.tsx          # Global Toast Notification State Provider
+│   ├── data/                         # Static Data & Promotional Content
+│   │   ├── BatchFeatures.tsx         # Features & Specs for Batch Processing
+│   │   └── features.tsx              # Platform Feature Highlights Data
+│   ├── hooks/                        # Custom React Hooks
+│   │   ├── useForm.ts                # Generic Form Handler Hook with Validation
+│   │   └── useToastHelpers.ts        # Helper Hook for Dispatching Toast Notifications
+│   ├── routes/                       # React Router Page Route Components
+│   │   ├── 404.tsx                   # Page Not Found Route
+│   │   ├── about.tsx                 # About HireDesk Page
+│   │   ├── batch-analyze.tsx         # Batch Resume Analysis Route
+│   │   ├── compare-resumes.tsx       # Resume Comparison Matrix Route
+│   │   ├── contact.tsx               # Contact & Support Route
+│   │   ├── dashboard.tsx             # Main User Control Center
+│   │   ├── forgot-password.tsx       # Password Reset Request Route
+│   │   ├── hiredesk-analyze.tsx      # Single Resume AI Analysis Route
+│   │   ├── hiredesk-chat.tsx         # AI HR Assistant Chat Route
+│   │   ├── home.tsx                  # Public Landing Page Route
+│   │   ├── login.tsx                 # User Login Route
+│   │   ├── profile.tsx               # User Account & Quota Settings
+│   │   ├── resend-verification.tsx   # Resend Email Verification Route
+│   │   ├── reset-password.tsx        # Password Reset Token Confirmation
+│   │   ├── selection-candidates.tsx  # Candidate Selection & Filtering Engine
+│   │   ├── signup.tsx                # User Registration Route
+│   │   └── verify-email.tsx          # Email Verification Handler Route
+│   ├── services/                     # External API Integration Services
+│   │   ├── aiService.ts              # Resume Analysis, Batch, Compare & Selection API Calls
+│   │   ├── assistantService.ts       # EvaAI HR Chat & Status API Calls
+│   │   ├── authService.ts            # Authentication, Signup, Reset & Profile API Calls
+│   │   └── fileService.ts            # File Upload Logging & Quota Tracker API Calls
+│   └── utils/                        # System Utility Functions & Interceptors
+│       ├── api.ts                    # Backend Service Base URLs Configuration
+│       └── errorHandler.ts           # Standardized API Error Parser
+├── build/                            # Production Build Output (Server & Client)
+├── public/                           # Static Assets (Logos, Icons, Images)
+├── types/                            # Centralized TypeScript Declarations
+│   ├── index.ts                      # Core Data Contracts & API Payload Specifications
+│   └── components.ts                 # React Component Prop Interfaces
+├── .dockerignore                     # Docker Build Exclusions File
+├── .env.example                      # Environment Variables Blueprint
+├── .gitignore                        # Git Source Control Exclusions
+├── AGENTS.md                         # Security Audit & Pre-Production Checklist
+├── Dockerfile                        # Multi-Stage Production Docker Build File
+├── Makefile                          # Convenient Docker & Local Automation Commands
+├── nginx/                            # Production Nginx Reverse Proxy Configuration
+├── package.json                      # NPM Dependencies & Project Scripts
+├── react-router.config.ts            # React Router v7 Configuration
+├── tsconfig.json                     # Strict TypeScript Compiler Options
+└── vite.config.ts                    # Vite Build Tool Configuration
+```
+
+---
+
+## Prerequisites & Installation
 
 ### Prerequisites
 
-- **Node.js** (v20 or higher)
-- **npm** or **yarn**
-- **Git**
+Ensure your system satisfies the following software requirements:
 
-### Installation
+- **Node.js**: `v20.0.0` or higher
+- **NPM**: `v10.0.0` or higher (or Yarn / PNPM)
+- **Git**: `v2.30.0` or higher
+
+### Local Installation
 
 1. **Clone the repository**
-
    ```bash
-   git clone https://github.com/Rafiqdevhub/HireDesk.git
-   cd hiredesk
+   git clone https://github.com/mrafiqdot825/HireDesk.git
+   cd HireDesk
    ```
 
-2. **Install dependencies**
-
+2. **Install project dependencies**
    ```bash
    npm install
    ```
 
-3. **Environment Setup**
-
+3. **Configure environment variables**
    ```bash
    cp .env.example .env
    ```
 
-   Configure your environment variables in `.env`:
-
-   ```env
-   VITE_API_URL=http://localhost:5000/api
-   VITE_APP_NAME=HireDesk
-   VITE_APP_VERSION=1.0.0
-   ```
-
-4. **Start Development Server**
-
+4. **Launch the development server**
    ```bash
    npm run dev
    ```
-
-   The application will be available at `http://localhost:3000`
-
-## Project Structure
-
-```bash
-hiredesk/
-├── app/                          # Main application code
-│   ├── components/               # Reusable UI components
-│   │   ├── auth/                 # Authentication components
-│   │   ├── layout/               # Layout components (Navbar, Footer)
-│   │   ├── resume/               # Resume-related components
-│   │   ├── toast/                # Notification components
-│   │   └── ui/                   # Base UI components
-│   ├── contexts/                 # React contexts (Auth, Toast)
-│   ├── data/                     # Static data and configurations
-│   ├── hooks/                    # Custom React hooks
-│   ├── routes/                   # Page components and routing
-│   ├── services/                 # API service functions
-│   ├── utils/                    # Utility functions
-│   └── root.tsx                  # Application root component
-├── public/                       # Static assets
-├── build/                        # Production build output
-├── .env.example                  # Environment variables template
-├── Dockerfile                    # Docker configuration
-├── package.json                  # Dependencies and scripts
-├── tailwind.config.js            # Tailwind CSS configuration
-├── tsconfig.json                 # TypeScript configuration
-└── vite.config.ts                # Vite build configuration
-```
-
-## Development Workflow
-
-### Available Scripts
-
-```bash
-# Development
-npm run dev          # Start development server
-npm run build        # Build for production
-npm run start        # Start production server
-npm run typecheck    # Run TypeScript type checking
-
-# Code Quality
-npm run lint         # Run ESLint
-npm run format       # Format code with Prettier
-```
-
-### Development Guidelines
-
-#### 🔄 Git Workflow
-
-1. **Create a feature branch**
-
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-
-2. **Make your changes** following the established patterns
-
-3. **Test your changes**
-
-   ```bash
-   npm run dev
-   npm run typecheck
-   ```
-
-4. **Commit with conventional commits**
-
-   ```bash
-   git commit -m "feat: add new feature description"
-   ```
-
-5. **Push and create a pull request**
-
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-
-#### 📝 Code Style
-
-- **TypeScript**: Strict type checking enabled
-- **ESLint**: Code linting with React and TypeScript rules
-- **Prettier**: Automatic code formatting
-- **Tailwind CSS**: Utility-first CSS framework
-- **Component Structure**: Functional components with hooks
-
-#### Testing
-
-```bash
-# Run tests (when implemented)
-npm run test
-
-# Run tests with coverage
-npm run test:coverage
-```
-
-## UI/UX Design System
-
-### Color Palette
-
-- **Primary**: Slate grays with blue accents
-- **Background**: Clean white/light gray with glassmorphism effects
-- **Accent**: Blue (#3B82F6) and purple (#8B5CF6) gradients (removed in favor of flat design)
-- **Semantic**: Green for success, red for errors, yellow for warnings
-
-### Design Principles
-
-- **Glassmorphism**: Semi-transparent elements with backdrop blur
-- **Minimalism**: Clean, focused design with ample white space
-- **Accessibility**: WCAG compliant contrast ratios and keyboard navigation
-- **Mobile-First**: Responsive design that works on all devices
-- **Modern Aesthetics**: Contemporary UI patterns and micro-interactions
-
-### Typography & Button Snippet (copy-paste ready)
-
-Add this to another app to reuse HireDesk body typography, button sizing, and dark body colors. Ensure the Google Fonts imports are kept or swap to self-hosted files.
-
-```css
-/* Load fonts */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Tinos:wght@700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap");
-
-:root {
-  --font-family-sans:
-    "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
-  --font-family-serif: "Tinos", Georgia, "Times New Roman", serif;
-  --font-family-mono:
-    "JetBrains Mono", "Fira Code", "Fira Mono", "Roboto Mono",
-    "Source Code Pro", ui-monospace, SFMono-Regular, "SF Mono", Monaco,
-    Inconsolata, "Roboto Mono", "Liberation Mono", Menlo, Consolas, monospace;
-
-  /* Body colors (dark UI palette) */
-  --body-bg: #0b1220;
-  --body-text: #e2e8f0;
-}
-
-/* Body typography */
-body {
-  font-family: var(--font-family-sans);
-  font-size: 16px;
-  line-height: 1.6;
-  background: var(--body-bg);
-  color: var(--body-text);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-  font-variant-ligatures: common-ligatures;
-}
-
-/* Headings use the serif stack */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-family-serif);
-  font-weight: 700;
-  letter-spacing: -0.5px;
-}
-
-/* Primary buttons (16px text) */
-button {
-  font-family: inherit;
-  font-size: 16px;
-  font-weight: 600;
-  color: #fff;
-  background: linear-gradient(90deg, #2563eb, #7c3aed);
-  padding: 0.85rem 1rem;
-  border: none;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition:
-    transform 0.15s ease,
-    opacity 0.15s ease,
-    background 0.15s ease;
-}
-button:hover:not(:disabled) {
-  transform: scale(1.02);
-}
-button:active:not(:disabled) {
-  transform: scale(0.98);
-}
-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-/* Secondary/smaller buttons (14px text) */
-.btn-sm {
-  font-size: 14px;
-  padding: 0.65rem 0.9rem;
-}
-
-/* Mono helper */
-.font-mono {
-  font-family: var(--font-family-mono);
-}
-```
-
-## API Integration
-
-### External Services
-
-HireDesk integrates with AI-powered backend services for:
-
-- **Resume Analysis**: `https://hr-resume-analyzer-backend.vercel.app/api/hiredesk-analyze`
-- **Question Generation**: `https://hr-resume-analyzer-backend.vercel.app/api/generate-questions`
-
-### API Response Structure
-
-#### Resume Analysis Response
-
-```typescript
-{
-  resumeData: {
-    personalInfo: {...},
-    workExperience: [...],
-    education: [...],
-    skills: [...]
-  },
-  roleRecommendations: [
-    {
-      roleName: string,
-      matchPercentage: number,
-      reasoning: string,
-      requiredSkills: string[],
-      missingSkills: string[],
-      careerLevel: string,
-      industryFit: string
-    }
-  ],
-  questions: [
-    {
-      question: string,
-      type: "technical" | "behavioral" | "experience",
-      context?: string
-    }
-  ],
-  fit_status: string,
-  reasoning: string
-}
-```
-
-## Deployment
-
-### Docker Hub Image
-
-HireDesk is available as a pre-built Docker image on Docker Hub, making deployment incredibly simple.
-
-#### Pull the Official Image
-
-```bash
-# Pull the latest version
-docker pull rafiq9323/hiredesk:latest
-
-# Or pull a specific version/tag
-docker pull rafiq9323/hiredesk:master
-```
-
-#### Run with Docker Hub Image
-
-```bash
-# Run the container
-docker run -d \
-  --name hiredesk \
-  -p 3000:3000 \
-  -e NODE_ENV=production \
-  -e VITE_API_URL=http://localhost:5000/api \
-  rafiq9323/hiredesk:latest
-
-# Access at http://localhost:3000
-```
-
-### Docker Compose Setup
-
-For a complete development or production environment, use Docker Compose with multiple services.
-
-#### Quick Start with Docker Compose
-
-```bash
-# Clone the repository
-git clone https://github.com/Rafiqdevhub/HireDesk.git
-cd hiredesk
-
-# Start all services
-docker compose up -d
-
-# View logs
-docker compose logs -f
-
-# Stop all services
-docker compose down
-```
-
-#### Available Docker Compose Profiles
-
-The `docker-compose.yml` includes multiple profiles for different environments:
-
-##### Production Profile (Default)
-
-```bash
-# Start production environment with Nginx reverse proxy
-docker compose --profile prod up -d
-
-# Includes: hiredesk (app), nginx (reverse proxy)
-```
-
-##### Development Profile
-
-```bash
-# Start development environment with hot reload
-docker compose --profile dev up -d
-
-# Includes: hiredesk-dev (hot reload), mock-backend (API simulation)
-```
-
-##### Full Profile (Complete Stack)
-
-```bash
-# Start complete environment with all services
-docker compose --profile full up -d
-
-# Includes: hiredesk, redis (caching), postgres (database)
-```
-
-#### Docker Compose Services Overview
-
-| Service        | Profile | Purpose                       | Port   |
-| -------------- | ------- | ----------------------------- | ------ |
-| `hiredesk`     | prod    | Production React app with SSR | 3000   |
-| `hiredesk-dev` | dev     | Development with hot reload   | 3001   |
-| `mock-backend` | dev     | Mock API for development      | 5000   |
-| `nginx`        | prod    | Reverse proxy & load balancer | 80/443 |
-| `redis`        | full    | Caching layer                 | 6379   |
-| `postgres`     | full    | Database (future features)    | 5432   |
-
-#### Environment Variables for Docker Compose
-
-Create a `.env` file or set environment variables:
-
-```env
-# Application Configuration
-NODE_ENV=production
-VITE_API_URL=http://localhost:5000/api
-VITE_APP_NAME=HireDesk
-VITE_APP_VERSION=1.0.0
-
-# Database (for full profile)
-POSTGRES_DB=hiredesk
-POSTGRES_USER=hiredesk_user
-POSTGRES_PASSWORD=your_secure_password
-
-# Redis (for full profile)
-REDIS_PASSWORD=your_redis_password
-```
-
-#### Docker Compose Commands
-
-```bash
-# Build and start all services
-docker compose up --build
-
-# Start in background
-docker compose up -d
-
-# View service status
-docker compose ps
-
-# View logs for specific service
-docker compose logs hiredesk
-
-# Scale services (if needed)
-docker compose up -d --scale hiredesk=3
-
-# Clean up
-docker compose down --volumes --remove-orphans
-```
-
-### CI/CD Pipeline
-
-HireDesk uses GitHub Actions for automated building and deployment.
-
-#### Automated Docker Builds
-
-Every push to `master` or `main` branch automatically:
-
-1. **Builds** the Docker image using multi-stage Dockerfile
-2. **Tags** the image with multiple strategies:
-   - `latest` - Latest stable version
-   - `master` - Branch-specific tag
-   - `master-<commit-sha>` - Unique commit tags
-3. **Pushes** to Docker Hub (`rafiq9323/hiredesk`)
-4. **Caches** layers for faster subsequent builds
-
-#### GitHub Actions Workflow
-
-The CI/CD pipeline is defined in `.github/workflows/docker-push-image.yml`:
-
-```yaml
-name: Build and Push Docker Image
-
-on:
-  push:
-    branches: [master, main]
-  pull_request:
-    branches: [master, main]
-
-jobs:
-  build-and-push:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-      - name: Set up Docker Buildx
-      - name: Login to Docker Hub
-      - name: Build and push image
-```
-
-#### Required GitHub Secrets
-
-Set these secrets in your repository settings:
-
-- `DOCKER_USERNAME`: `rafiq9323`
-- `DOCKER_PASSWORD`: Your Docker Hub Personal Access Token
-
-#### Pipeline Benefits
-
-- **Automated Deployment**: No manual intervention required
-- **Version Control**: Proper tagging for rollbacks
-- **Security**: Automated security scanning
-- **Performance**: Layer caching for faster builds
-- **Multi-Platform**: Ready for ARM64/x86_64 builds
-
-### Build Your Own Docker Image
-
-If you want to build the image locally:
-
-```bash
-# Build from source
-docker build -t hiredesk .
-
-# Build with specific Dockerfile
-docker build -f Dockerfile.dev -t hiredesk-dev .
-
-# Build for multiple platforms
-docker buildx build --platform linux/amd64,linux/arm64 -t hiredesk .
-```
-
-### 🌐 Production Deployment Options
-
-#### Option 1: Docker Hub + Docker Compose (Recommended)
-
-```bash
-# Use pre-built image
-docker compose up -d
-```
-
-#### Option 2: Kubernetes Deployment
-
-```bash
-# Use the Docker Hub image in your K8s manifests
-kubectl apply -f k8s/
-```
-
-#### Option 3: Cloud Platforms
-
-- **Railway**: Connect GitHub repo, auto-deploys
-- **Render**: Use Docker image from Docker Hub
-- **Fly.io**: Deploy from Docker Hub image
-- **AWS ECS**: Use Docker Hub image in task definitions
-
-### Monitoring & Troubleshooting
-
-#### Health Checks
-
-```bash
-# Check container health
-docker ps
-
-# View application logs
-docker compose logs hiredesk
-
-# Test application health
-curl http://localhost:3000
-```
-
-#### Common Issues
-
-**Port already in use:**
-
-```bash
-# Find process using port 3000
-netstat -tulpn | grep :3000
-
-# Kill the process or change port mapping
-docker run -p 3001:3000 rafiq9323/hiredesk:latest
-```
-
-**Permission issues:**
-
-```bash
-# Run as non-root user
-docker run --user node rafiq9323/hiredesk:latest
-```
-
-**Memory issues:**
-
-```bash
-# Limit memory usage
-docker run -m 512m rafiq9323/hiredesk:latest
-```
-
-### Resource Requirements
-
-- **CPU**: 0.5 vCPU minimum, 1 vCPU recommended
-- **Memory**: 512MB minimum, 1GB recommended
-- **Storage**: 200MB for application, plus logs
-- **Network**: Standard HTTP/HTTPS ports (80/443)
-
-### Security Best Practices
-
-- Use Docker Hub images from trusted sources
-- Regularly update base images
-- Scan images for vulnerabilities
-- Use secrets management for sensitive data
-- Implement proper network segmentation
-- Enable HTTPS in production
-
-## Authentication
-
-HireDesk includes a complete authentication system:
-
-- **User Registration**: Email/password signup
-- **User Login**: Secure authentication with JWT tokens
-- **Protected Routes**: Route-level protection for authenticated users
-- **Profile Management**: User profile updates and management
-- **Session Persistence**: Automatic login state management
-
-## Data Persistence
-
-All analysis results are automatically persisted using localStorage:
-
-- **Resume Data**: Parsed resume information
-- **Analysis Results**: Fit status, reasoning, and recommendations
-- **Generated Questions**: Interview questions with categories
-- **UI State**: Expanded/collapsed states for question categories
-
-## Contributing
-
-We welcome contributions! Please follow these guidelines:
-
-### How to Contribute
-
-1. **Fork the repository**
-2. **Create a feature branch** from `main`
-3. **Make your changes** following our coding standards
-4. **Add tests** for new functionality
-5. **Update documentation** as needed
-6. **Submit a pull request** with a clear description
-
-### Contribution Guidelines
-
-- **Code Style**: Follow the established TypeScript and React patterns
-- **Commits**: Use conventional commit format
-- **PRs**: Provide clear descriptions and link to issues
-- **Testing**: Ensure all tests pass before submitting
-- **Documentation**: Update README and code comments as needed
-
-### Development Setup for Contributors
-
-```bash
-# Clone your fork
-git clone https://github.com/your-username/HireDesk.git
-cd hiredesk
-
-# Install dependencies
-npm install
-
-# Set up pre-commit hooks (if available)
-npm run prepare
-
-# Start development
-npm run dev
-```
-
-## Acknowledgments
-
-- **React Router** for the excellent routing framework
-- **Tailwind CSS** for the utility-first CSS framework
-- **Heroicons** for the beautiful icon set
-- **Vite** for the fast build tool
-- **AI Backend Services** for powering the intelligent analysis
-
-## Support
-
-- **Issues**: [GitHub Issues](https://github.com/Rafiqdevhub/HireDesk/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/Rafiqdevhub/HireDesk/discussions)
-- **Email**: For business inquiries or support
+   Access the application locally at `http://localhost:5173` (or the URL assigned by Vite).
 
 ---
 
-Built with ❤️ using React, TypeScript, and AI
+## Environment Configuration
 
-_Transforming recruitment, one resume at a time._
+HireDesk relies on client environment variables for backend API routing. Create a `.env` file in the root directory based on `.env.example`:
+
+```env
+# Application Information
+VITE_APP_NAME=HireDesk
+VITE_APP_VERSION=1.0.0
+
+# Base API URL
+VITE_API_URL=https://hiredesk-ai.vercel.app/api
+
+# Microservice API Endpoints
+VITE_AI_API=https://hiredesk-ai.vercel.app/api
+VITE_AI_ASSISTANT_API=https://evaai-seven.vercel.app/api/ai
+VITE_API_AUTH_URL=https://jobpsych-auth.vercel.app/api
+```
+
+> **Security Note**: Never expose private API secret keys in frontend environment variables. Variables prefixed with `VITE_` are bundled directly into browser JavaScript.
+
+---
+
+## Available Scripts
+
+Run the following commands using `npm run <command>`:
+
+| Command | Description |
+| :--- | :--- |
+| `npm run dev` | Starts Vite local development server with Hot Module Replacement (HMR) |
+| `npm run build` | Builds the client and server assets for production using React Router |
+| `npm run start` | Launches the production SSR server using `@react-router/serve` |
+| `npm run typecheck` | Executes React Router typegen and TypeScript strict type checking |
+| `npm run test` | Runs unit and component tests with Vitest |
+| `npm run test:run` | Runs all Vitest tests once without watch mode |
+| `npm run test:coverage` | Generates code coverage reports via `@vitest/coverage-v8` |
+| `npm run test:ui` | Opens the interactive Vitest UI runner in the browser |
+
+---
+
+## API Services & Endpoints
+
+HireDesk connects to microservices via structured Axios modules located in `app/services/`:
+
+### 1. Resume Analysis API (`aiService.ts`)
+* **Endpoint**: `/hiredesk-analyze` (`POST`) - Analyzes single resume file + role + job description.
+* **Endpoint**: `/batch-analyze` (`POST`) - Analyzes 2-5 resumes simultaneously.
+* **Endpoint**: `/compare-resumes` (`POST`) - Ranks and compares 2-5 candidate resumes.
+* **Endpoint**: `/selection-candidate` (`POST`) - Evaluates candidate FIT/REJECT status based on job title and skill keywords.
+
+### 2. AI Assistant API (`assistantService.ts`)
+* **Endpoint**: `/hiredesk/query` (`POST`) - Sends custom queries to EvaAI HR Assistant.
+* **Endpoint**: `/status` (`GET`) - Returns real-time health status of the AI assistant service.
+
+### 3. Auth API (`authService.ts`)
+* **Endpoint**: `/auth/register` (`POST`) - Registers new user account.
+* **Endpoint**: `/auth/login` (`POST`) - Authenticates user and issues JWT.
+* **Endpoint**: `/auth/profile` (`GET`, `PUT`) - Fetches/updates authenticated user profile.
+* **Endpoint**: `/auth/verify-email` (`POST`) - Confirms email verification token.
+* **Endpoint**: `/auth/forgot-password` (`POST`) - Triggers password reset email.
+* **Endpoint**: `/auth/reset-password` (`POST`) - Updates user password via reset token.
+
+---
+
+## Data Persistence & State Management
+
+HireDesk uses a hybrid state management model combining React Context and browser LocalStorage:
+
+- **`AuthContext`**: Handles token lifecycle and user profile state across all routes. Automatically re-authenticates users on refresh if a valid token exists.
+- **`ToastContext`**: Provides non-blocking global alert notifications.
+- **Local Storage Caching**:
+  - `accessToken`: JWT authorization bearer token.
+  - `user`: Serialized user profile summary.
+  - `hiredesk_last_analysis`: Single resume analysis results cache.
+  - `hiredesk_batch_analysis`: Batch processing results cache.
+  - `hiredesk_comparison_analysis`: Multi-resume comparison cache.
+  - `hiredesk_selection_analysis`: Candidate selection output cache.
+  - `hiredesk_chat_history`: EvaAI chat message history cache.
+
+---
+
+## UI/UX Design System
+
+HireDesk uses a sleek, modern **Glassmorphism Dark Theme** configured in `app/app.css` and Tailwind CSS:
+
+* **Typography**:
+  * **Sans-Serif**: `Inter` (UI elements, body text, buttons)
+  * **Serif**: `Tinos` (Headings, titles, hero section)
+  * **Monospace**: `JetBrains Mono` (Code blocks, JSON specs, token outputs)
+* **Color Palette**:
+  * **Background**: Deep Navy (`#0b1220`)
+  * **Card Surface**: Glassmorphism semi-transparent slate (`rgba(30, 41, 59, 0.7)`) with backdrop blur (`backdrop-blur-md`)
+  * **Primary Accent**: Electric Blue (`#2563eb`) to Purple (`#7c3aed`) gradient buttons
+  * **Status Colors**: Green (`#10b981` FIT), Red (`#ef4444` REJECT), Yellow (`#f59e0b` PARTIAL)
+
+---
+
+## Deployment Guide
+
+### Local Production Server
+
+```bash
+# 1. Build production bundle
+npm run build
+
+# 2. Test production build locally
+npm run start
+```
+
+---
+
+### Docker & Docker Hub
+
+HireDesk is pre-packaged as a Docker image published on Docker Hub.
+
+#### Pull & Run Official Image
+
+```bash
+# Pull latest image from Docker Hub
+docker pull rafiq9323/hiredesk:latest
+
+# Run container on port 3000
+docker run -d \
+  --name hiredesk-app \
+  -p 3000:3000 \
+  -e NODE_ENV=production \
+  rafiq9323/hiredesk:latest
+```
+
+#### Build Docker Image Locally
+
+```bash
+docker build -t hiredesk:local .
+docker run -d -p 3000:3000 hiredesk:local
+```
+
+---
+
+### Docker Compose Profiles
+
+HireDesk includes a multi-profile `docker-compose.yml` for different environments:
+
+#### 1. Production Profile (App + Nginx Proxy)
+```bash
+docker compose --profile prod up -d
+```
+
+#### 2. Development Profile (Hot Reload + Mock Backend)
+```bash
+docker compose --profile dev up -d
+```
+
+#### 3. Full Environment Profile (App + Nginx + Redis + Postgres)
+```bash
+docker compose --profile full up -d
+```
+
+---
+
+## Testing & Quality Assurance
+
+HireDesk includes unit and component tests using Vitest and React Testing Library:
+
+```bash
+# Run type check
+npm run typecheck
+
+# Run tests in watch mode
+npm run test
+
+# Run tests once with coverage report
+npm run test:coverage
+```
+
+Test files are organized in `__tests__/` and cover key services, context providers, and UI components.
+
+---
+
+## Security & Production Readiness
+
+HireDesk adheres to the **Pre-Production Security Checklist** outlined in `AGENTS.md`:
+
+1. **Secrets Isolation**: No sensitive keys are hardcoded in source code; all API URLs are loaded via environment variables.
+2. **PII Data Protection**: Sensitive authentication data (passwords, tokens) are never outputted in `console.log` statements.
+3. **Session Safety**: Authorization headers are dynamically injected; invalid tokens trigger controlled authentication recovery.
+4. **Input Handling**: Uploaded resume files are checked client-side for file extension, MIME type, and size limits (max 10MB).
+5. **Clean Error Handling**: Errors are intercepted and transformed into user-friendly notifications without leaking internal server stack traces.
+
+---
+
+## Contributing
+
+We welcome community contributions! Please follow these guidelines:
+
+1. **Fork the Repository**
+2. **Create a Feature Branch**:
+   ```bash
+   git checkout -b feature/amazing-feature
+   ```
+3. **Commit your changes using Conventional Commits**:
+   ```bash
+   git commit -m "feat: add multi-role candidate selection filter"
+   ```
+4. **Verify TypeScript & Tests**:
+   ```bash
+   npm run typecheck
+   npm run test:run
+   ```
+5. **Push to Branch & Open a Pull Request**:
+   ```bash
+   git push origin feature/amazing-feature
+   ```
+
+---
+
+<p align="center">
+  Built with ❤️ using <b>React 19</b>, <b>TypeScript</b>, <b>React Router v7</b>, and <b>AI</b>
+</p>

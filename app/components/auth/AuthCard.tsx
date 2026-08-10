@@ -265,11 +265,11 @@ export const AuthCard: React.FC<AuthCardProps> = ({
 
         {/* Brand Logos - Order preserved for CSS sibling selectors */}
         <div className="logo logo-1 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center border border-white/30 shadow-inner">
+          <div className="w-10 h-10 rounded-xl bg-slate-900/40 flex items-center justify-center border border-white/20 shadow-inner overflow-hidden p-1">
             <img
-              src="/logo/logo.png"
+              src="/logo/logo-icon-transparent.png"
               alt="HireDesk Logo"
-              className="w-6 h-6 object-contain filter brightness-0 invert"
+              className="w-full h-full object-contain"
             />
           </div>
           <div className="flex flex-col text-left">
@@ -283,11 +283,11 @@ export const AuthCard: React.FC<AuthCardProps> = ({
         </div>
 
         <div className="logo logo-2 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center border border-white/30 shadow-inner">
+          <div className="w-10 h-10 rounded-xl bg-slate-900/40 flex items-center justify-center border border-white/20 shadow-inner overflow-hidden p-1">
             <img
-              src="/logo/logo.png"
+              src="/logo/logo-icon-transparent.png"
               alt="HireDesk Logo"
-              className="w-6 h-6 object-contain filter brightness-0 invert"
+              className="w-full h-full object-contain"
             />
           </div>
           <div className="flex flex-col text-left">
