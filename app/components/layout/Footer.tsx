@@ -4,14 +4,14 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-linear-to-b from-slate-950 via-slate-900 to-black border-t border-slate-800/50 text-gray-300 mt-20 relative z-10">
-      <div className="h-px bg-linear-to-r from-transparent via-blue-500/30 to-transparent" />
+    <footer className="bg-[#07110D]/90 backdrop-blur-xl border-t border-white/10 text-[#AAB8AF] mt-20 relative z-10">
+      <div className="h-px bg-gradient-to-r from-transparent via-[#94B69E]/40 to-transparent" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 lg:gap-12">
           <div>
             <Link
               to="/"
-              className="inline-flex items-center mb-6 hover:opacity-80 transition-opacity cursor-pointer"
+              className="inline-flex items-center mb-6 hover:opacity-90 transition-opacity cursor-pointer"
             >
               <img
                 src="/logo/logo-transparent.png"
@@ -19,16 +19,15 @@ const Footer = () => {
                 className="h-10 w-auto object-contain transition-transform duration-300 hover:scale-105"
               />
             </Link>
-            <p className="text-sm leading-relaxed text-gray-400 mb-6">
-              AI-powered hiring assistant that transforms recruitment with
-              intelligent resume analysis and candidate insights.
+            <p className="text-sm leading-relaxed text-[#718078] mb-6">
+              Enterprise-ready AI recruitment platform transforming candidate screening, assessment, and talent decision-making with precision intelligence.
             </p>
             <div className="flex gap-3">
               <a
                 href="https://www.linkedin.com/in/mrafiq825/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg bg-gray-800/50 hover:bg-blue-600 text-gray-400 hover:text-white flex items-center justify-center transition-all duration-300 border border-gray-700/50 hover:border-blue-500/50 font-semibold transform hover:scale-110 cursor-pointer"
+                className="w-10 h-10 rounded-xl glass-panel hover:border-[#94B69E]/50 hover:bg-[#94B69E]/10 text-[#AAB8AF] hover:text-[#94B69E] flex items-center justify-center transition-all duration-300 font-semibold transform hover:scale-110 cursor-pointer"
                 title="LinkedIn"
               >
                 in
@@ -37,7 +36,7 @@ const Footer = () => {
                 href="https://www.facebook.com/profile.php?id=100069771234437&mibextid=wwXIfr&mibextid=wwXIfr"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg bg-gray-800/50 hover:bg-blue-600 text-gray-400 hover:text-white flex items-center justify-center transition-all duration-300 border border-gray-700/50 hover:border-blue-500/50 font-semibold transform hover:scale-110 cursor-pointer"
+                className="w-10 h-10 rounded-xl glass-panel hover:border-[#94B69E]/50 hover:bg-[#94B69E]/10 text-[#AAB8AF] hover:text-[#94B69E] flex items-center justify-center transition-all duration-300 font-semibold transform hover:scale-110 cursor-pointer"
                 title="Facebook"
               >
                 f
@@ -46,7 +45,7 @@ const Footer = () => {
                 href="https://x.com/mrafiq825"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg bg-gray-800/50 hover:bg-blue-600 text-gray-400 hover:text-white flex items-center justify-center transition-all duration-300 border border-gray-700/50 hover:border-blue-500/50 font-semibold transform hover:scale-110 cursor-pointer"
+                className="w-10 h-10 rounded-xl glass-panel hover:border-[#94B69E]/50 hover:bg-[#94B69E]/10 text-[#AAB8AF] hover:text-[#94B69E] flex items-center justify-center transition-all duration-300 font-semibold transform hover:scale-110 cursor-pointer"
                 title="Twitter"
               >
                 X
@@ -54,17 +53,17 @@ const Footer = () => {
             </div>
           </div>
           <div>
-            <h4 className="text-sm font-semibold text-white mb-4 flex items-center gap-2 uppercase tracking-wide">
-              <span className="w-1.5 h-1.5 rounded-full bg-purple-400" />
+            <h4 className="text-sm font-semibold text-[#F3F7F4] mb-4 flex items-center gap-2 uppercase tracking-wider">
+              <span className="w-2 h-2 rounded-full bg-[#94B69E] shadow-[0_0_8px_#94B69E]" />
               Company
             </h4>
             <ul className="space-y-3">
               <li>
                 <Link
                   to="/about"
-                  className="text-sm text-gray-400 hover:text-purple-400 transition-colors duration-300 flex items-center gap-2 group cursor-pointer"
+                  className="text-sm text-[#718078] hover:text-[#94B69E] transition-colors duration-300 flex items-center gap-2 group cursor-pointer"
                 >
-                  <span className="group-hover:translate-x-1 transition-transform duration-200">
+                  <span className="group-hover:translate-x-1 transition-transform duration-200 text-[#94B69E]">
                     →
                   </span>
                   <span>About Us</span>
@@ -73,21 +72,20 @@ const Footer = () => {
               <li>
                 <Link
                   to="/contact"
-                  className="text-sm text-gray-400 hover:text-purple-400 transition-colors duration-300 flex items-center gap-2 group cursor-pointer"
+                  className="text-sm text-[#718078] hover:text-[#94B69E] transition-colors duration-300 flex items-center gap-2 group cursor-pointer"
                 >
-                  <span className="group-hover:translate-x-1 transition-transform duration-200">
+                  <span className="group-hover:translate-x-1 transition-transform duration-200 text-[#94B69E]">
                     →
                   </span>
                   <span>Contact</span>
                 </Link>
               </li>
-
               <li>
                 <a
                   href="mailto:support@hiredesk.com"
-                  className="text-sm text-gray-400 hover:text-purple-400 transition-colors duration-300 flex items-center gap-2 group cursor-pointer"
+                  className="text-sm text-[#718078] hover:text-[#94B69E] transition-colors duration-300 flex items-center gap-2 group cursor-pointer"
                 >
-                  <span className="group-hover:translate-x-1 transition-transform duration-200">
+                  <span className="group-hover:translate-x-1 transition-transform duration-200 text-[#94B69E]">
                     →
                   </span>
                   <span>Support</span>
@@ -97,65 +95,64 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-sm font-semibold text-white mb-4 flex items-center gap-2 uppercase tracking-wide">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-              Resources
+            <h4 className="text-sm font-semibold text-[#F3F7F4] mb-4 flex items-center gap-2 uppercase tracking-wider">
+              <span className="w-2 h-2 rounded-full bg-[#94B69E] shadow-[0_0_8px_#94B69E]" />
+              Platform
             </h4>
             <ul className="space-y-3">
               <li>
-                <a
-                  href="#help"
-                  className="text-sm text-gray-400 hover:text-emerald-400 transition-colors duration-300 flex items-center gap-2 group cursor-pointer"
+                <Link
+                  to="/dashboard"
+                  className="text-sm text-[#718078] hover:text-[#94B69E] transition-colors duration-300 flex items-center gap-2 group cursor-pointer"
                 >
-                  <span className="group-hover:translate-x-1 transition-transform duration-200">
+                  <span className="group-hover:translate-x-1 transition-transform duration-200 text-[#94B69E]">
                     →
                   </span>
-                  <span>Help Center</span>
-                </a>
+                  <span>Dashboard</span>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#docs"
-                  className="text-sm text-gray-400 hover:text-emerald-400 transition-colors duration-300 flex items-center gap-2 group cursor-pointer"
+                <Link
+                  to="/hiredesk-analyze"
+                  className="text-sm text-[#718078] hover:text-[#94B69E] transition-colors duration-300 flex items-center gap-2 group cursor-pointer"
                 >
-                  <span className="group-hover:translate-x-1 transition-transform duration-200">
+                  <span className="group-hover:translate-x-1 transition-transform duration-200 text-[#94B69E]">
                     →
                   </span>
-                  <span>Documentation</span>
-                </a>
+                  <span>Smart Review</span>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#status"
-                  className="text-sm text-gray-400 hover:text-emerald-400 transition-colors duration-300 flex items-center gap-2 group cursor-pointer"
+                <Link
+                  to="/batch-analyze"
+                  className="text-sm text-[#718078] hover:text-[#94B69E] transition-colors duration-300 flex items-center gap-2 group cursor-pointer"
                 >
-                  <span className="group-hover:translate-x-1 transition-transform duration-200">
+                  <span className="group-hover:translate-x-1 transition-transform duration-200 text-[#94B69E]">
                     →
                   </span>
-                  <span>Status</span>
-                </a>
+                  <span>Batch Screening</span>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#security"
-                  className="text-sm text-gray-400 hover:text-emerald-400 transition-colors duration-300 flex items-center gap-2 group cursor-pointer"
+                <Link
+                  to="/compare-resumes"
+                  className="text-sm text-[#718078] hover:text-[#94B69E] transition-colors duration-300 flex items-center gap-2 group cursor-pointer"
                 >
-                  <span className="group-hover:translate-x-1 transition-transform duration-200">
+                  <span className="group-hover:translate-x-1 transition-transform duration-200 text-[#94B69E]">
                     →
                   </span>
-                  <span>Security</span>
-                </a>
+                  <span>Find Best Fit</span>
+                </Link>
               </li>
             </ul>
           </div>
         </div>
       </div>
-      <div className="border-t border-slate-800/50" />
+      <div className="border-t border-white/5" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-xs text-gray-500 text-center md:text-left">
-            &copy; {currentYear} HireDesk. All rights reserved. Built for the
-            future of hiring.
+          <p className="text-xs text-[#718078] text-center md:text-left">
+            &copy; {currentYear} HireDesk. All rights reserved. Intelligent Glassmorphism AI Recruitment Platform.
           </p>
         </div>
       </div>

@@ -6,6 +6,46 @@ import type {
 } from "./index";
 
 // ============================================
+// Auth & Layout Components
+// ============================================
+
+export interface ProtectedRouteProps {
+  children: ReactNode;
+  redirectTo?: string;
+}
+
+export interface RedirectIfAuthenticatedProps {
+  children: ReactNode;
+  redirectTo?: string;
+}
+
+export interface NavbarProps {
+  [key: string]: any;
+}
+
+export interface ResumeDetailsWrapperProps {
+  resumeData?: any;
+  isLoading?: boolean;
+}
+
+export interface PasswordStrengthProps {
+  password?: string;
+  [key: string]: any;
+}
+
+export interface TipsModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export interface ToastProps {
+  toast?: any;
+  message?: string;
+  type?: "success" | "error" | "warning" | "info";
+  onClose: (id: string) => void;
+}
+
+// ============================================
 // Analysis Components
 // ============================================
 
@@ -33,19 +73,16 @@ export interface ResumeScoreData {
 }
 
 export interface PersonalityTraits {
-  extraversion: number;
-  conscientiousness: number;
-  openness: number;
-  agreeableness: number;
-  emotional_stability: number;
+  [key: string]: number;
 }
 
 export interface PersonalityData {
-  traits: PersonalityTraits;
+  traits?: PersonalityTraits | Record<string, number>;
   work_style?: string;
   leadership_potential?: number;
   team_player_score?: number;
   analysis?: string;
+  [key: string]: any;
 }
 
 export interface CareerPathData {
@@ -53,12 +90,13 @@ export interface CareerPathData {
   next_roles?: string[];
   timeline?: string;
   required_development?: string[];
+  [key: string]: any;
 }
 
 export interface AdvancedAnalyticsProps {
-  resumeScore?: ResumeScoreData | null;
-  personalityInsights?: PersonalityData | null;
-  careerPath?: CareerPathData | null;
+  resumeScore?: any | null;
+  personalityInsights?: any | null;
+  careerPath?: any | null;
 }
 
 export interface AnalysisData {
@@ -122,7 +160,7 @@ export interface ErrorData {
 export interface ResumeUploadProps {
   onFileUpload?: (file: File) => void;
   isLoading?: boolean;
-  onError?: (error: ErrorData) => void;
+  onError?: (error: ErrorData | string) => void;
   isPremium?: boolean;
   onResumeUploaded?: () => void;
 }
@@ -148,53 +186,24 @@ export interface ResumeDataInterface {
   }>;
   skills?: string[];
   highlights?: string[];
-  name?: string;
-  email?: string;
-  phone?: string;
-  experience?: string | any[] | any;
-  summary?: string;
-  [key: string]: any;
 }
 
-export interface ResumeDetailsWrapperProps {
-  resumeData: ResumeDataInterface | null;
-  onGenerateQuestions?: (jobDescription: string) => void;
+// ============================================
+// Batch & Comparison Components
+// ============================================
+
+export interface BatchResultCardProps {
+  result: BatchAnalysisResult;
+  index: number;
+}
+
+export interface ComparisonResultsDisplayProps {
+  results: CompareResumesResponse;
   isLoading?: boolean;
 }
 
 // ============================================
-// UI Components
-// ============================================
-
-export interface ToastProps {
-  toast?: any;
-  onClose: (id: string) => void;
-  type?: "success" | "error" | "warning" | "info";
-  title?: string;
-  message?: string;
-  show?: boolean;
-  duration?: number;
-}
-
-export interface RateLimitModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  filesUploaded: number;
-  uploadLimit: number;
-}
-
-export interface TipsModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-export interface PasswordStrengthProps {
-  strength: number; // 0-100
-  newPassword: string;
-}
-
-// ============================================
-// Toast Components
+// Toast & Modal Components
 // ============================================
 
 export interface ToastAction {
@@ -207,52 +216,12 @@ export interface ToastComponentProps {
   type: "success" | "error" | "warning" | "info";
   title?: string;
   message: string;
-  show: boolean;
+  show?: boolean;
   onClose: () => void;
   duration?: number;
   action?: ToastAction;
   actions?: ToastAction[];
-  errorData?: {
-    errorType?: string | null;
-    errorCategory?: string | null;
-    originalError?: any;
-  };
 }
-
-// ============================================
-// Batch Components
-// ============================================
-
-export interface BatchResultCardProps {
-  result: BatchAnalysisResult;
-  index: number;
-}
-
-// ============================================
-// Layout Components
-// ============================================
-
-export interface NavbarProps {
-  onOpenTips: () => void;
-}
-
-// ============================================
-// Auth Components
-// ============================================
-
-export interface ProtectedRouteProps {
-  children: ReactNode;
-  redirectTo?: string;
-}
-
-export interface RedirectIfAuthenticatedProps {
-  children: ReactNode;
-  redirectTo?: string;
-}
-
-// ============================================
-// Modal Components
-// ============================================
 
 export interface PrivacyPolicyModalProps {
   isOpen: boolean;
@@ -264,11 +233,17 @@ export interface TermsOfServiceModalProps {
   onClose: () => void;
 }
 
-// ============================================
-// Comparison Components
-// ============================================
+export interface RateLimitModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  filesUploaded?: number;
+  uploadLimit?: number;
+}
 
-export interface ComparisonResultsDisplayProps {
-  results: CompareResumesResponse;
-  isLoading?: boolean;
+export interface FeatureLimitModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  featureName: string;
+  currentCount: number;
+  limit: number;
 }

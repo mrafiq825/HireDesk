@@ -62,7 +62,6 @@ const AssistantDock = () => {
         console.warn("Could not parse dock form", error);
       }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -137,137 +136,76 @@ const AssistantDock = () => {
     }
   });
 
-  const clearHistory = () => {
-    setMessages([]);
-    if (typeof window !== "undefined") {
-      window.localStorage.removeItem("assistant_dock_messages");
-    }
-  };
-
   return (
     <div className="fixed right-4 bottom-4 z-40 w-[320px] sm:w-[360px] max-w-[calc(100%-2rem)]">
-      <div className="relative overflow-hidden rounded-2xl border border-slate-700/60 bg-slate-900/85 backdrop-blur-2xl shadow-2xl">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute -inset-16 bg-linear-to-br from-indigo-500/10 via-purple-500/10 to-blue-500/10 blur-3xl"></div>
+      <div className="glass-floating border border-white/15 p-4 shadow-2xl">
+        <div className="flex items-center justify-between border-b border-white/10 pb-3 mb-3">
+          <div className="flex items-center gap-2">
+            <span className="w-2 h-2 rounded-full bg-[#94B69E] animate-pulse" />
+            <span className="text-xs font-bold text-[#F3F7F4]">HireDesk Quick AI Assistant</span>
+          </div>
+          <button
+            onClick={() => setOpen(!open)}
+            className="text-xs text-[#94B69E] hover:underline font-semibold cursor-pointer"
+          >
+            {open ? "Minimize" : "Open Assistant"}
+          </button>
         </div>
 
         {open && (
-          <div className="relative p-4 space-y-3">
+          <div className="space-y-3">
             <form className="space-y-3" onSubmit={onSubmit}>
-              <div className="space-y-1">
-                <label
-                  htmlFor="dock-query"
-                  className="text-xs font-medium text-slate-200 flex items-center justify-between"
-                >
-                  <span>Ask HireDesk</span>
-                  <span className="text-[11px] text-slate-400">
-                    {values.query.trim().length}/2000
-                  </span>
-                </label>
-                <div className="rounded-xl border border-slate-700 bg-slate-800/70 focus-within:border-indigo-500/70 focus-within:ring-2 focus-within:ring-indigo-500/30 transition-all overflow-hidden">
-                  <textarea
-                    id="dock-query"
-                    name="query"
-                    value={values.query}
-                    onChange={handleChange}
-                    rows={3}
-                    className="w-full bg-transparent px-3 py-2 text-sm text-white placeholder-slate-500 focus:outline-none resize-none"
-                    placeholder="Screening, interview Qs, job posting, or matching."
-                  />
-                </div>
-                {errors.query && (
-                  <p className="text-[11px] text-red-400">{errors.query}</p>
-                )}
+              <div>
+                <textarea
+                  id="dock-query"
+                  name="query"
+                  value={values.query}
+                  onChange={handleChange}
+                  rows={2}
+                  className="glass-input w-full p-2.5 text-xs resize-none"
+                  placeholder="Quick prompt: screening, interview Qs..."
+                />
+                {errors.query && <p className="text-[10px] text-[#E58B8B] mt-1">{errors.query}</p>}
               </div>
 
-              <div className="space-y-1">
-                <label
-                  htmlFor="dock-type"
-                  className="text-xs font-medium text-slate-200"
+              <div className="flex gap-2">
+                <select
+                  id="dock-type"
+                  name="queryType"
+                  value={values.queryType}
+                  onChange={handleChange}
+                  className="glass-input flex-1 p-2 text-xs bg-[#07110D]"
                 >
-                  Query type
-                </label>
-                <div className="rounded-xl border border-slate-700 bg-slate-800/70 focus-within:border-indigo-500/70 focus-within:ring-2 focus-within:ring-indigo-500/30 transition-all overflow-hidden">
-                  <select
-                    id="dock-type"
-                    name="queryType"
-                    value={values.queryType}
-                    onChange={handleChange}
-                    className="w-full bg-transparent px-3 py-2 text-sm text-white focus:outline-none cursor-pointer"
-                  >
-                    <option value="screening">Screening</option>
-                    <option value="interview_questions">
-                      Interview questions
-                    </option>
-                    <option value="job_posting">Job posting</option>
-                    <option value="candidate_match">Candidate match</option>
-                  </select>
-                </div>
+                  <option value="screening">Screening</option>
+                  <option value="interview_questions">Interview Questions</option>
+                  <option value="job_posting">Job Posting</option>
+                  <option value="candidate_match">Candidate Match</option>
+                </select>
+                <button
+                  type="submit"
+                  disabled={pending}
+                  className="btn-primary px-4 py-2 text-xs font-semibold"
+                >
+                  {pending ? "..." : "Send"}
+                </button>
               </div>
-
-              <button
-                type="submit"
-                disabled={pending}
-                className="w-full inline-flex items-center justify-center gap-2 px-4 py-2.75 rounded-xl font-semibold text-white bg-linear-to-r from-indigo-500 via-purple-500 to-blue-500 shadow-lg shadow-indigo-500/20 hover:shadow-indigo-500/35 disabled:opacity-60 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-indigo-400/60 cursor-pointer"
-              >
-                {pending ? (
-                  <>
-                    <span className="h-4 w-4 border-2 border-white/40 border-t-white rounded-full animate-spin"></span>
-                    Sending...
-                  </>
-                ) : (
-                  <>
-                    <span>Send</span>
-                    <svg
-                      className="h-4 w-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 12h14M12 5l7 7-7 7"
-                      />
-                    </svg>
-                  </>
-                )}
-              </button>
             </form>
 
-            <div className="max-h-64 overflow-y-auto space-y-3 pr-1 custom-scrollbar">
-              {messages.length === 0 && (
-                <p className="text-xs text-slate-400">
-                  No messages yet. Ask something to begin.
-                </p>
-              )}
+            <div className="max-h-48 overflow-y-auto space-y-2 pr-1">
               {messages.map((msg) => (
                 <div
                   key={msg.id}
-                  className={`rounded-xl border px-3 py-2 backdrop-blur-sm ${
+                  className={`p-2.5 rounded-xl border text-xs ${
                     msg.role === "user"
-                      ? "border-indigo-500/30 bg-indigo-500/10"
-                      : "border-emerald-500/30 bg-emerald-500/10"
+                      ? "glass-card border-white/10"
+                      : "glass-ai border-[#94B69E]/30"
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-1">
-                    <span
-                      className={`text-[11px] font-semibold uppercase tracking-wide ${
-                        msg.role === "user"
-                          ? "text-indigo-100"
-                          : "text-emerald-100"
-                      }`}
-                    >
-                      {msg.role === "user" ? "You" : "HireDesk"}
-                    </span>
-                    <span className="text-[10px] text-slate-300 bg-slate-800/80 rounded-full px-2 py-0.5">
-                      {msg.queryType}
-                    </span>
+                  <div className="flex justify-between items-center text-[10px] text-[#94B69E] mb-1">
+                    <span className="font-bold">{msg.role === "user" ? "You" : "HireDesk"}</span>
+                    <span>{msg.queryType}</span>
                   </div>
-                  <p className="text-xs text-slate-100 leading-relaxed whitespace-pre-wrap">
-                    {msg.content}
-                  </p>
+                  <p className="text-[#F3F7F4] leading-relaxed">{msg.content}</p>
                 </div>
               ))}
             </div>

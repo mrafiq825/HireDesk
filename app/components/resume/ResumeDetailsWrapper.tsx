@@ -59,7 +59,7 @@ const ResumeDetailsWrapper: React.FC<ResumeDetailsWrapperProps> = ({
           <div className="bg-slate-700/50 rounded-lg p-4 md:col-span-2">
             <h3 className="font-medium text-gray-200 mb-3">Work Experience</h3>
             <div className="space-y-4">
-              {resumeData.workExperience.map((exp, index) => (
+              {resumeData.workExperience.map((exp: any, index: number) => (
                 <div
                   key={index}
                   className="border-l-2 border-indigo-500/50 pl-4 pb-4 last:pb-0"
@@ -77,7 +77,7 @@ const ResumeDetailsWrapper: React.FC<ResumeDetailsWrapperProps> = ({
                     Array.isArray(exp.description) &&
                     exp.description.length > 0 && (
                       <ul className="text-gray-400 text-sm space-y-1 mt-2">
-                        {exp.description.map((desc, descIndex) => (
+                        {exp.description.map((desc: string, descIndex: number) => (
                           <li key={descIndex} className="flex items-start">
                             <span className="text-indigo-400 mr-2">•</span>
                             <span>{desc}</span>
@@ -95,7 +95,7 @@ const ResumeDetailsWrapper: React.FC<ResumeDetailsWrapperProps> = ({
           <div className="bg-slate-700/50 rounded-lg p-4 md:col-span-2">
             <h3 className="font-medium text-gray-200 mb-2">Skills</h3>
             <div className="flex flex-wrap gap-2">
-              {resumeData.skills.map((skill, index) => (
+              {resumeData.skills.map((skill: string, index: number) => (
                 <span
                   key={index}
                   className="bg-indigo-500/20 text-indigo-300 px-3 py-1 rounded-full text-sm"
@@ -113,7 +113,7 @@ const ResumeDetailsWrapper: React.FC<ResumeDetailsWrapperProps> = ({
             <div className="bg-slate-700/50 rounded-lg p-4 md:col-span-2">
               <h3 className="font-medium text-gray-200 mb-3">Education</h3>
               <div className="space-y-4">
-                {resumeData.education.map((edu, index) => (
+                {resumeData.education.map((edu: any, index: number) => (
                   <div
                     key={index}
                     className="border-l-2 border-indigo-500/50 pl-4 pb-4 last:pb-0"
@@ -135,7 +135,7 @@ const ResumeDetailsWrapper: React.FC<ResumeDetailsWrapperProps> = ({
                       Array.isArray(edu.details) &&
                       edu.details.length > 0 && (
                         <ul className="text-gray-400 text-sm space-y-1 mt-2">
-                          {edu.details.map((detail, detailIndex) => (
+                          {edu.details.map((detail: string, detailIndex: number) => (
                             <li key={detailIndex} className="flex items-start">
                               <span className="text-indigo-400 mr-2">•</span>
                               <span>{detail}</span>
@@ -153,7 +153,7 @@ const ResumeDetailsWrapper: React.FC<ResumeDetailsWrapperProps> = ({
           <div className="bg-slate-700/50 rounded-lg p-4 md:col-span-2">
             <h3 className="font-medium text-gray-200 mb-2">Highlights</h3>
             <ul className="text-gray-300 space-y-2">
-              {resumeData.highlights.map((highlight, index) => (
+              {resumeData.highlights.map((highlight: string, index: number) => (
                 <li key={index} className="flex items-start">
                   <span className="text-indigo-400 mr-2 mt-0.5">•</span>
                   <span>{highlight}</span>

@@ -15,95 +15,63 @@ export const WorkExperienceCard: React.FC<WorkExperienceProps> = ({
   workExperience,
 }) => {
   return (
-    <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-slate-700/50 p-6 sm:p-8">
-      <div className="mb-8">
-        <div className="flex items-center space-x-3 mb-2">
-          <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg blur opacity-75"></div>
-            <div className="relative bg-slate-900 p-2.5 rounded-lg">
-              <svg
-                className="w-6 h-6 text-blue-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4m0 2a2 2 0 100-4 2 2 0 000 4zm0 0h.01M6 6V4m0 2a2 2 0 100-4 2 2 0 000 4zm0 0h.01M9 20h6m-3-4v4m-8-8h.01M5 20h.01"
-                />
-              </svg>
-            </div>
+    <div className="glass-panel p-6 sm:p-8 relative overflow-hidden">
+      <div className="mb-8 flex items-center justify-between">
+        <div className="flex items-center space-x-3">
+          <div className="w-10 h-10 rounded-xl bg-[#94B69E]/15 border border-[#94B69E]/30 flex items-center justify-center text-[#94B69E]">
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4m0 2a2 2 0 100-4 2 2 0 000 4zm0 0h.01M6 6V4m0 2a2 2 0 100-4 2 2 0 000 4zm0 0h.01M9 20h6m-3-4v4m-8-8h.01M5 20h.01"
+              />
+            </svg>
           </div>
           <div>
-            <h3 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-300 to-cyan-300 bg-clip-text text-transparent">
+            <h3 className="text-xl sm:text-2xl font-bold text-[#F3F7F4]">
               Work Experience
             </h3>
-            <p className="text-sm text-slate-400 mt-1">
-              {workExperience.length} Position
-              {workExperience.length !== 1 ? "s" : ""}
+            <p className="text-xs text-[#718078] mt-0.5">
+              {workExperience.length} Position{workExperience.length !== 1 ? "s" : ""} Analyzed
             </p>
           </div>
         </div>
       </div>
 
       <div className="relative">
-        <div className="absolute left-4 sm:left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-cyan-500 to-transparent opacity-50"></div>
+        <div className="absolute left-4 sm:left-6 top-0 bottom-0 w-0.5 bg-[#94B69E]/30"></div>
         <div className="space-y-6 sm:space-y-8">
           {workExperience.map((exp, index) => (
-            <div key={index} className="group relative pl-16 sm:pl-20">
-              <div className="absolute left-0 top-0 w-12 sm:w-12 h-12 sm:h-12 flex items-center justify-center">
-                <div className="absolute inset-1 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full opacity-20 group-hover:opacity-40 transition-opacity duration-300 blur"></div>
-                <div className="relative w-8 sm:w-8 h-8 sm:h-8 bg-slate-900 rounded-full border-2 border-blue-500 group-hover:border-cyan-400 flex items-center justify-center transition-all duration-300">
-                  <div className="w-3 sm:w-3 h-3 sm:h-3 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full"></div>
-                </div>
+            <div key={index} className="group relative pl-12 sm:pl-16">
+              <div className="absolute left-1.5 sm:left-3.5 top-1 w-5 h-5 rounded-full bg-[#07110D] border-2 border-[#94B69E] shadow-[0_0_10px_#94B69E] flex items-center justify-center">
+                <div className="w-1.5 h-1.5 bg-[#94B69E] rounded-full" />
               </div>
-              <div className="relative overflow-hidden rounded-xl sm:rounded-2xl bg-slate-900/50 border border-slate-700/50 group-hover:border-blue-500/50 transition-all duration-300 p-4 sm:p-6">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-cyan-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-
-                <div className="relative z-10">
-                  <div className="mb-3 sm:mb-4">
-                    <h4 className="text-lg sm:text-xl font-bold text-white group-hover:text-cyan-300 transition-colors duration-300">
-                      {exp.title}
-                    </h4>
-                    <p className="text-sm sm:text-base text-blue-400 font-semibold mt-1">
-                      {exp.company}
-                    </p>
+              <div className="glass-card p-5 sm:p-6 space-y-3">
+                <div>
+                  <h4 className="text-lg font-bold text-[#F3F7F4] group-hover:text-[#94B69E] transition-colors">
+                    {exp.title}
+                  </h4>
+                  <div className="flex items-center gap-3 mt-1">
+                    <span className="text-sm font-semibold text-[#94B69E]">{exp.company}</span>
+                    <span className="text-xs text-[#718078]">•</span>
+                    <span className="text-xs text-[#718078]">{exp.duration}</span>
                   </div>
-
-                  <div className="flex items-center space-x-2 mb-4 sm:mb-5">
-                    <svg
-                      className="w-4 h-4 text-slate-500"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
-                    <span className="text-sm text-slate-400">
-                      {exp.duration}
-                    </span>
-                  </div>
-
-                  <ul className="space-y-2 sm:space-y-3">
-                    {exp.description.map((desc, descIndex) => (
-                      <li key={descIndex} className="flex space-x-3">
-                        <div className="mt-1">
-                          <div className="w-1.5 h-1.5 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full mt-1.5"></div>
-                        </div>
-                        <p className="text-sm text-slate-300 leading-relaxed">
-                          {desc}
-                        </p>
-                      </li>
-                    ))}
-                  </ul>
                 </div>
+
+                <ul className="space-y-2 pt-2 border-t border-white/5">
+                  {exp.description.map((desc, descIndex) => (
+                    <li key={descIndex} className="flex items-start gap-2 text-xs sm:text-sm text-[#AAB8AF] leading-relaxed">
+                      <span className="text-[#94B69E] font-bold mt-0.5">•</span>
+                      <span>{desc}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           ))}

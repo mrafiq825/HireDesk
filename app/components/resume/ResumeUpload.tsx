@@ -80,12 +80,6 @@ function ResumeUpload({
           category: "file",
         });
       }
-      console.warn(
-        "Invalid file type:",
-        file.type,
-        "Extension:",
-        fileExtension
-      );
     }
   };
 
@@ -115,35 +109,24 @@ function ResumeUpload({
   };
 
   return (
-    <div className="max-w-xl mx-auto bg-slate-700/80 p-6 rounded-xl shadow-lg border border-slate-600">
-      <h2 className="text-2xl font-semibold text-white mb-6 text-center">
-        Review Candidate Resume
+    <div className="max-w-xl mx-auto glass-panel p-6 sm:p-8 relative overflow-hidden">
+      <h2 className="text-xl sm:text-2xl font-bold text-[#F3F7F4] mb-6 text-center">
+        Upload Candidate Resume
       </h2>
 
       {isPremium && (
-        <div className="mb-4 bg-gradient-to-r from-amber-500/20 to-yellow-500/20 border border-amber-500/30 rounded-lg p-3">
-          <div className="flex items-center justify-center space-x-2">
-            <svg
-              className="h-5 w-5 text-amber-400"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-            >
-              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-            </svg>
-            <span className="text-sm font-medium text-amber-300">
-              Premium Analysis Enabled
-            </span>
-          </div>
+        <div className="mb-4 glass-badge glass-badge-primary w-full justify-center py-2">
+          <span>✨ Enterprise Deep Intelligence Active</span>
         </div>
       )}
 
       <div
-        className={`relative p-10 border-2 border-dashed rounded-xl text-center cursor-pointer ${
+        className={`relative p-8 sm:p-10 border-2 border-dashed rounded-2xl text-center cursor-pointer transition-all duration-300 ${
           isLoading
-            ? "bg-slate-600/30 border-slate-500 cursor-not-allowed"
+            ? "bg-white/5 border-white/20 cursor-not-allowed"
             : selectedFile
-              ? "bg-indigo-500/20 border-indigo-400"
-              : "border-slate-500 hover:border-indigo-400 hover:bg-indigo-500/10"
+              ? "glass-ai border-[#94B69E]"
+              : "border-white/20 hover:border-[#94B69E] hover:bg-white/5"
         }`}
         onClick={openFileDialog}
         onDrop={handleDrop}
@@ -162,40 +145,37 @@ function ResumeUpload({
 
         {isLoading ? (
           <div className="flex flex-col items-center">
-            <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-indigo-400"></div>
-            <p className="mt-4 text-base text-indigo-300">
-              Processing resume...
+            <div className="animate-spin rounded-full h-10 w-10 border-2 border-[#94B69E] border-t-transparent shadow-[0_0_12px_#94B69E]" />
+            <p className="mt-4 text-sm font-semibold text-[#94B69E]">
+              Analyzing Candidate Resume...
             </p>
           </div>
         ) : selectedFile ? (
           <>
-            <DocumentIcon className="mx-auto h-12 w-12 text-indigo-400" />
-            <p className="mt-4 text-base font-medium text-indigo-300">
+            <DocumentIcon className="mx-auto h-12 w-12 text-[#94B69E]" />
+            <p className="mt-4 text-sm font-semibold text-[#F3F7F4]">
               {selectedFile.name}
             </p>
-            <p className="mt-2 text-xs text-slate-400">
-              {(selectedFile.size / 1024).toFixed(1)} KB
+            <p className="mt-1 text-xs text-[#718078]">
+              {(selectedFile.size / 1024).toFixed(1)} KB • Ready for Analysis
             </p>
           </>
         ) : (
           <>
-            <CloudArrowUpIcon className="mx-auto h-12 w-12 text-slate-400" />
-            <p className="mt-4 text-base text-slate-300">
-              Upload candidate's resume (drag & drop or click here)
+            <CloudArrowUpIcon className="mx-auto h-12 w-12 text-[#AAB8AF]" />
+            <p className="mt-4 text-sm font-semibold text-[#F3F7F4]">
+              Drag & Drop resume or click to browse
             </p>
-            <p className="mt-2 text-xs text-slate-400">
-              Accepts PDF, DOC, and DOCX formats
+            <p className="mt-1 text-xs text-[#718078]">
+              Supports PDF, DOC, and DOCX files
             </p>
           </>
         )}
       </div>
 
-      <div className="mt-4 text-center space-y-2">
-        <p className="text-xs text-slate-400">
-          Our AI will analyze the resume and help you prepare for the interview
-        </p>
-        <p className="text-xs text-indigo-400">
-          Get instant insights and tailored interview questions
+      <div className="mt-4 text-center space-y-1">
+        <p className="text-xs text-[#718078]">
+          Instant extraction of skills, experience, leadership traits & interview questions
         </p>
       </div>
     </div>

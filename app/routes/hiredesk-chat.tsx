@@ -21,7 +21,7 @@ export function meta({}: Route.MetaArgs) {
         "Chat with HireDesk's AI co-pilot to generate screening questions, draft interview prompts, create job postings, and match candidates to roles in real time.",
     },
     { name: "robots", content: "noindex, nofollow" },
-    { tagName: "link", rel: "canonical", href: "https://hiredesk.vercel.vercel.app/hiredesk-chat" },
+    { tagName: "link", rel: "canonical", href: "https://hiredesk.vercel.app/hiredesk-chat" },
   ];
 }
 
@@ -62,15 +62,11 @@ const statusStyles: Record<
   "loading" | "operational" | "degraded" | "down" | "unavailable",
   string
 > = {
-  loading:
-    "bg-amber-400 text-white font-bold border-2 border-amber-500 shadow-lg shadow-amber-400/80",
-  operational:
-    "bg-emerald-400 text-white font-bold border-2 border-emerald-500 shadow-lg shadow-emerald-400/80",
-  degraded:
-    "bg-yellow-400 text-white font-bold border-2 border-yellow-500 shadow-lg shadow-yellow-400/80",
-  down: "bg-red-400 text-white font-bold border-2 border-red-500 shadow-lg shadow-red-400/80",
-  unavailable:
-    "bg-red-400 text-white font-bold border-2 border-red-500 shadow-lg shadow-red-400/80",
+  loading: "glass-badge-warning",
+  operational: "glass-badge-success",
+  degraded: "glass-badge-warning",
+  down: "glass-badge-danger",
+  unavailable: "glass-badge-danger",
 };
 
 const mockResponse = (
@@ -83,9 +79,6 @@ const mockResponse = (
     timestamp: new Date().toISOString(),
   },
 });
-
-const HINT_CARD_BG =
-  "bg-gradient-to-br from-slate-800/90 via-slate-800/95 to-slate-900/90";
 
 const HireDeskChat = () => {
   const { showToast } = useToast();
@@ -101,7 +94,6 @@ const HireDeskChat = () => {
   const [rateLimitMessage, setRateLimitMessage] = useState(
     "Too many requests from this IP, please try again later."
   );
-  const [assistantOpen, setAssistantOpen] = useState(true);
 
   const mockMode = useMemo(() => {
     if (typeof window === "undefined") return false;
@@ -224,16 +216,6 @@ const HireDeskChat = () => {
     setMessages((prev) => [...prev, message]);
   };
 
-  const handleCopy = async (content: string) => {
-    try {
-      await navigator.clipboard.writeText(content);
-      showToast("Copied to clipboard", "success", { title: "Copied" });
-    } catch (error) {
-      showToast("Could not copy text", "error", { title: "Copy failed" });
-      console.error("Copy failed", error);
-    }
-  };
-
   const processResponse = (response: HireDeskQueryResponse) => {
     const assistantMessage: ChatMessage = {
       id: `assistant-${Date.now()}`,
@@ -343,311 +325,155 @@ const HireDeskChat = () => {
 
   return (
     <ProtectedRoute>
-      <div className="min-h-screen bg-linear-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-grid-slate-700/[0.04] bg-size-[20px_20px]"></div>
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute -inset-24 bg-linear-to-r from-indigo-500/10 via-purple-500/10 to-blue-500/10 blur-3xl"></div>
-          </div>
-        </div>
+      <div className="min-h-screen bg-[#07110D] relative overflow-hidden text-[#F3F7F4]">
+        {/* Glow effect */}
+        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full bg-[#94B69E]/10 blur-[130px] pointer-events-none" />
 
-        <header className="relative z-10 border-b border-slate-700/40 bg-linear-to-br from-slate-900/95 via-slate-800/90 to-slate-900/95 backdrop-blur-xl">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-8">
-            <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
-              <div className="flex items-start gap-5 flex-1">
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <h1 className="text-3xl sm:text-4xl font-bold bg-linear-to-r from-white via-indigo-100 to-purple-200 bg-clip-text text-transparent">
-                      HireDesk
-                    </h1>
-                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-200 border border-indigo-400/40">
-                      Chat
-                    </span>
+        <header className="relative z-10 border-b border-white/10 bg-[#07110D]/80 backdrop-blur-xl py-6">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <Link to="/dashboard" className="btn-secondary px-3.5 py-2 text-xs">
+                  ← Dashboard
+                </Link>
+                <div>
+                  <div className="flex items-center gap-2">
+                    <h1 className="text-2xl font-bold text-[#F3F7F4]">HireDesk AI Co-pilot</h1>
+                    <span className="glass-badge glass-badge-primary">AI Chat</span>
                   </div>
-                  <p className="text-lg font-semibold text-indigo-200 mb-1">
-                    Recruiter Co-pilot
-                  </p>
-                  <p className="text-sm text-slate-400 max-w-md leading-relaxed">
-                    AI-powered screening, interviews, job postings & candidate
-                    matching
-                  </p>
+                  <p className="text-xs text-[#718078]">Instant recruitment assistance & prompt engineering</p>
                 </div>
               </div>
 
-              <div className="flex flex-col sm:items-end gap-3">
-                <div className="flex items-center gap-2 flex-wrap justify-start sm:justify-end">
-                  {mockMode && (
-                    <span className="px-4 py-2 rounded-lg text-sm font-bold bg-blue-500/25 text-white border-2 border-blue-400/50 shadow-lg shadow-blue-500/20 flex items-center gap-2">
-                      Mock mode
-                    </span>
-                  )}
-                  <span
-                    className={`px-5 py-2.5 rounded-lg text-sm font-bold inline-flex items-center gap-3 ${statusStyles[serviceStatus]}`}
-                  >
-                    <span className="flex items-center gap-2"></span>
-                    <span className="tracking-wide text-white">
-                      {serviceStatus === "loading"
-                        ? "Checking..."
-                        : statusMessage}
-                    </span>
-                  </span>
-                </div>
-
-                <Link
-                  to="/"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg text-xs font-semibold text-slate-300 hover:text-white bg-slate-800/50 hover:bg-slate-700 border border-slate-700/50 hover:border-slate-600 transition-all duration-200 hover:shadow-lg hover:shadow-indigo-500/10"
-                >
-                  <svg
-                    className="h-4 w-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 19l-7-7m0 0l7-7m-7 7h18"
-                    />
-                  </svg>
-                  <span>Back to Home</span>
-                </Link>
+              <div className="flex items-center gap-3">
+                <span className={`glass-badge ${statusStyles[serviceStatus]}`}>
+                  {serviceStatus === "loading" ? "Checking..." : statusMessage}
+                </span>
+                {messages.length > 0 && (
+                  <button onClick={clearAll} className="btn-secondary px-3 py-1.5 text-xs">
+                    Clear Chat
+                  </button>
+                )}
               </div>
             </div>
           </div>
         </header>
 
-        <main className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-6 sm:py-10 space-y-6">
-          <section
-            className={`${HINT_CARD_BG} rounded-2xl border border-slate-700/60 p-6 shadow-xl`}
-          >
-            <div className="grid grid-cols-1 gap-6">
-              <div className="space-y-4">
-                <div className="flex items-center justify-between flex-wrap gap-3">
-                  <div>
-                    <h2 className="text-xl font-semibold text-white">
-                      Ask HireDesk
-                    </h2>
-                    <p className="text-sm text-slate-400">
-                      Fill in the fields to mirror backend validation. Candidate
-                      match requires job role or candidate info.
-                    </p>
+        <main className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-8 space-y-6">
+          {/* Messages Log */}
+          {messages.length > 0 && (
+            <div className="space-y-4 max-w-4xl mx-auto">
+              {messages.map((msg) => (
+                <div
+                  key={msg.id}
+                  className={`p-5 rounded-2xl transition-all ${
+                    msg.role === "user"
+                      ? "glass-card ml-auto max-w-2xl border-white/15"
+                      : "glass-ai max-w-3xl border-[#94B69E]/30"
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-xs font-bold text-[#94B69E] uppercase tracking-wider">
+                      {msg.role === "user" ? "You" : "HireDesk AI Assistant"}
+                    </span>
+                    <span className="text-[10px] text-[#718078]">
+                      {new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    </span>
                   </div>
-                  <button
-                    onClick={clearAll}
-                    className="text-sm text-slate-300 hover:text-white underline decoration-dotted underline-offset-4"
+                  <p className="text-sm text-[#F3F7F4] leading-relaxed whitespace-pre-wrap">
+                    {msg.content}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Input Panel */}
+          <section className="glass-panel p-6 sm:p-8 max-w-4xl mx-auto">
+            <div className="mb-6 flex justify-between items-center">
+              <div>
+                <h2 className="text-lg font-bold text-[#F3F7F4]">AI Recruiter Workspace</h2>
+                <p className="text-xs text-[#718078]">Generate screening prompts, JD descriptions, and candidate match scores</p>
+              </div>
+            </div>
+
+            <form className="space-y-4" onSubmit={onSubmit}>
+              <div>
+                <div className="flex justify-between text-xs text-[#AAB8AF] font-semibold mb-1">
+                  <span>Prompt / Query *</span>
+                  <span>{values.query.trim().length}/2000</span>
+                </div>
+                <textarea
+                  name="query"
+                  value={values.query}
+                  onChange={handleChange}
+                  rows={4}
+                  className="glass-input w-full p-3.5 text-sm"
+                  placeholder="Ask HireDesk to screen candidates, generate tailored interview questions, or match a resume..."
+                />
+                {errors.query && <p className="text-xs text-[#E58B8B] mt-1">{errors.query}</p>}
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-semibold text-[#AAB8AF] mb-1">Query Type</label>
+                  <select
+                    name="queryType"
+                    value={values.queryType}
+                    onChange={handleChange}
+                    className="glass-input w-full p-3 text-sm bg-[#07110D]"
                   >
-                    Clear state
-                  </button>
+                    <option value="screening">Screening</option>
+                    <option value="interview_questions">Interview Questions</option>
+                    <option value="job_posting">Job Posting</option>
+                    <option value="candidate_match">Candidate Match</option>
+                  </select>
+                  <p className="text-[11px] text-[#718078] mt-1">{queryTypeHints[values.queryType]}</p>
                 </div>
 
-                <form className="space-y-4" onSubmit={onSubmit}>
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="query"
-                      className="text-sm font-medium text-slate-200 flex items-center justify-between"
-                    >
-                      <span>Query *</span>
-                      <span className="text-xs text-slate-400">
-                        {values.query.trim().length}/2000
-                      </span>
-                    </label>
-                    <textarea
-                      id="query"
-                      name="query"
-                      value={values.query}
-                      onChange={handleChange}
-                      rows={4}
-                      className="w-full rounded-xl border border-slate-700 bg-slate-800/80 px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
-                      placeholder="Ask HireDesk to screen, draft interview questions, optimize a posting, or match a candidate."
-                    />
-                    {errors.query && (
-                      <p className="text-xs text-red-400">{errors.query}</p>
-                    )}
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <label
-                        htmlFor="queryType"
-                        className="text-sm font-medium text-slate-200"
-                      >
-                        Query type *
-                      </label>
-                      <select
-                        id="queryType"
-                        name="queryType"
-                        value={values.queryType}
-                        onChange={handleChange}
-                        className="w-full rounded-xl border border-slate-700 bg-slate-800/80 px-3 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
-                      >
-                        <option value="screening">Screening</option>
-                        <option value="interview_questions">
-                          Interview questions
-                        </option>
-                        <option value="job_posting">Job posting</option>
-                        <option value="candidate_match">Candidate match</option>
-                      </select>
-                      <p className="text-xs text-slate-400">
-                        {queryTypeHints[values.queryType]}
-                      </p>
-                    </div>
-
-                    <div className="space-y-2">
-                      <label
-                        htmlFor="jobRole"
-                        className="text-sm font-medium text-slate-200 flex items-center justify-between"
-                      >
-                        <span>Job role (optional)</span>
-                        <span className="text-xs text-slate-400">
-                          {values.jobRole.trim().length}/200
-                        </span>
-                      </label>
-                      <input
-                        id="jobRole"
-                        type="text"
-                        name="jobRole"
-                        value={values.jobRole}
-                        onChange={handleChange}
-                        className="w-full rounded-xl border border-slate-700 bg-slate-800/80 px-3 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
-                        placeholder="e.g. Senior React Developer"
-                      />
-                      {errors.jobRole && (
-                        <p className="text-xs text-red-400">{errors.jobRole}</p>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="candidateInfo"
-                      className="text-sm font-medium text-slate-200 flex items-center justify-between"
-                    >
-                      <span>Candidate info (optional)</span>
-                      <span className="text-xs text-slate-400">
-                        {values.candidateInfo.trim().length}/3000
-                      </span>
-                    </label>
-                    <textarea
-                      id="candidateInfo"
-                      name="candidateInfo"
-                      value={values.candidateInfo}
-                      onChange={handleChange}
-                      rows={3}
-                      className="w-full rounded-xl border border-slate-700 bg-slate-800/80 px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
-                      placeholder="Paste resume highlights, notes, or summary for candidate match."
-                    />
-                    {errors.candidateInfo && (
-                      <p className="text-xs text-red-400">
-                        {errors.candidateInfo}
-                      </p>
-                    )}
-                  </div>
-
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="context"
-                      className="text-sm font-medium text-slate-200 flex items-center justify-between"
-                    >
-                      <span>Context (optional)</span>
-                      <span className="text-xs text-slate-400">
-                        {values.context.trim().length}/1000
-                      </span>
-                    </label>
-                    <textarea
-                      id="context"
-                      name="context"
-                      value={values.context}
-                      onChange={handleChange}
-                      rows={2}
-                      className="w-full rounded-xl border border-slate-700 bg-slate-800/80 px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-indigo-500/70"
-                      placeholder="Add stack, seniority, location, or process notes."
-                    />
-                    {errors.context && (
-                      <p className="text-xs text-red-400">{errors.context}</p>
-                    )}
-                  </div>
-
-                  {rateLimited && (
-                    <div className="rounded-xl border border-amber-500/40 bg-amber-500/10 px-4 py-3 text-amber-100">
-                      <p className="text-sm font-semibold">Rate limited</p>
-                      <p className="text-sm text-amber-200/80">
-                        {rateLimitMessage}
-                      </p>
-                    </div>
-                  )}
-
-                  <div className="flex items-center gap-3">
-                    <button
-                      type="submit"
-                      disabled={disableSubmit}
-                      className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-semibold text-white bg-linear-to-r from-indigo-500 to-purple-600 shadow-lg hover:shadow-indigo-500/25 disabled:opacity-60 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-indigo-400/60"
-                    >
-                      {isLoading ? (
-                        <>
-                          <span className="h-4 w-4 border-2 border-white/40 border-t-white rounded-full animate-spin"></span>
-                          Processing...
-                        </>
-                      ) : (
-                        <>
-                          <span>Send to HireDesk</span>
-                          <svg
-                            className="h-4 w-4"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M5 12h14M12 5l7 7-7 7"
-                            />
-                          </svg>
-                        </>
-                      )}
-                    </button>
-                    <div className="text-xs text-slate-400">
-                      {supportedQueryTypes.length > 0 && (
-                        <span>Supported: {supportedQueryTypes.join(", ")}</span>
-                      )}
-                    </div>
-                  </div>
-                </form>
+                <div>
+                  <label className="block text-xs font-semibold text-[#AAB8AF] mb-1">Job Role Title (Optional)</label>
+                  <input
+                    type="text"
+                    name="jobRole"
+                    value={values.jobRole}
+                    onChange={handleChange}
+                    className="glass-input w-full p-3 text-sm"
+                    placeholder="e.g. Senior Frontend Architect"
+                  />
+                  {errors.jobRole && <p className="text-xs text-[#E58B8B] mt-1">{errors.jobRole}</p>}
+                </div>
               </div>
-            </div>
-          </section>
 
-          <section
-            className={`${HINT_CARD_BG} rounded-2xl border border-slate-700/60 p-5 shadow-inner`}
-          >
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="rounded-xl border border-indigo-500/30 bg-indigo-500/5 p-4">
-                <p className="text-sm font-semibold text-indigo-100 mb-2">
-                  Client-side validation
-                </p>
-                <ul className="text-sm text-slate-300 space-y-1 list-disc list-inside">
-                  <li>Query required, 1-2000 chars.</li>
-                  <li>jobRole ≤ 200, candidateInfo ≤ 3000, context ≤ 1000.</li>
-                  <li>candidate_match needs jobRole or candidateInfo.</li>
-                </ul>
+              <div>
+                <label className="block text-xs font-semibold text-[#AAB8AF] mb-1">Candidate Notes / Summary (Optional)</label>
+                <textarea
+                  name="candidateInfo"
+                  value={values.candidateInfo}
+                  onChange={handleChange}
+                  rows={2}
+                  className="glass-input w-full p-3 text-sm"
+                  placeholder="Paste resume snippet or candidate highlights..."
+                />
+                {errors.candidateInfo && <p className="text-xs text-[#E58B8B] mt-1">{errors.candidateInfo}</p>}
               </div>
-              <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-4">
-                <p className="text-sm font-semibold text-emerald-100 mb-2">
-                  Behavior
-                </p>
-                <ul className="text-sm text-slate-300 space-y-1 list-disc list-inside">
-                  <li>
-                    Status chip disables submit when down or rate limited.
-                  </li>
-                  <li>
-                    Errors surface verbatim for 4xx; 500 uses safe fallback.
-                  </li>
-                  <li>History and last form persist for quick resubmits.</li>
-                  <li>Mock mode via ?mock=1 for UI-only testing.</li>
-                </ul>
+
+              {rateLimited && (
+                <div className="p-3 glass-badge-danger text-xs font-semibold rounded-xl">
+                  {rateLimitMessage}
+                </div>
+              )}
+
+              <div className="flex justify-end pt-2">
+                <button
+                  type="submit"
+                  disabled={disableSubmit}
+                  className="btn-primary px-8 py-3 text-sm font-semibold rounded-xl"
+                >
+                  {isLoading ? "Processing Request..." : "Send to HireDesk AI"}
+                </button>
               </div>
-            </div>
+            </form>
           </section>
         </main>
       </div>

@@ -1,23 +1,52 @@
 @import "tailwindcss";
 
 :root {
-  --font-family-sans:
-    "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
-  --font-family-serif: "Tinos", Georgia, "Times New Roman", serif;
-  --font-family-mono:
-    "JetBrains Mono", "Fira Code", "Fira Mono", "Roboto Mono",
-    "Source Code Pro", ui-monospace, SFMono-Regular, "SF Mono", Monaco,
-    Inconsolata, "Roboto Mono", "Liberation Mono", Menlo, Consolas, monospace;
+  --color-primary: #94B69E;
+  --color-primary-hover: #a8c7b1;
+  --color-primary-dark: #7a9c84;
+  --color-bg-dark: #07110D;
+  --color-bg-secondary: #0B1712;
+  --color-bg-elevated: #101E17;
+
+  --glass-bg: rgba(255, 255, 255, 0.055);
+  --glass-bg-hover: rgba(255, 255, 255, 0.085);
+  --glass-bg-elevated: rgba(255, 255, 255, 0.085);
+  
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-border-subtle: rgba(148, 182, 158, 0.16);
+  --glass-border-hover: rgba(148, 182, 158, 0.35);
+
+  --primary-glow: rgba(148, 182, 158, 0.20);
+  --strong-glow: rgba(148, 182, 158, 0.35);
+
+  --text-primary: #F3F7F4;
+  --text-secondary: #AAB8AF;
+  --text-muted: #718078;
+
+  --color-danger: #E58B8B;
+  --color-warning: #E4C58A;
+  --color-success: #94B69E;
+
+  --glass-ai-bg: rgba(148, 182, 158, 0.08);
+  --glass-ai-border: rgba(148, 182, 158, 0.20);
+
+  --font-family-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-family-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 }
 
 body {
   font-family: var(--font-family-sans);
+  background-color: var(--color-bg-dark);
+  background-image: 
+    radial-gradient(circle at 20% 10%, rgba(148, 182, 158, 0.10), transparent 35%),
+    radial-gradient(circle at 80% 80%, rgba(148, 182, 158, 0.07), transparent 35%),
+    radial-gradient(circle at 50% 50%, rgba(11, 23, 18, 0.6), transparent 70%);
+  background-attachment: fixed;
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-  font-variant-ligatures: common-ligatures;
+  min-height: 100vh;
 }
 
 code,
@@ -26,128 +55,239 @@ pre,
   font-family: var(--font-family-mono);
 }
 
-.font-serif {
-  font-family: var(--font-family-serif);
-}
-
 .font-sans {
   font-family: var(--font-family-sans);
 }
 
-/* Apply Tinos serif font to all headings for elegant business appearance */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-family: var(--font-family-serif);
+/* Modern sans-serif headings for high-end SaaS presentation */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-sans);
   font-weight: 700;
-  letter-spacing: -0.5px;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
 }
 
-/* Specific heading styles */
 h1 {
-  font-size: 2.5rem;
-  line-height: 1.2;
-  letter-spacing: -1px;
+  font-size: 2.75rem;
+  line-height: 1.15;
 }
 
 h2 {
-  font-size: 2rem;
-  line-height: 1.3;
-  letter-spacing: -0.75px;
+  font-size: 2.15rem;
+  line-height: 1.25;
 }
 
 h3 {
   font-size: 1.5rem;
-  line-height: 1.4;
+  line-height: 1.35;
 }
 
-h4 {
-  font-size: 1.25rem;
-  line-height: 1.4;
+/* Glassmorphism System Primitives */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
 }
 
-h5 {
-  font-size: 1.125rem;
-  line-height: 1.5;
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.20),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              background 200ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-h6 {
-  font-size: 1rem;
-  line-height: 1.5;
+.glass-card:hover {
+  transform: translateY(-2px);
+  background: var(--glass-bg-hover);
+  border-color: var(--glass-border-hover);
+  box-shadow: 
+    0 16px 40px rgba(0, 0, 0, 0.35),
+    0 0 25px var(--primary-glow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
-.animate-delay-1 {
-  animation-delay: 1s;
+.glass-elevated {
+  background: var(--glass-bg-elevated);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 16px 48px rgba(0, 0, 0, 0.35),
+    0 0 30px var(--primary-glow);
+  border-radius: 24px;
 }
 
-.animate-delay-2 {
-  animation-delay: 2s;
+.glass-floating {
+  background: rgba(11, 23, 18, 0.85);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  border-radius: 16px;
 }
 
-.animate-delay-3 {
-  animation-delay: 3s;
+.glass-ai {
+  background: var(--glass-ai-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-ai-border);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.20),
+    0 0 25px var(--primary-glow);
+  border-radius: 20px;
 }
 
-/* Custom floating animation for decorative elements */
-@keyframes float {
-  0%,
-  100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  33% {
-    transform: translateY(-10px) rotate(1deg);
-  }
-  66% {
-    transform: translateY(5px) rotate(-1deg);
-  }
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #07110D;
+  font-weight: 600;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px var(--primary-glow);
+  transition: all 180ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px var(--strong-glow);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  font-weight: 500;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  transition: all 180ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-secondary:hover {
+  background: rgba(148, 182, 158, 0.12);
+  border-color: var(--glass-border-hover);
+  color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  border-radius: 12px;
+  transition: all 150ms ease;
+  outline: none;
+}
+
+.glass-input::placeholder {
+  color: var(--text-muted);
+}
+
+.glass-input:focus {
+  border-color: rgba(148, 182, 158, 0.6);
+  box-shadow: 0 0 0 3px rgba(148, 182, 158, 0.15);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.glass-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+.glass-badge-primary {
+  background: rgba(148, 182, 158, 0.12);
+  color: var(--color-primary);
+  border-color: rgba(148, 182, 158, 0.25);
+}
+
+.glass-badge-success {
+  background: rgba(148, 182, 158, 0.15);
+  color: var(--color-primary);
+  border-color: rgba(148, 182, 158, 0.3);
+}
+
+.glass-badge-warning {
+  background: rgba(228, 197, 138, 0.15);
+  color: var(--color-warning);
+  border-color: rgba(228, 197, 138, 0.3);
+}
+
+.glass-badge-danger {
+  background: rgba(229, 139, 139, 0.15);
+  color: var(--color-danger);
+  border-color: rgba(229, 139, 139, 0.3);
+}
+
+.glass-badge-info {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
 
-/* ─── Performance: below-fold content ───────────────────────────────────────
-   Tells the browser it can skip rendering off-screen sections until needed.
-   Apply .below-fold to sections that are not in the initial viewport.        */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-8px) rotate(0.5deg);
+  }
+  66% {
+    transform: translateY(4px) rotate(-0.5deg);
+  }
+}
+
 .below-fold {
   content-visibility: auto;
-  /* Estimated height prevents layout shift when section renders */
   contain-intrinsic-size: 0 500px;
 }
 
-/* ─── Accessibility: Respect user motion preferences ────────────────────────
-   Users who set "Reduce motion" in OS settings will not see animations.
-   This is also a WCAG 2.1 success criterion (2.3.3 Animation from Interactions). */
 @media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-
-  .animate-float,
-  .animate-pulse,
-  .animate-spin,
-  .animate-bounce {
+  .animate-float, .animate-pulse, .animate-spin, .animate-bounce {
     animation: none !important;
   }
 }
 
-/* ─── Focus Visible: Keyboard navigation accessibility ──────────────────────
-   Clear focus rings for keyboard users without impacting mouse users. */
 :focus-visible {
-  outline: 2px solid #3b82f6;
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* ─── Smooth scrolling (only for users who haven't opted out) ───────────── */
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;

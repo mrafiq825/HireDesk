@@ -73,7 +73,6 @@ export const AuthCard: React.FC<AuthCardProps> = ({
     setSignUpError("");
     setUnverifiedEmail("");
 
-    // Sync route URL seamlessly
     if (nextModeIsSignUp) {
       navigate("/signup", { replace: true });
     } else {
@@ -101,12 +100,11 @@ export const AuthCard: React.FC<AuthCardProps> = ({
 
   const validateSignUp = (): boolean => {
     const errors: Partial<Record<keyof SignUpFormData, string>> = {};
-
-    if (!signUpData.name || !signUpData.name.trim()) {
+    if (!signUpData.name.trim()) {
       errors.name = "Full name is required";
     }
 
-    if (!signUpData.company_name || !signUpData.company_name.trim()) {
+    if (!signUpData.company_name.trim()) {
       errors.company_name = "Company name is required";
     }
 
@@ -118,21 +116,16 @@ export const AuthCard: React.FC<AuthCardProps> = ({
 
     if (!signUpData.password) {
       errors.password = "Password is required";
-    } else if (signUpData.password.length < 8) {
-      errors.password = "Password must be at least 8 characters";
-    } else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(signUpData.password)) {
-      errors.password =
-        "Password requires uppercase, lowercase, and a number";
+    } else if (signUpData.password.length < 6) {
+      errors.password = "Password must be at least 6 characters";
     }
 
-    if (!signUpData.confirmPassword) {
-      errors.confirmPassword = "Please confirm your password";
-    } else if (signUpData.password !== signUpData.confirmPassword) {
+    if (signUpData.password !== signUpData.confirmPassword) {
       errors.confirmPassword = "Passwords do not match";
     }
 
     if (!signUpData.agreeToTerms) {
-      errors.agreeToTerms = "You must agree to the Terms and Privacy Policy";
+      errors.agreeToTerms = "You must agree to the terms & privacy policy";
     }
 
     setSignUpErrors(errors);
@@ -142,7 +135,6 @@ export const AuthCard: React.FC<AuthCardProps> = ({
   const handleSignInSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSignInError("");
-    setUnverifiedEmail("");
 
     if (!validateSignIn()) return;
 
@@ -192,9 +184,6 @@ export const AuthCard: React.FC<AuthCardProps> = ({
     }
   };
 
-  // Determine animation classes for background elements
-  // Note: '.signup' places teal bg on RIGHT (for Sign In view on left),
-  // while '.signin' places teal bg on LEFT (for Sign Up view on right).
   const bgAnimationClass = hasToggled
     ? isSignUp
       ? "signin"
@@ -208,9 +197,9 @@ export const AuthCard: React.FC<AuthCardProps> = ({
       <div className="auth-card-container">
         <div className="card" style={{ height: "auto", minHeight: "400px" }}>
           <div className="p-8 text-center flex flex-col items-center justify-center min-h-[400px]">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-500/20 border border-emerald-500/30 mb-4">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#94B69E]/20 border border-[#94B69E]/40 mb-4">
               <svg
-                className="w-8 h-8 text-emerald-600"
+                className="w-8 h-8 text-[#94B69E]"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -223,19 +212,19 @@ export const AuthCard: React.FC<AuthCardProps> = ({
                 />
               </svg>
             </div>
-            <h2 className="text-2xl font-bold text-slate-800 mb-2">
+            <h2 className="text-2xl font-bold text-[#F3F7F4] mb-2">
               Check Your Email
             </h2>
-            <p className="text-slate-600 mb-4 text-sm">
+            <p className="text-[#AAB8AF] mb-4 text-sm">
               Account created successfully! We sent a verification link to:
             </p>
-            <p className="text-base font-semibold text-[#624B4F] break-all bg-slate-100 px-4 py-2 rounded-lg mb-6">
+            <p className="text-base font-semibold text-[#94B69E] break-all bg-white/5 border border-white/10 px-4 py-2 rounded-lg mb-6">
               {registeredEmail}
             </p>
             <div className="flex flex-col gap-3 w-full max-w-xs">
               <button
                 onClick={() => navigate("/resend-verification")}
-                className="w-full bg-[#624B4F] text-white py-2.5 rounded-lg hover:opacity-90 transition-all font-medium text-sm cursor-pointer"
+                className="btn-primary w-full py-2.5 text-sm font-semibold rounded-lg"
               >
                 Didn't receive email?
               </button>
@@ -245,7 +234,7 @@ export const AuthCard: React.FC<AuthCardProps> = ({
                   setIsSignUp(false);
                   navigate("/login");
                 }}
-                className="w-full bg-slate-200 text-slate-700 py-2.5 rounded-lg hover:bg-slate-300 transition-all font-medium text-sm cursor-pointer"
+                className="btn-secondary w-full py-2.5 text-sm font-semibold rounded-lg"
               >
                 Back to Sign In
               </button>
@@ -263,9 +252,9 @@ export const AuthCard: React.FC<AuthCardProps> = ({
         <div className={`card-bg card-bg-1 ${bgAnimationClass}`} />
         <div className={`card-bg card-bg-2 ${bgAnimationClass}`} />
 
-        {/* Brand Logos - Order preserved for CSS sibling selectors */}
+        {/* Brand Logos on Side Panel - Dark text for high contrast against green background */}
         <div className="logo logo-1 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-slate-900/40 flex items-center justify-center border border-white/20 shadow-inner overflow-hidden p-1">
+          <div className="w-11 h-11 rounded-xl bg-[#07110D] flex items-center justify-center border border-white/20 shadow-md overflow-hidden p-1.5">
             <img
               src="/logo/logo-icon-transparent.png"
               alt="HireDesk Logo"
@@ -273,17 +262,17 @@ export const AuthCard: React.FC<AuthCardProps> = ({
             />
           </div>
           <div className="flex flex-col text-left">
-            <span className="text-2xl font-extrabold text-white tracking-tight leading-none">
-              Hire<span className="text-cyan-200">Desk</span>
+            <span className="text-2xl font-extrabold text-[#07110D] tracking-tight leading-none">
+              Hire<span className="text-[#10291C]">Desk</span>
             </span>
-            <span className="text-[10px] font-bold text-cyan-100/90 tracking-widest uppercase mt-1">
+            <span className="text-[10px] font-extrabold text-[#07110D]/90 tracking-widest uppercase mt-1">
               AI Hiring Platform
             </span>
           </div>
         </div>
 
         <div className="logo logo-2 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-slate-900/40 flex items-center justify-center border border-white/20 shadow-inner overflow-hidden p-1">
+          <div className="w-11 h-11 rounded-xl bg-[#07110D] flex items-center justify-center border border-white/20 shadow-md overflow-hidden p-1.5">
             <img
               src="/logo/logo-icon-transparent.png"
               alt="HireDesk Logo"
@@ -291,10 +280,10 @@ export const AuthCard: React.FC<AuthCardProps> = ({
             />
           </div>
           <div className="flex flex-col text-left">
-            <span className="text-2xl font-extrabold text-white tracking-tight leading-none">
-              Hire<span className="text-cyan-200">Desk</span>
+            <span className="text-2xl font-extrabold text-[#07110D] tracking-tight leading-none">
+              Hire<span className="text-[#10291C]">Desk</span>
             </span>
-            <span className="text-[10px] font-bold text-cyan-100/90 tracking-widest uppercase mt-1">
+            <span className="text-[10px] font-extrabold text-[#07110D]/90 tracking-widest uppercase mt-1">
               AI Hiring Platform
             </span>
           </div>
@@ -303,12 +292,12 @@ export const AuthCard: React.FC<AuthCardProps> = ({
         {/* Sign In Form */}
         <div className={`form signin ${!isSignUp ? "active" : ""}`}>
           <form onSubmit={handleSignInSubmit} noValidate>
-            <h2>Login</h2>
+            <h2>Welcome Back</h2>
 
             <div className="input-group">
               <input
                 type="email"
-                placeholder="Email"
+                placeholder="Email Address"
                 value={signInData.email}
                 onChange={(e: ChangeEvent<HTMLInputElement>) =>
                   setSignInData({ ...signInData, email: e.target.value })
@@ -422,7 +411,7 @@ export const AuthCard: React.FC<AuthCardProps> = ({
         {/* Sign Up Form */}
         <div className={`form signup ${isSignUp ? "active" : ""}`}>
           <form onSubmit={handleSignUpSubmit} noValidate>
-            <h2>Register</h2>
+            <h2>Create Account</h2>
 
             <div className="input-group">
               <input
