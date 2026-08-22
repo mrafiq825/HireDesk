@@ -151,7 +151,7 @@ export const AuthCard: React.FC<AuthCardProps> = ({
         setSignInError("Please verify your email address before logging in.");
       } else {
         setSignInError(
-          error.response?.data?.error || "Login failed. Please try again."
+          error.response?.data?.error || "Login failed. Please try again.",
         );
       }
     } finally {
@@ -177,7 +177,7 @@ export const AuthCard: React.FC<AuthCardProps> = ({
       setRequiresVerification(true);
     } catch (error: any) {
       setSignUpError(
-        error.response?.data?.error || "Registration failed. Please try again."
+        error.response?.data?.error || "Registration failed. Please try again.",
       );
     } finally {
       setIsSignUpLoading(false);
@@ -197,9 +197,9 @@ export const AuthCard: React.FC<AuthCardProps> = ({
       <div className="auth-card-container">
         <div className="card" style={{ height: "auto", minHeight: "400px" }}>
           <div className="p-8 text-center flex flex-col items-center justify-center min-h-[400px]">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#94B69E]/20 border border-[#94B69E]/40 mb-4">
+            <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-[rgba(212,175,55,0.15)] border border-[rgba(212,175,55,0.3)] mb-4">
               <svg
-                className="w-8 h-8 text-[#94B69E]"
+                className="w-7 h-7 text-[#D4AF37]"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -212,19 +212,19 @@ export const AuthCard: React.FC<AuthCardProps> = ({
                 />
               </svg>
             </div>
-            <h2 className="text-2xl font-bold text-[#F3F7F4] mb-2">
+            <h2 className="text-2xl font-bold text-[#F5E6C8] mb-2">
               Check Your Email
             </h2>
-            <p className="text-[#AAB8AF] mb-4 text-sm">
+            <p className="text-[#6B7280] mb-4 text-xs">
               Account created successfully! We sent a verification link to:
             </p>
-            <p className="text-base font-semibold text-[#94B69E] break-all bg-white/5 border border-white/10 px-4 py-2 rounded-lg mb-6">
+            <p className="text-sm font-semibold text-[#D4AF37] break-all bg-[#171717] border border-[rgba(107,114,128,0.2)] px-4 py-2 rounded-[6px] mb-6">
               {registeredEmail}
             </p>
-            <div className="flex flex-col gap-3 w-full max-w-xs">
+            <div className="flex flex-col gap-2.5 w-full max-w-xs">
               <button
                 onClick={() => navigate("/resend-verification")}
-                className="btn-primary w-full py-2.5 text-sm font-semibold rounded-lg"
+                className="btn-primary w-full py-2.5 text-xs font-semibold rounded-[6px]"
               >
                 Didn't receive email?
               </button>
@@ -234,7 +234,7 @@ export const AuthCard: React.FC<AuthCardProps> = ({
                   setIsSignUp(false);
                   navigate("/login");
                 }}
-                className="btn-secondary w-full py-2.5 text-sm font-semibold rounded-lg"
+                className="btn-secondary w-full py-2.5 text-xs font-semibold rounded-[6px]"
               >
                 Back to Sign In
               </button>
@@ -252,9 +252,9 @@ export const AuthCard: React.FC<AuthCardProps> = ({
         <div className={`card-bg card-bg-1 ${bgAnimationClass}`} />
         <div className={`card-bg card-bg-2 ${bgAnimationClass}`} />
 
-        {/* Brand Logos on Side Panel - Dark text for high contrast against green background */}
+        {/* Brand Logos on Side Panel */}
         <div className="logo logo-1 flex items-center gap-3">
-          <div className="w-11 h-11 rounded-xl bg-[#07110D] flex items-center justify-center border border-white/20 shadow-md overflow-hidden p-1.5">
+          <div className="w-10 h-10 rounded-[6px] bg-[#171717] flex items-center justify-center border border-[rgba(107,114,128,0.2)] overflow-hidden p-1.5">
             <img
               src="/logo/logo-icon-transparent.png"
               alt="HireDesk Logo"
@@ -262,17 +262,17 @@ export const AuthCard: React.FC<AuthCardProps> = ({
             />
           </div>
           <div className="flex flex-col text-left">
-            <span className="text-2xl font-extrabold text-[#07110D] tracking-tight leading-none">
-              Hire<span className="text-[#10291C]">Desk</span>
+            <span className="text-xl font-extrabold text-[#171717] tracking-tight leading-none">
+              Hire<span className="text-[#171717]/80">Desk</span>
             </span>
-            <span className="text-[10px] font-extrabold text-[#07110D]/90 tracking-widest uppercase mt-1">
+            <span className="text-[10px] font-extrabold text-[#171717]/70 tracking-widest uppercase mt-1">
               AI Hiring Platform
             </span>
           </div>
         </div>
 
         <div className="logo logo-2 flex items-center gap-3">
-          <div className="w-11 h-11 rounded-xl bg-[#07110D] flex items-center justify-center border border-white/20 shadow-md overflow-hidden p-1.5">
+          <div className="w-10 h-10 rounded-[6px] bg-[#171717] flex items-center justify-center border border-[rgba(107,114,128,0.2)] overflow-hidden p-1.5">
             <img
               src="/logo/logo-icon-transparent.png"
               alt="HireDesk Logo"
@@ -280,10 +280,10 @@ export const AuthCard: React.FC<AuthCardProps> = ({
             />
           </div>
           <div className="flex flex-col text-left">
-            <span className="text-2xl font-extrabold text-[#07110D] tracking-tight leading-none">
-              Hire<span className="text-[#10291C]">Desk</span>
+            <span className="text-xl font-extrabold text-[#171717] tracking-tight leading-none">
+              Hire<span className="text-[#171717]/80">Desk</span>
             </span>
-            <span className="text-[10px] font-extrabold text-[#07110D]/90 tracking-widest uppercase mt-1">
+            <span className="text-[10px] font-extrabold text-[#171717]/70 tracking-widest uppercase mt-1">
               AI Hiring Platform
             </span>
           </div>
@@ -402,7 +402,11 @@ export const AuthCard: React.FC<AuthCardProps> = ({
               {isSignInLoading ? "SIGNING IN..." : "SIGN IN"}
             </button>
 
-            <a href="#signup" onClick={handleToggleMode} className="auth-toggle-link">
+            <a
+              href="#signup"
+              onClick={handleToggleMode}
+              className="auth-toggle-link"
+            >
               Don't have an account? <em>Sign up</em>
             </a>
           </form>
@@ -540,9 +544,7 @@ export const AuthCard: React.FC<AuthCardProps> = ({
                 />
                 <button
                   type="button"
-                  onClick={() =>
-                    setShowConfirmPassword(!showConfirmPassword)
-                  }
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                   className="toggle-password-btn"
                 >
                   {showConfirmPassword ? (
@@ -644,7 +646,11 @@ export const AuthCard: React.FC<AuthCardProps> = ({
               {isSignUpLoading ? "CREATING ACCOUNT..." : "SIGN UP"}
             </button>
 
-            <a href="#signin" onClick={handleToggleMode} className="auth-toggle-link">
+            <a
+              href="#signin"
+              onClick={handleToggleMode}
+              className="auth-toggle-link"
+            >
               Already have an account? <em>Sign in</em>
             </a>
           </form>

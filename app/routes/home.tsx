@@ -80,162 +80,201 @@ export function meta({}: Route.MetaArgs) {
 
 const Home = () => {
   return (
-    <div className="min-h-screen bg-[#07110D] relative overflow-hidden text-[#F3F7F4]">
+    <div className="min-h-screen bg-[#171717] relative text-[#F5E6C8]">
       <Navbar />
 
-      {/* Atmospheric Ambient Glow Background */}
-      <div className="absolute inset-0 pointer-events-none z-0">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-[#94B69E]/10 rounded-full blur-[140px]" />
-        <div className="absolute bottom-1/3 right-10 w-[400px] h-[400px] bg-[#94B69E]/5 rounded-full blur-[120px]" />
-      </div>
-
       {/* HERO SECTION */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative z-10 overflow-hidden">
-        <div className="max-w-7xl mx-auto text-center space-y-8">
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full glass-ai text-[#94B69E] text-xs font-semibold uppercase tracking-wider mb-2">
-            <span className="w-2 h-2 rounded-full bg-[#94B69E] animate-pulse" />
-            <span>Next-Gen Enterprise AI Recruitment</span>
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-6xl mx-auto text-center space-y-8">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[4px] bg-[#1B1B1B] border border-[rgba(212,175,55,0.4)] text-[#D4AF37] text-xs font-semibold uppercase tracking-wider">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
+            <span>Enterprise AI Recruitment</span>
           </div>
 
-          <div className="space-y-4 max-w-5xl mx-auto">
-            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-bold text-[#F3F7F4] tracking-tight leading-tight">
+          <div className="space-y-4 max-w-4xl mx-auto">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-[#F5E6C8] tracking-tight leading-tight">
               Transform Talent Decisions with{" "}
-              <span className="text-[#94B69E] drop-shadow-[0_0_25px_rgba(148,182,158,0.3)]">
-                Glassmorphism AI
-              </span>
+              <span className="text-[#D4AF37]">Precision AI</span>
             </h1>
-            <p className="text-lg md:text-xl text-[#AAB8AF] max-w-3xl mx-auto leading-relaxed font-normal">
-              Empower your recruitment team with deep resume intelligence, batch screening, candidate comparison, and automated fit analysis in seconds.
+            <p className="text-base sm:text-lg text-[#6B7280] max-w-2xl mx-auto leading-relaxed">
+              Empower your recruitment team with deep resume intelligence, batch
+              screening, candidate comparison, and automated fit analysis in
+              seconds.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center pt-6">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center pt-4">
             <Link
               to="/dashboard"
-              className="btn-primary px-8 py-4 text-base font-semibold rounded-2xl shadow-xl flex items-center justify-center gap-2 group cursor-pointer"
+              className="btn-primary px-7 py-3 text-sm font-semibold rounded-[6px] flex items-center justify-center gap-2 cursor-pointer"
             >
-              <svg
-                className="w-5 h-5 text-[#07110D]"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 10V3L4 14h7v7l9-11h-7z"
-                />
-              </svg>
               <span>Launch HireDesk Workspace</span>
+              <span>→</span>
             </Link>
             <Link
               to="/about"
-              className="btn-secondary px-8 py-4 text-base font-semibold rounded-2xl flex items-center justify-center gap-2"
+              className="btn-secondary px-7 py-3 text-sm font-semibold rounded-[6px] flex items-center justify-center gap-2"
             >
               <span>Explore Platform Features</span>
             </Link>
           </div>
 
           {/* Key Metrics Strip */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto pt-16">
-            <div className="glass-panel p-6 text-center">
-              <p className="text-3xl font-bold text-[#94B69E]">70%</p>
-              <p className="text-xs text-[#AAB8AF] mt-1 font-medium">Hiring Time Saved</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto pt-14">
+            <div className="bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] rounded-[6px] p-5 text-center">
+              <p className="text-2xl sm:text-3xl font-bold text-[#D4AF37]">
+                70%
+              </p>
+              <p className="text-xs text-[#6B7280] mt-1 font-medium">
+                Hiring Time Saved
+              </p>
             </div>
-            <div className="glass-panel p-6 text-center">
-              <p className="text-3xl font-bold text-[#94B69E]">500+</p>
-              <p className="text-xs text-[#AAB8AF] mt-1 font-medium">Active HR Teams</p>
+            <div className="bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] rounded-[6px] p-5 text-center">
+              <p className="text-2xl sm:text-3xl font-bold text-[#D4AF37]">
+                500+
+              </p>
+              <p className="text-xs text-[#6B7280] mt-1 font-medium">
+                Active HR Teams
+              </p>
             </div>
-            <div className="glass-panel p-6 text-center">
-              <p className="text-3xl font-bold text-[#94B69E]">10x</p>
-              <p className="text-xs text-[#AAB8AF] mt-1 font-medium">Screening Speed</p>
+            <div className="bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] rounded-[6px] p-5 text-center">
+              <p className="text-2xl sm:text-3xl font-bold text-[#D4AF37]">
+                10x
+              </p>
+              <p className="text-xs text-[#6B7280] mt-1 font-medium">
+                Screening Speed
+              </p>
             </div>
-            <div className="glass-panel p-6 text-center">
-              <p className="text-3xl font-bold text-[#94B69E]">99.4%</p>
-              <p className="text-xs text-[#AAB8AF] mt-1 font-medium">Match Accuracy</p>
+            <div className="bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] rounded-[6px] p-5 text-center">
+              <p className="text-2xl sm:text-3xl font-bold text-[#D4AF37]">
+                99.4%
+              </p>
+              <p className="text-xs text-[#6B7280] mt-1 font-medium">
+                Match Accuracy
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       {/* THE CHALLENGE SECTION */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-white/5">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-[rgba(107,114,128,0.2)]">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="glass-badge glass-badge-danger mb-4">THE RECRUITMENT CHALLENGE</span>
-              <h2 className="text-4xl sm:text-5xl font-bold text-[#F3F7F4] mb-6 leading-tight">
+              <span className="glass-badge glass-badge-danger mb-4 rounded-[4px]">
+                THE RECRUITMENT CHALLENGE
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-[#F5E6C8] mb-4 leading-tight">
                 Traditional Screening is Broken & Time-Consuming
               </h2>
-              <p className="text-[#AAB8AF] text-lg mb-8 leading-relaxed">
-                Recruiting shouldn't consume your entire week. Manual resume reviews create bottlenecks, fatigue, and missed talent.
+              <p className="text-[#6B7280] text-sm sm:text-base mb-6 leading-relaxed">
+                Recruiting shouldn't consume your entire week. Manual resume
+                reviews create bottlenecks, fatigue, and missed talent.
               </p>
-              <div className="space-y-4">
-                <div className="glass-panel p-5 border-l-4 border-l-[#E58B8B]">
-                  <h3 className="text-lg font-semibold text-[#F3F7F4] mb-1">Hours Spent Reading Resumes</h3>
-                  <p className="text-sm text-[#718078]">
-                    Sifting through 100+ applicant PDFs consumes 25+ hours per opening, delaying critical hires.
+              <div className="space-y-3">
+                <div className="bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] rounded-[6px] p-4 border-l-4 border-l-[#EF4444]">
+                  <h3 className="text-sm font-bold text-[#F5E6C8] mb-1">
+                    Hours Spent Reading Resumes
+                  </h3>
+                  <p className="text-xs text-[#6B7280]">
+                    Sifting through 100+ applicant PDFs consumes 25+ hours per
+                    opening, delaying critical hires.
                   </p>
                 </div>
-                <div className="glass-panel p-5 border-l-4 border-l-[#E4C58A]">
-                  <h3 className="text-lg font-semibold text-[#F3F7F4] mb-1">Generic Interview Preparation</h3>
-                  <p className="text-sm text-[#718078]">
-                    Standardized interview questions fail to uncover real technical depth and leadership potential.
+                <div className="bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] rounded-[6px] p-4 border-l-4 border-l-[#F59E0B]">
+                  <h3 className="text-sm font-bold text-[#F5E6C8] mb-1">
+                    Generic Interview Preparation
+                  </h3>
+                  <p className="text-xs text-[#6B7280]">
+                    Standardized interview questions fail to uncover real
+                    technical depth and leadership potential.
                   </p>
                 </div>
-                <div className="glass-panel p-5 border-l-4 border-l-[#E58B8B]">
-                  <h3 className="text-lg font-semibold text-[#F3F7F4] mb-1">Inconsistent Candidate Comparisons</h3>
-                  <p className="text-sm text-[#718078]">
-                    Comparing applicants across unstructured resumes leads to subjective, error-prone hiring decisions.
+                <div className="bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] rounded-[6px] p-4 border-l-4 border-l-[#EF4444]">
+                  <h3 className="text-sm font-bold text-[#F5E6C8] mb-1">
+                    Inconsistent Candidate Comparisons
+                  </h3>
+                  <p className="text-xs text-[#6B7280]">
+                    Comparing applicants across unstructured resumes leads to
+                    subjective, error-prone hiring decisions.
                   </p>
                 </div>
               </div>
             </div>
 
-            <div className="glass-elevated p-8 md:p-10 border border-white/10 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[#94B69E]/10 rounded-full blur-2xl" />
-              <div className="relative space-y-6">
-                <div className="text-center pb-6 border-b border-white/10">
-                  <p className="text-xs text-[#718078] font-semibold uppercase tracking-wider">Traditional Hiring Cycle</p>
-                  <h3 className="text-4xl font-bold text-[#E58B8B] mt-2">40+ Hours Wasted</h3>
-                  <p className="text-sm text-[#AAB8AF] mt-1">Per individual job opening</p>
+            <div className="bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] rounded-[6px] p-6 sm:p-8">
+              <div className="space-y-6">
+                <div className="text-center pb-6 border-b border-[rgba(107,114,128,0.2)]">
+                  <p className="text-xs text-[#6B7280] font-semibold uppercase tracking-wider">
+                    Traditional Hiring Cycle
+                  </p>
+                  <h3 className="text-3xl font-bold text-[#EF4444] mt-2">
+                    40+ Hours Wasted
+                  </h3>
+                  <p className="text-xs text-[#6B7280] mt-1">
+                    Per individual job opening
+                  </p>
                 </div>
                 <div className="space-y-4">
                   <div>
-                    <div className="flex justify-between text-sm mb-1">
-                      <span className="text-[#AAB8AF]">Manual Resume Screening</span>
-                      <span className="text-[#E58B8B] font-semibold">25 hrs</span>
+                    <div className="flex justify-between text-xs mb-1">
+                      <span className="text-[#6B7280]">
+                        Manual Resume Screening
+                      </span>
+                      <span className="text-[#EF4444] font-semibold">
+                        25 hrs
+                      </span>
                     </div>
-                    <div className="w-full h-2 bg-white/5 rounded-full overflow-hidden">
-                      <div className="h-full bg-[#E58B8B] w-4/5 rounded-full" />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="flex justify-between text-sm mb-1">
-                      <span className="text-[#AAB8AF]">Interview Question Prep</span>
-                      <span className="text-[#E4C58A] font-semibold">10 hrs</span>
-                    </div>
-                    <div className="w-full h-2 bg-white/5 rounded-full overflow-hidden">
-                      <div className="h-full bg-[#E4C58A] w-2/5 rounded-full" />
+                    <div className="w-full h-1.5 bg-[#171717] rounded-full overflow-hidden border border-[rgba(107,114,128,0.2)]">
+                      <div className="h-full bg-[#EF4444] w-4/5 rounded-full" />
                     </div>
                   </div>
                   <div>
-                    <div className="flex justify-between text-sm mb-1">
-                      <span className="text-[#AAB8AF]">Admin & Coordination</span>
-                      <span className="text-[#AAB8AF] font-semibold">5 hrs</span>
+                    <div className="flex justify-between text-xs mb-1">
+                      <span className="text-[#6B7280]">
+                        Interview Question Prep
+                      </span>
+                      <span className="text-[#F59E0B] font-semibold">
+                        10 hrs
+                      </span>
                     </div>
-                    <div className="w-full h-2 bg-white/5 rounded-full overflow-hidden">
-                      <div className="h-full bg-white/20 w-1/5 rounded-full" />
+                    <div className="w-full h-1.5 bg-[#171717] rounded-full overflow-hidden border border-[rgba(107,114,128,0.2)]">
+                      <div className="h-full bg-[#F59E0B] w-2/5 rounded-full" />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="flex justify-between text-xs mb-1">
+                      <span className="text-[#6B7280]">
+                        Admin & Coordination
+                      </span>
+                      <span className="text-[#6B7280] font-semibold">
+                        5 hrs
+                      </span>
+                    </div>
+                    <div className="w-full h-1.5 bg-[#171717] rounded-full overflow-hidden border border-[rgba(107,114,128,0.2)]">
+                      <div className="h-full bg-[#6B7280] w-1/5 rounded-full" />
                     </div>
                   </div>
                 </div>
 
-                <div className="pt-6 border-t border-white/10 flex items-center gap-3 text-[#94B69E]">
-                  <svg className="w-6 h-6 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                <div className="pt-6 border-t border-[rgba(107,114,128,0.2)] flex items-center gap-3 text-[#D4AF37]">
+                  <svg
+                    className="w-5 h-5 shrink-0"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
                   </svg>
-                  <span className="font-semibold text-sm">HireDesk reduces total cycle time down to 12 hours.</span>
+                  <span className="font-semibold text-xs text-[#F5E6C8]">
+                    HireDesk reduces total cycle time down to 12 hours.
+                  </span>
                 </div>
               </div>
             </div>
@@ -245,89 +284,165 @@ const Home = () => {
 
       {/* CAPABILITIES / FOUR TOOLS SECTION */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-            <span className="glass-badge glass-badge-primary">AI PLATFORM MODULES</span>
-            <h2 className="text-4xl sm:text-5xl font-bold text-[#F3F7F4]">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
+            <span className="glass-badge glass-badge-primary rounded-[4px]">
+              PLATFORM MODULES
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#F5E6C8]">
               Four Precision Tools for Every Hiring Stage
             </h2>
-            <p className="text-lg text-[#AAB8AF]">
-              Designed to handle everything from high-volume screening to executive candidate evaluations.
+            <p className="text-sm text-[#6B7280]">
+              Designed to handle everything from high-volume screening to
+              executive candidate evaluations.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="glass-card p-8 flex flex-col justify-between">
-              <div className="space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-[#94B69E]/15 border border-[#94B69E]/30 flex items-center justify-center text-[#94B69E]">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="glass-card p-6 flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="w-8 h-8 rounded-[4px] bg-[#171717] border border-[rgba(212,175,55,0.3)] flex items-center justify-center text-[#D4AF37]">
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-[#F3F7F4]">Smart Review</h3>
-                <p className="text-[#94B69E] text-xs font-semibold uppercase tracking-wider">Deep Individual Analysis</p>
-                <p className="text-sm text-[#AAB8AF] leading-relaxed">
-                  Comprehensive candidate assessment covering technical skill fit, leadership readiness, red flags, and customized interview question sets.
+                <h3 className="text-lg font-bold text-[#F5E6C8]">
+                  Smart Review
+                </h3>
+                <p className="text-[#D4AF37] text-[11px] font-semibold uppercase tracking-wider">
+                  Deep Individual Analysis
+                </p>
+                <p className="text-xs text-[#6B7280] leading-relaxed">
+                  Comprehensive candidate assessment covering technical skill
+                  fit, leadership readiness, red flags, and customized interview
+                  questions.
                 </p>
               </div>
-              <Link to="/hiredesk-analyze" className="mt-8 text-sm font-semibold text-[#94B69E] hover:underline flex items-center gap-1">
+              <Link
+                to="/hiredesk-analyze"
+                className="mt-6 text-xs font-semibold text-[#D4AF37] hover:underline flex items-center gap-1"
+              >
                 <span>Start Review</span>
                 <span>→</span>
               </Link>
             </div>
 
-            <div className="glass-card p-8 flex flex-col justify-between">
-              <div className="space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-[#94B69E]/15 border border-[#94B69E]/30 flex items-center justify-center text-[#94B69E]">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+            <div className="glass-card p-6 flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="w-8 h-8 rounded-[4px] bg-[#171717] border border-[rgba(212,175,55,0.3)] flex items-center justify-center text-[#D4AF37]">
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 10V3L4 14h7v7l9-11h-7z"
+                    />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-[#F3F7F4]">Smart Screening</h3>
-                <p className="text-[#94B69E] text-xs font-semibold uppercase tracking-wider">Batch Resume Analysis</p>
-                <p className="text-sm text-[#AAB8AF] leading-relaxed">
-                  Analyze batches of 2-10 resumes concurrently. Get automated applicant rankings and comparative scorecards.
+                <h3 className="text-lg font-bold text-[#F5E6C8]">
+                  Smart Screening
+                </h3>
+                <p className="text-[#D4AF37] text-[11px] font-semibold uppercase tracking-wider">
+                  Batch Resume Analysis
+                </p>
+                <p className="text-xs text-[#6B7280] leading-relaxed">
+                  Analyze batches of 2-10 resumes concurrently. Get automated
+                  applicant rankings and comparative scorecards.
                 </p>
               </div>
-              <Link to="/batch-analyze" className="mt-8 text-sm font-semibold text-[#94B69E] hover:underline flex items-center gap-1">
+              <Link
+                to="/batch-analyze"
+                className="mt-6 text-xs font-semibold text-[#D4AF37] hover:underline flex items-center gap-1"
+              >
                 <span>Screen Batch</span>
                 <span>→</span>
               </Link>
             </div>
 
-            <div className="glass-card p-8 flex flex-col justify-between">
-              <div className="space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-[#94B69E]/15 border border-[#94B69E]/30 flex items-center justify-center text-[#94B69E]">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            <div className="glass-card p-6 flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="w-8 h-8 rounded-[4px] bg-[#171717] border border-[rgba(212,175,55,0.3)] flex items-center justify-center text-[#D4AF37]">
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                    />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-[#F3F7F4]">Find Best Fit</h3>
-                <p className="text-[#94B69E] text-xs font-semibold uppercase tracking-wider">Side-by-Side Comparison</p>
-                <p className="text-sm text-[#AAB8AF] leading-relaxed">
-                  Evaluate top candidates against key position requirements to pinpoint the single best hire for your team.
+                <h3 className="text-lg font-bold text-[#F5E6C8]">
+                  Find Best Fit
+                </h3>
+                <p className="text-[#D4AF37] text-[11px] font-semibold uppercase tracking-wider">
+                  Side-by-Side Comparison
+                </p>
+                <p className="text-xs text-[#6B7280] leading-relaxed">
+                  Evaluate top candidates against key position requirements to
+                  pinpoint the single best hire for your team.
                 </p>
               </div>
-              <Link to="/compare-resumes" className="mt-8 text-sm font-semibold text-[#94B69E] hover:underline flex items-center gap-1">
+              <Link
+                to="/compare-resumes"
+                className="mt-6 text-xs font-semibold text-[#D4AF37] hover:underline flex items-center gap-1"
+              >
                 <span>Compare Now</span>
                 <span>→</span>
               </Link>
             </div>
 
-            <div className="glass-card p-8 flex flex-col justify-between">
-              <div className="space-y-4">
-                <div className="w-12 h-12 rounded-xl bg-[#94B69E]/15 border border-[#94B69E]/30 flex items-center justify-center text-[#94B69E]">
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <div className="glass-card p-6 flex flex-col justify-between">
+              <div className="space-y-3">
+                <div className="w-8 h-8 rounded-[4px] bg-[#171717] border border-[rgba(212,175,55,0.3)] flex items-center justify-center text-[#D4AF37]">
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold text-[#F3F7F4]">Quick Screen</h3>
-                <p className="text-[#94B69E] text-xs font-semibold uppercase tracking-wider">Binary FIT / REJECT</p>
-                <p className="text-sm text-[#AAB8AF] leading-relaxed">
-                  Rapidly filter large applicant pools using AI criteria matching to isolate qualified candidates instantly.
+                <h3 className="text-lg font-bold text-[#F5E6C8]">
+                  Quick Screen
+                </h3>
+                <p className="text-[#D4AF37] text-[11px] font-semibold uppercase tracking-wider">
+                  Binary FIT / REJECT
+                </p>
+                <p className="text-xs text-[#6B7280] leading-relaxed">
+                  Rapidly filter large applicant pools using AI criteria
+                  matching to isolate qualified candidates instantly.
                 </p>
               </div>
-              <Link to="/selection-candidates" className="mt-8 text-sm font-semibold text-[#94B69E] hover:underline flex items-center gap-1">
+              <Link
+                to="/selection-candidates"
+                className="mt-6 text-xs font-semibold text-[#D4AF37] hover:underline flex items-center gap-1"
+              >
                 <span>Quick Filter</span>
                 <span>→</span>
               </Link>
@@ -338,17 +453,20 @@ const Home = () => {
 
       {/* CTA SECTION */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-5xl mx-auto glass-ai p-12 md:p-16 rounded-3xl text-center border border-[#94B69E]/30 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-[#94B69E]/15 rounded-full blur-3xl" />
-          <div className="relative space-y-6 max-w-2xl mx-auto">
-            <h2 className="text-4xl sm:text-5xl font-bold text-[#F3F7F4]">
+        <div className="max-w-4xl mx-auto bg-[#1B1B1B] p-10 md:p-14 rounded-[6px] text-center border border-[rgba(212,175,55,0.3)]">
+          <div className="space-y-5 max-w-xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#F5E6C8]">
               Ready to Upgrade Your Hiring Workflow?
             </h2>
-            <p className="text-[#AAB8AF] text-lg">
-              Start evaluating candidate resumes with enterprise AI intelligence today. Free 10 initial upload credits included.
+            <p className="text-[#6B7280] text-sm leading-relaxed">
+              Start evaluating candidate resumes with enterprise AI intelligence
+              today. Free 10 initial upload credits included.
             </p>
-            <div className="pt-4">
-              <Link to="/dashboard" className="btn-primary px-10 py-4 text-lg font-semibold rounded-2xl shadow-2xl">
+            <div className="pt-2">
+              <Link
+                to="/dashboard"
+                className="btn-primary px-8 py-3.5 text-sm font-semibold rounded-[6px]"
+              >
                 Get Started Now
               </Link>
             </div>

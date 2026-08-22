@@ -23,15 +23,15 @@ const Navbar = ({ onOpenTips }: NavbarProps) => {
   const uploadPercentage = Math.min(100, (filesUploaded / uploadLimit) * 100);
 
   const getStatusColor = () => {
-    if (uploadPercentage >= 100) return "text-[#E58B8B]";
-    if (uploadPercentage >= 80) return "text-[#E4C58A]";
-    return "text-[#94B69E]";
+    if (uploadPercentage >= 100) return "text-[#EF4444]";
+    if (uploadPercentage >= 80) return "text-[#F59E0B]";
+    return "text-[#D4AF37]";
   };
 
   const getProgressBarColor = () => {
-    if (uploadPercentage >= 100) return "bg-[#E58B8B]";
-    if (uploadPercentage >= 80) return "bg-[#E4C58A]";
-    return "bg-[#94B69E]";
+    if (uploadPercentage >= 100) return "bg-[#EF4444]";
+    if (uploadPercentage >= 80) return "bg-[#F59E0B]";
+    return "bg-[#D4AF37]";
   };
 
   const getProgressBarWidthClass = (): string => {
@@ -73,18 +73,18 @@ const Navbar = ({ onOpenTips }: NavbarProps) => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#07110D]/75 backdrop-blur-xl border-b border-white/10 shadow-lg shadow-black/30">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#171717] border-b border-[rgba(107,114,128,0.2)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center gap-3">
             <Link
               to="/"
-              className="flex items-center hover:opacity-90 transition-opacity duration-300"
+              className="flex items-center hover:opacity-90 transition-opacity duration-180"
             >
               <img
                 src="/logo/logo-transparent.png"
                 alt="HireDesk Logo"
-                className="h-9 w-auto object-contain transition-transform duration-300 hover:scale-105"
+                className="h-8 w-auto object-contain"
               />
             </Link>
           </div>
@@ -93,25 +93,25 @@ const Navbar = ({ onOpenTips }: NavbarProps) => {
             {isAuthenticated && (
               <Link
                 to="/hiredesk-chat"
-                className="text-[#AAB8AF] hover:text-[#94B69E] transition-colors duration-200 font-medium flex items-center gap-2 relative group"
+                className="text-[#6B7280] hover:text-[#F5E6C8] transition-colors duration-180 font-medium text-sm flex items-center gap-2 relative group py-2"
               >
                 <span>HireDesk Chat</span>
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#94B69E] shadow-[0_0_8px_#94B69E] group-hover:w-full transition-all duration-300"></span>
+                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] group-hover:w-full transition-all duration-180"></span>
               </Link>
             )}
             <Link
               to="/about"
-              className="text-[#AAB8AF] hover:text-[#94B69E] transition-colors duration-200 font-medium flex items-center gap-2 relative group"
+              className="text-[#6B7280] hover:text-[#F5E6C8] transition-colors duration-180 font-medium text-sm flex items-center gap-2 relative group py-2"
             >
               <span>About</span>
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#94B69E] shadow-[0_0_8px_#94B69E] group-hover:w-full transition-all duration-300"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] group-hover:w-full transition-all duration-180"></span>
             </Link>
             <Link
               to="/contact"
-              className="text-[#AAB8AF] hover:text-[#94B69E] transition-colors duration-200 font-medium flex items-center gap-2 relative group"
+              className="text-[#6B7280] hover:text-[#F5E6C8] transition-colors duration-180 font-medium text-sm flex items-center gap-2 relative group py-2"
             >
               <span>Contact</span>
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#94B69E] shadow-[0_0_8px_#94B69E] group-hover:w-full transition-all duration-300"></span>
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4AF37] group-hover:w-full transition-all duration-180"></span>
             </Link>
           </div>
 
@@ -120,16 +120,16 @@ const Navbar = ({ onOpenTips }: NavbarProps) => {
               <div className="relative">
                 <button
                   onClick={toggleUserMenu}
-                  className="flex items-center space-x-3 text-[#F3F7F4] hover:text-[#94B69E] transition-colors duration-200 bg-white/5 hover:bg-white/10 border border-white/10 px-3.5 py-1.5 rounded-xl cursor-pointer shadow-sm"
+                  className="flex items-center space-x-3 text-[#F5E6C8] hover:text-[#D4AF37] transition-colors duration-180 bg-[#1B1B1B] hover:border-[rgba(107,114,128,0.4)] border border-[rgba(107,114,128,0.2)] px-3.5 py-1.5 rounded-[6px] cursor-pointer"
                 >
-                  <div className="w-8 h-8 bg-[#94B69E] text-[#07110D] font-bold rounded-lg flex items-center justify-center shadow-[0_0_12px_rgba(148,182,158,0.3)]">
-                    <span className="text-sm">
+                  <div className="w-7 h-7 bg-[#D4AF37] text-[#171717] font-bold rounded-[4px] flex items-center justify-center">
+                    <span className="text-xs">
                       {user?.name?.charAt(0).toUpperCase() || "U"}
                     </span>
                   </div>
                   <span className="font-medium text-sm">{user?.name}</span>
                   <svg
-                    className={`w-4 h-4 transition-transform duration-200 text-[#AAB8AF] ${
+                    className={`w-3.5 h-3.5 transition-transform duration-180 text-[#6B7280] ${
                       isUserMenuOpen ? "rotate-180" : ""
                     }`}
                     fill="none"
@@ -146,10 +146,12 @@ const Navbar = ({ onOpenTips }: NavbarProps) => {
                 </button>
 
                 {isUserMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-72 glass-floating border border-white/15 py-2 z-50 shadow-2xl">
-                    <div className="px-4 py-3 border-b border-white/10">
-                      <p className="text-xs text-[#718078] uppercase font-semibold tracking-wider">Signed in as</p>
-                      <p className="text-sm text-[#F3F7F4] font-medium truncate mt-0.5">
+                  <div className="absolute right-0 mt-2 w-72 bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] rounded-[6px] py-2 z-50">
+                    <div className="px-4 py-3 border-b border-[rgba(107,114,128,0.2)]">
+                      <p className="text-xs text-[#6B7280] uppercase font-semibold tracking-wider">
+                        Signed in as
+                      </p>
+                      <p className="text-sm text-[#F5E6C8] font-medium truncate mt-0.5">
                         {user?.email}
                       </p>
                     </div>
@@ -158,22 +160,22 @@ const Navbar = ({ onOpenTips }: NavbarProps) => {
                         onOpenTips();
                         setIsUserMenuOpen(false);
                       }}
-                      className="block w-full text-left px-4 py-2.5 text-sm text-[#AAB8AF] hover:bg-white/10 hover:text-[#94B69E] transition-colors cursor-pointer"
+                      className="block w-full text-left px-4 py-2.5 text-sm text-[#6B7280] hover:bg-[#171717] hover:text-[#F5E6C8] transition-colors cursor-pointer"
                     >
-                      💡 Hiring Tips
+                      Hiring Tips
                     </button>
                     <Link
                       to="/profile"
-                      className="block px-4 py-2.5 text-sm text-[#AAB8AF] hover:bg-white/10 hover:text-[#94B69E] transition-colors"
+                      className="block px-4 py-2.5 text-sm text-[#6B7280] hover:bg-[#171717] hover:text-[#F5E6C8] transition-colors"
                       onClick={() => setIsUserMenuOpen(false)}
                     >
-                      👤 Profile
+                      Profile
                     </Link>
                     <button
                       onClick={handleLogout}
-                      className="block w-full text-left px-4 py-2.5 text-sm text-[#E58B8B] hover:bg-red-500/10 transition-colors cursor-pointer border-t border-white/10 mt-1"
+                      className="block w-full text-left px-4 py-2.5 text-sm text-[#EF4444] hover:bg-[#171717] transition-colors cursor-pointer border-t border-[rgba(107,114,128,0.2)] mt-1"
                     >
-                      🚪 Sign out
+                      Sign out
                     </button>
                   </div>
                 )}
@@ -181,7 +183,7 @@ const Navbar = ({ onOpenTips }: NavbarProps) => {
             ) : (
               <Link
                 to="/login"
-                className="btn-primary px-5 py-2 text-sm font-semibold rounded-xl"
+                className="btn-primary px-5 py-2 text-sm font-semibold rounded-[6px]"
               >
                 <span>Get Started</span>
               </Link>
@@ -191,11 +193,11 @@ const Navbar = ({ onOpenTips }: NavbarProps) => {
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="text-[#AAB8AF] hover:text-[#94B69E] transition-colors duration-200 p-2 rounded-lg bg-white/5"
+              className="text-[#6B7280] hover:text-[#F5E6C8] transition-colors duration-180 p-2 rounded-[6px] border border-[rgba(107,114,128,0.2)] bg-[#1B1B1B]"
               aria-label="Toggle menu"
             >
               <svg
-                className="w-6 h-6"
+                className="w-5 h-5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -222,61 +224,58 @@ const Navbar = ({ onOpenTips }: NavbarProps) => {
 
         {isMenuOpen && (
           <div className="md:hidden pb-4 pt-2">
-            <div className="p-3 space-y-2 glass-floating border border-white/15 rounded-2xl shadow-2xl">
+            <div className="p-3 space-y-2 bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] rounded-[6px]">
               {isAuthenticated && (
                 <Link
                   to="/hiredesk-chat"
-                  className="flex items-center gap-3 px-3.5 py-2.5 text-[#AAB8AF] hover:text-[#94B69E] hover:bg-white/10 rounded-xl transition-colors duration-200 font-medium text-sm"
+                  className="flex items-center gap-3 px-3.5 py-2.5 text-[#6B7280] hover:text-[#F5E6C8] hover:bg-[#171717] rounded-[6px] transition-colors duration-180 font-medium text-sm"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  <span>💬</span>
                   <span>HireDesk Chat</span>
                 </Link>
               )}
               <Link
                 to="/about"
-                className="flex items-center gap-3 px-3.5 py-2.5 text-[#AAB8AF] hover:text-[#94B69E] hover:bg-white/10 rounded-xl transition-colors duration-200 font-medium text-sm"
+                className="flex items-center gap-3 px-3.5 py-2.5 text-[#6B7280] hover:text-[#F5E6C8] hover:bg-[#171717] rounded-[6px] transition-colors duration-180 font-medium text-sm"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <span>ℹ️</span>
                 <span>About</span>
               </Link>
               <Link
                 to="/contact"
-                className="flex items-center gap-3 px-3.5 py-2.5 text-[#AAB8AF] hover:text-[#94B69E] hover:bg-white/10 rounded-xl transition-colors duration-200 font-medium text-sm"
+                className="flex items-center gap-3 px-3.5 py-2.5 text-[#6B7280] hover:text-[#F5E6C8] hover:bg-[#171717] rounded-[6px] transition-colors duration-180 font-medium text-sm"
                 onClick={() => setIsMenuOpen(false)}
               >
-                <span>✉️</span>
                 <span>Contact Us</span>
               </Link>
-              <div className="border-t border-white/10 pt-3 mt-2">
+              <div className="border-t border-[rgba(107,114,128,0.2)] pt-3 mt-2">
                 {isAuthenticated ? (
                   <>
-                    <div className="px-3.5 py-3 border-b border-white/10 mb-2">
+                    <div className="px-3.5 py-3 border-b border-[rgba(107,114,128,0.2)] mb-2">
                       <div className="flex items-center space-x-3 mb-3">
-                        <div className="w-8 h-8 bg-[#94B69E] text-[#07110D] font-bold rounded-lg flex items-center justify-center shrink-0">
-                          <span className="text-sm">
+                        <div className="w-8 h-8 bg-[#D4AF37] text-[#171717] font-bold rounded-[4px] flex items-center justify-center shrink-0">
+                          <span className="text-xs">
                             {user?.name?.charAt(0).toUpperCase() || "U"}
                           </span>
                         </div>
                         <div className="flex-1 min-w-0">
-                          <p className="text-sm font-medium text-[#F3F7F4] truncate">
+                          <p className="text-sm font-medium text-[#F5E6C8] truncate">
                             {user?.name}
                           </p>
-                          <p className="text-xs text-[#718078] truncate">
+                          <p className="text-xs text-[#6B7280] truncate">
                             {user?.email}
                           </p>
                         </div>
                       </div>
-                      <div className="space-y-2 bg-black/20 p-2.5 rounded-xl border border-white/5">
+                      <div className="space-y-2 bg-[#171717] p-2.5 rounded-[6px] border border-[rgba(107,114,128,0.2)]">
                         <div className="flex items-center justify-between">
                           <div className="flex items-center space-x-2">
-                            <p className="text-xs text-[#718078]">
+                            <p className="text-xs text-[#6B7280]">
                               Upload Status:
                             </p>
                             <button
                               onClick={handleRefreshStats}
-                              className="text-[#718078] hover:text-[#94B69E] transition-colors"
+                              className="text-[#6B7280] hover:text-[#D4AF37] transition-colors"
                               title="Refresh upload statistics"
                             >
                               <svg
@@ -300,13 +299,13 @@ const Navbar = ({ onOpenTips }: NavbarProps) => {
                             {filesUploaded}/{uploadLimit}
                           </span>
                         </div>
-                        <div className="relative w-full h-2 bg-white/10 rounded-full overflow-hidden">
+                        <div className="relative w-full h-1.5 bg-[#1B1B1B] rounded-full overflow-hidden">
                           <div
-                            className={`${getProgressBarWidthClass()} h-full ${getProgressBarColor()} transition-all duration-500`}
+                            className={`${getProgressBarWidthClass()} h-full ${getProgressBarColor()} transition-all duration-300`}
                           />
                         </div>
                         <p
-                          className={`text-xs ${remainingUploads === 0 ? "text-[#E58B8B] font-semibold" : "text-[#718078]"}`}
+                          className={`text-xs ${remainingUploads === 0 ? "text-[#EF4444] font-semibold" : "text-[#6B7280]"}`}
                         >
                           {remainingUploads === 0
                             ? "Upload limit reached"
@@ -319,31 +318,31 @@ const Navbar = ({ onOpenTips }: NavbarProps) => {
                         onOpenTips();
                         setIsMenuOpen(false);
                       }}
-                      className="block w-full text-left px-3.5 py-2.5 text-[#AAB8AF] hover:text-[#94B69E] hover:bg-white/10 rounded-xl transition-colors duration-200 font-medium text-sm"
+                      className="block w-full text-left px-3.5 py-2.5 text-[#6B7280] hover:text-[#F5E6C8] hover:bg-[#171717] rounded-[6px] transition-colors duration-180 font-medium text-sm"
                     >
-                      💡 Hiring Tips
+                      Hiring Tips
                     </button>
                     <Link
                       to="/profile"
-                      className="block px-3.5 py-2.5 text-[#AAB8AF] hover:text-[#94B69E] hover:bg-white/10 rounded-xl transition-colors duration-200 font-medium text-sm"
+                      className="block px-3.5 py-2.5 text-[#6B7280] hover:text-[#F5E6C8] hover:bg-[#171717] rounded-[6px] transition-colors duration-180 font-medium text-sm"
                       onClick={() => setIsMenuOpen(false)}
                     >
-                      👤 Profile
+                      Profile
                     </Link>
                     <button
                       onClick={() => {
                         handleLogout();
                         setIsMenuOpen(false);
                       }}
-                      className="block w-full text-left px-3.5 py-2.5 text-[#E58B8B] hover:bg-red-500/10 rounded-xl transition-colors duration-200 font-medium text-sm border-t border-white/10 mt-2 pt-3"
+                      className="block w-full text-left px-3.5 py-2.5 text-[#EF4444] hover:bg-[#171717] rounded-[6px] transition-colors duration-180 font-medium text-sm border-t border-[rgba(107,114,128,0.2)] mt-2 pt-3"
                     >
-                      🚪 Sign out
+                      Sign out
                     </button>
                   </>
                 ) : (
                   <Link
                     to="/login"
-                    className="btn-primary w-full py-2.5 text-sm font-semibold rounded-xl text-center flex items-center justify-center gap-2"
+                    className="btn-primary w-full py-2.5 text-sm font-semibold rounded-[6px] text-center flex items-center justify-center gap-2"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <span>Sign In / Register</span>

@@ -14,14 +14,20 @@ import type {
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "HireDesk Chat — AI Recruiter Co-pilot for Screening & Interviews" },
+    {
+      title: "HireDesk Chat — AI Recruiter Co-pilot for Screening & Interviews",
+    },
     {
       name: "description",
       content:
         "Chat with HireDesk's AI co-pilot to generate screening questions, draft interview prompts, create job postings, and match candidates to roles in real time.",
     },
     { name: "robots", content: "noindex, nofollow" },
-    { tagName: "link", rel: "canonical", href: "https://hiredesk.vercel.app/hiredesk-chat" },
+    {
+      tagName: "link",
+      rel: "canonical",
+      href: "https://hiredesk.vercel.app/hiredesk-chat",
+    },
   ];
 }
 
@@ -70,7 +76,7 @@ const statusStyles: Record<
 };
 
 const mockResponse = (
-  payload: HireDeskQueryPayload
+  payload: HireDeskQueryPayload,
 ): HireDeskQueryResponse => ({
   success: true,
   data: {
@@ -92,7 +98,7 @@ const HireDeskChat = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [rateLimited, setRateLimited] = useState(false);
   const [rateLimitMessage, setRateLimitMessage] = useState(
-    "Too many requests from this IP, please try again later."
+    "Too many requests from this IP, please try again later.",
   );
 
   const mockMode = useMemo(() => {
@@ -161,7 +167,7 @@ const HireDeskChat = () => {
       setStatusMessage(
         status === "operational"
           ? "Operational"
-          : "Service available with limits"
+          : "Service available with limits",
       );
     } catch (error) {
       console.error("HireDesk status error", error);
@@ -200,7 +206,7 @@ const HireDeskChat = () => {
     if (typeof window === "undefined") return;
     window.localStorage.setItem(
       "hiredesk_chat_last_form",
-      JSON.stringify(values)
+      JSON.stringify(values),
     );
   }, [values]);
 
@@ -208,7 +214,7 @@ const HireDeskChat = () => {
     if (typeof window === "undefined") return;
     window.localStorage.setItem(
       "hiredesk_chat_history",
-      JSON.stringify(messages)
+      JSON.stringify(messages),
     );
   }, [messages]);
 
@@ -302,7 +308,7 @@ const HireDeskChat = () => {
 
       setError(
         "query",
-        "We could not process this request. Please adjust and retry."
+        "We could not process this request. Please adjust and retry.",
       );
     }
   });
@@ -325,32 +331,43 @@ const HireDeskChat = () => {
 
   return (
     <ProtectedRoute>
-      <div className="min-h-screen bg-[#07110D] relative overflow-hidden text-[#F3F7F4]">
-        {/* Glow effect */}
-        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full bg-[#94B69E]/10 blur-[130px] pointer-events-none" />
-
-        <header className="relative z-10 border-b border-white/10 bg-[#07110D]/80 backdrop-blur-xl py-6">
+      <div className="min-h-screen bg-[#171717] relative text-[#F5E6C8]">
+        <header className="relative z-10 border-b border-[rgba(107,114,128,0.2)] bg-[#171717] py-4">
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
               <div className="flex items-center gap-3">
-                <Link to="/dashboard" className="btn-secondary px-3.5 py-2 text-xs">
+                <Link
+                  to="/dashboard"
+                  className="btn-secondary px-3 py-1.5 text-xs rounded-[6px]"
+                >
                   ← Dashboard
                 </Link>
                 <div>
                   <div className="flex items-center gap-2">
-                    <h1 className="text-2xl font-bold text-[#F3F7F4]">HireDesk AI Co-pilot</h1>
-                    <span className="glass-badge glass-badge-primary">AI Chat</span>
+                    <h1 className="text-xl font-bold text-[#F5E6C8]">
+                      HireDesk AI Co-pilot
+                    </h1>
+                    <span className="glass-badge glass-badge-primary rounded-[4px] text-[10px]">
+                      AI Chat
+                    </span>
                   </div>
-                  <p className="text-xs text-[#718078]">Instant recruitment assistance & prompt engineering</p>
+                  <p className="text-[11px] text-[#6B7280]">
+                    Recruitment assistance & prompt engineering
+                  </p>
                 </div>
               </div>
 
-              <div className="flex items-center gap-3">
-                <span className={`glass-badge ${statusStyles[serviceStatus]}`}>
+              <div className="flex items-center gap-2.5">
+                <span
+                  className={`glass-badge rounded-[4px] text-xs ${statusStyles[serviceStatus]}`}
+                >
                   {serviceStatus === "loading" ? "Checking..." : statusMessage}
                 </span>
                 {messages.length > 0 && (
-                  <button onClick={clearAll} className="btn-secondary px-3 py-1.5 text-xs">
+                  <button
+                    onClick={clearAll}
+                    className="btn-secondary px-3 py-1 text-xs rounded-[6px]"
+                  >
                     Clear Chat
                   </button>
                 )}
@@ -359,28 +376,31 @@ const HireDeskChat = () => {
           </div>
         </header>
 
-        <main className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 py-8 space-y-6">
+        <main className="max-w-6xl mx-auto px-4 sm:px-6 py-8 space-y-6">
           {/* Messages Log */}
           {messages.length > 0 && (
-            <div className="space-y-4 max-w-4xl mx-auto">
+            <div className="space-y-3 max-w-4xl mx-auto">
               {messages.map((msg) => (
                 <div
                   key={msg.id}
-                  className={`p-5 rounded-2xl transition-all ${
+                  className={`p-4 rounded-[6px] transition-all border ${
                     msg.role === "user"
-                      ? "glass-card ml-auto max-w-2xl border-white/15"
-                      : "glass-ai max-w-3xl border-[#94B69E]/30"
+                      ? "bg-[#1B1B1B] border-[rgba(107,114,128,0.3)] ml-auto max-w-2xl"
+                      : "bg-[#171717] border-[rgba(212,175,55,0.3)] max-w-3xl"
                   }`}
                 >
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs font-bold text-[#94B69E] uppercase tracking-wider">
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className="text-xs font-bold text-[#D4AF37] uppercase tracking-wider">
                       {msg.role === "user" ? "You" : "HireDesk AI Assistant"}
                     </span>
-                    <span className="text-[10px] text-[#718078]">
-                      {new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    <span className="text-[10px] text-[#6B7280]">
+                      {new Date(msg.timestamp).toLocaleTimeString([], {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
                     </span>
                   </div>
-                  <p className="text-sm text-[#F3F7F4] leading-relaxed whitespace-pre-wrap">
+                  <p className="text-xs sm:text-sm text-[#F5E6C8] leading-relaxed whitespace-pre-wrap">
                     {msg.content}
                   </p>
                 </div>
@@ -390,16 +410,19 @@ const HireDeskChat = () => {
 
           {/* Input Panel */}
           <section className="glass-panel p-6 sm:p-8 max-w-4xl mx-auto">
-            <div className="mb-6 flex justify-between items-center">
-              <div>
-                <h2 className="text-lg font-bold text-[#F3F7F4]">AI Recruiter Workspace</h2>
-                <p className="text-xs text-[#718078]">Generate screening prompts, JD descriptions, and candidate match scores</p>
-              </div>
+            <div className="mb-4">
+              <h2 className="text-base font-bold text-[#F5E6C8]">
+                AI Recruiter Workspace
+              </h2>
+              <p className="text-xs text-[#6B7280]">
+                Generate screening prompts, JD descriptions, and candidate match
+                scores
+              </p>
             </div>
 
             <form className="space-y-4" onSubmit={onSubmit}>
               <div>
-                <div className="flex justify-between text-xs text-[#AAB8AF] font-semibold mb-1">
+                <div className="flex justify-between text-xs text-[#6B7280] font-semibold mb-1">
                   <span>Prompt / Query *</span>
                   <span>{values.query.trim().length}/2000</span>
                 </div>
@@ -408,58 +431,78 @@ const HireDeskChat = () => {
                   value={values.query}
                   onChange={handleChange}
                   rows={4}
-                  className="glass-input w-full p-3.5 text-sm"
+                  className="glass-input w-full p-3 text-xs sm:text-sm"
                   placeholder="Ask HireDesk to screen candidates, generate tailored interview questions, or match a resume..."
                 />
-                {errors.query && <p className="text-xs text-[#E58B8B] mt-1">{errors.query}</p>}
+                {errors.query && (
+                  <p className="text-xs text-[#EF4444] mt-1">{errors.query}</p>
+                )}
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-semibold text-[#AAB8AF] mb-1">Query Type</label>
+                  <label className="block text-xs font-semibold text-[#6B7280] mb-1">
+                    Query Type
+                  </label>
                   <select
                     name="queryType"
                     value={values.queryType}
                     onChange={handleChange}
-                    className="glass-input w-full p-3 text-sm bg-[#07110D]"
+                    className="glass-input w-full p-2.5 text-xs sm:text-sm bg-[#171717]"
                   >
                     <option value="screening">Screening</option>
-                    <option value="interview_questions">Interview Questions</option>
+                    <option value="interview_questions">
+                      Interview Questions
+                    </option>
                     <option value="job_posting">Job Posting</option>
                     <option value="candidate_match">Candidate Match</option>
                   </select>
-                  <p className="text-[11px] text-[#718078] mt-1">{queryTypeHints[values.queryType]}</p>
+                  <p className="text-[11px] text-[#6B7280] mt-1">
+                    {queryTypeHints[values.queryType]}
+                  </p>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[#AAB8AF] mb-1">Job Role Title (Optional)</label>
+                  <label className="block text-xs font-semibold text-[#6B7280] mb-1">
+                    Job Role Title (Optional)
+                  </label>
                   <input
                     type="text"
                     name="jobRole"
                     value={values.jobRole}
                     onChange={handleChange}
-                    className="glass-input w-full p-3 text-sm"
+                    className="glass-input w-full p-2.5 text-xs sm:text-sm"
                     placeholder="e.g. Senior Frontend Architect"
                   />
-                  {errors.jobRole && <p className="text-xs text-[#E58B8B] mt-1">{errors.jobRole}</p>}
+                  {errors.jobRole && (
+                    <p className="text-xs text-[#EF4444] mt-1">
+                      {errors.jobRole}
+                    </p>
+                  )}
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-[#AAB8AF] mb-1">Candidate Notes / Summary (Optional)</label>
+                <label className="block text-xs font-semibold text-[#6B7280] mb-1">
+                  Candidate Notes / Summary (Optional)
+                </label>
                 <textarea
                   name="candidateInfo"
                   value={values.candidateInfo}
                   onChange={handleChange}
                   rows={2}
-                  className="glass-input w-full p-3 text-sm"
+                  className="glass-input w-full p-2.5 text-xs sm:text-sm"
                   placeholder="Paste resume snippet or candidate highlights..."
                 />
-                {errors.candidateInfo && <p className="text-xs text-[#E58B8B] mt-1">{errors.candidateInfo}</p>}
+                {errors.candidateInfo && (
+                  <p className="text-xs text-[#EF4444] mt-1">
+                    {errors.candidateInfo}
+                  </p>
+                )}
               </div>
 
               {rateLimited && (
-                <div className="p-3 glass-badge-danger text-xs font-semibold rounded-xl">
+                <div className="p-3 glass-badge-danger text-xs font-semibold rounded-[4px]">
                   {rateLimitMessage}
                 </div>
               )}
@@ -468,7 +511,7 @@ const HireDeskChat = () => {
                 <button
                   type="submit"
                   disabled={disableSubmit}
-                  className="btn-primary px-8 py-3 text-sm font-semibold rounded-xl"
+                  className="btn-primary px-6 py-2.5 text-xs sm:text-sm font-semibold rounded-[6px]"
                 >
                   {isLoading ? "Processing Request..." : "Send to HireDesk AI"}
                 </button>

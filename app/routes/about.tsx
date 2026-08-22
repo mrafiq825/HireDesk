@@ -53,40 +53,54 @@ export function meta({}: Route.MetaArgs) {
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-[#07110D] relative overflow-hidden text-[#F3F7F4]">
+    <div className="min-h-screen bg-[#171717] relative text-[#F5E6C8]">
       <Navbar />
 
-      <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full bg-[#94B69E]/10 blur-[130px] pointer-events-none" />
-
-      <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-5xl mx-auto space-y-6">
-        <span className="glass-badge glass-badge-primary">OUR RECRUITMENT MISSION</span>
-        <h1 className="text-4xl sm:text-6xl font-bold text-[#F3F7F4] tracking-tight">
-          Pioneering Glassmorphism <span className="text-[#94B69E]">AI Recruitment</span>
+      <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 relative z-10 text-center max-w-5xl mx-auto space-y-4">
+        <span className="glass-badge glass-badge-primary rounded-[4px]">
+          OUR RECRUITMENT MISSION
+        </span>
+        <h1 className="text-3xl sm:text-5xl font-bold text-[#F5E6C8] tracking-tight">
+          Pioneering Intelligent{" "}
+          <span className="text-[#D4AF37]">AI Recruitment</span>
         </h1>
-        <p className="text-lg text-[#AAB8AF] leading-relaxed max-w-3xl mx-auto">
-          HireDesk delivers intelligent talent analysis tools that empower recruiters to evaluate candidates with extreme clarity, confidence, and speed.
+        <p className="text-sm sm:text-base text-[#6B7280] leading-relaxed max-w-2xl mx-auto">
+          HireDesk delivers precision talent analysis tools that empower
+          recruiters to evaluate candidates with extreme clarity, confidence,
+          and speed.
         </p>
       </section>
 
-      <section className="py-12 px-4 sm:px-6 lg:px-8 relative z-10 max-w-6xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="glass-panel p-8 space-y-4">
-            <h2 className="text-2xl font-bold text-[#F3F7F4]">Built for HR Professionals</h2>
-            <p className="text-sm text-[#AAB8AF] leading-relaxed">
-              Recruitment cycles shouldn't take weeks. HireDesk removes manual fatigue by automating resume parsing, qualification scoring, skill mapping, and candidate comparisons.
+      <section className="py-10 px-4 sm:px-6 lg:px-8 relative z-10 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="glass-panel p-6 sm:p-8 space-y-3">
+            <h2 className="text-xl font-bold text-[#F5E6C8]">
+              Built for HR Professionals
+            </h2>
+            <p className="text-xs sm:text-sm text-[#6B7280] leading-relaxed">
+              Recruitment cycles shouldn't take weeks. HireDesk removes manual
+              fatigue by automating resume parsing, qualification scoring, skill
+              mapping, and candidate comparisons.
             </p>
           </div>
 
-          <div className="glass-panel p-8 space-y-4">
-            <h2 className="text-2xl font-bold text-[#F3F7F4]">Enterprise Security & Privacy</h2>
-            <p className="text-sm text-[#AAB8AF] leading-relaxed">
-              Every candidate document processed through HireDesk is handled with strict confidentiality, encrypted transmission, and strict WCAG accessibility guidelines.
+          <div className="glass-panel p-6 sm:p-8 space-y-3">
+            <h2 className="text-xl font-bold text-[#F5E6C8]">
+              Enterprise Security & Privacy
+            </h2>
+            <p className="text-xs sm:text-sm text-[#6B7280] leading-relaxed">
+              Every candidate document processed through HireDesk is handled
+              with strict confidentiality, encrypted transmission, and strict
+              WCAG accessibility guidelines.
             </p>
           </div>
         </div>
 
-        <div className="mt-12 text-center">
-          <Link to="/dashboard" className="btn-primary px-8 py-3.5 text-sm font-semibold rounded-xl">
+        <div className="mt-10 text-center">
+          <Link
+            to="/dashboard"
+            className="btn-primary px-7 py-3 text-xs sm:text-sm font-semibold rounded-[6px]"
+          >
             Explore Dashboard
           </Link>
         </div>

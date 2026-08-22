@@ -26,28 +26,20 @@ export const PasswordStrengthIndicator = ({
     return "Strong";
   };
 
-  const getStrengthColor = () => {
-    if (strength === 0) return "gray";
-    if (strength <= 25) return "red";
-    if (strength <= 50) return "orange";
-    if (strength <= 75) return "yellow";
-    return "green";
-  };
-
   const getStrengthBgColor = () => {
-    if (strength === 0) return "bg-gray-500";
-    if (strength <= 25) return "bg-red-500";
-    if (strength <= 50) return "bg-orange-500";
-    if (strength <= 75) return "bg-yellow-500";
-    return "bg-green-500";
+    if (strength === 0) return "bg-[#6B7280]";
+    if (strength <= 25) return "bg-[#EF4444]";
+    if (strength <= 50) return "bg-[#F59E0B]";
+    if (strength <= 75) return "bg-[#D4AF37]";
+    return "bg-[#D4AF37]";
   };
 
   const getStrengthTextColor = () => {
-    if (strength === 0) return "text-gray-400";
-    if (strength <= 25) return "text-red-400";
-    if (strength <= 50) return "text-orange-400";
-    if (strength <= 75) return "text-yellow-400";
-    return "text-green-400";
+    if (strength === 0) return "text-[#6B7280]";
+    if (strength <= 25) return "text-[#EF4444]";
+    if (strength <= 50) return "text-[#F59E0B]";
+    if (strength <= 75) return "text-[#D4AF37]";
+    return "text-[#D4AF37]";
   };
 
   const hasMinLength = newPassword.length >= 8;
@@ -59,30 +51,30 @@ export const PasswordStrengthIndicator = ({
     <div className="mt-4 space-y-3">
       <div>
         <div className="flex items-center justify-between mb-2">
-          <span className="text-xs font-medium text-slate-400">
+          <span className="text-xs font-medium text-[#6B7280]">
             Password Strength:
           </span>
           <span className={`text-xs font-semibold ${getStrengthTextColor()}`}>
             {getStrengthLabel()}
           </span>
         </div>
-        <div className="w-full h-2 bg-slate-700/50 rounded-full overflow-hidden border border-slate-600/30">
+        <div className="w-full h-1.5 bg-[#171717] rounded-full overflow-hidden border border-[rgba(107,114,128,0.2)]">
           <div
-            className={`h-full ${getStrengthBgColor()} transition-all duration-300 rounded-full ${getStrengthWidthClass(strength)}`}
+            className={`h-full ${getStrengthBgColor()} transition-all duration-180 rounded-full ${getStrengthWidthClass(strength)}`}
           ></div>
         </div>
       </div>
 
       <div className="space-y-2 pt-2">
-        <p className="text-xs font-medium text-slate-300">Requirements:</p>
+        <p className="text-xs font-medium text-[#F5E6C8]">Requirements:</p>
         <ul className="space-y-1">
           <li
-            className={`flex items-center gap-2 text-xs transition-colors duration-200 ${
-              hasMinLength ? "text-green-400" : "text-slate-500"
+            className={`flex items-center gap-2 text-xs transition-colors duration-180 ${
+              hasMinLength ? "text-[#D4AF37]" : "text-[#6B7280]"
             }`}
           >
             <svg
-              className="w-4 h-4 flex-shrink-0"
+              className="w-3.5 h-3.5 flex-shrink-0"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -107,12 +99,12 @@ export const PasswordStrengthIndicator = ({
           </li>
 
           <li
-            className={`flex items-center gap-2 text-xs transition-colors duration-200 ${
-              hasUppercase ? "text-green-400" : "text-slate-500"
+            className={`flex items-center gap-2 text-xs transition-colors duration-180 ${
+              hasUppercase ? "text-[#D4AF37]" : "text-[#6B7280]"
             }`}
           >
             <svg
-              className="w-4 h-4 flex-shrink-0"
+              className="w-3.5 h-3.5 flex-shrink-0"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -137,12 +129,12 @@ export const PasswordStrengthIndicator = ({
           </li>
 
           <li
-            className={`flex items-center gap-2 text-xs transition-colors duration-200 ${
-              hasLowercase ? "text-green-400" : "text-slate-500"
+            className={`flex items-center gap-2 text-xs transition-colors duration-180 ${
+              hasLowercase ? "text-[#D4AF37]" : "text-[#6B7280]"
             }`}
           >
             <svg
-              className="w-4 h-4 flex-shrink-0"
+              className="w-3.5 h-3.5 flex-shrink-0"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -167,12 +159,12 @@ export const PasswordStrengthIndicator = ({
           </li>
 
           <li
-            className={`flex items-center gap-2 text-xs transition-colors duration-200 ${
-              hasNumber ? "text-green-400" : "text-slate-500"
+            className={`flex items-center gap-2 text-xs transition-colors duration-180 ${
+              hasNumber ? "text-[#D4AF37]" : "text-[#6B7280]"
             }`}
           >
             <svg
-              className="w-4 h-4 flex-shrink-0"
+              className="w-3.5 h-3.5 flex-shrink-0"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"

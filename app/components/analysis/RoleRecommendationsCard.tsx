@@ -10,9 +10,9 @@ export const RoleRecommendationsCard: React.FC<RoleRecommendationsProps> = ({
     <div className="glass-panel p-6 sm:p-8 relative overflow-hidden">
       <div className="mb-6 flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 rounded-xl bg-[#94B69E]/15 border border-[#94B69E]/30 flex items-center justify-center text-[#94B69E]">
+          <div className="w-8 h-8 rounded-[4px] bg-[#171717] border border-[rgba(212,175,55,0.3)] flex items-center justify-center text-[#D4AF37]">
             <svg
-              className="w-5 h-5"
+              className="w-4 h-4"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -26,57 +26,71 @@ export const RoleRecommendationsCard: React.FC<RoleRecommendationsProps> = ({
             </svg>
           </div>
           <div>
-            <h3 className="text-xl sm:text-2xl font-bold text-[#F3F7F4]">
+            <h3 className="text-lg sm:text-xl font-bold text-[#F5E6C8]">
               Recommended Roles
             </h3>
-            <p className="text-xs text-[#718078]">
-              {recommendations.length} Position Recommendation{recommendations.length !== 1 ? "s" : ""}
+            <p className="text-xs text-[#6B7280]">
+              {recommendations.length} Position Recommendation
+              {recommendations.length !== 1 ? "s" : ""}
             </p>
           </div>
         </div>
       </div>
 
-      <div className="space-y-4">
+      <div className="space-y-3">
         {recommendations.map((role, index) => {
           const isExpanded = expandedRole === index;
 
           return (
             <div
               key={index}
-              className={`glass-card p-5 sm:p-6 cursor-pointer transition-all duration-200 ${
-                isExpanded ? "border-[#94B69E]/60 bg-white/10" : ""
+              className={`glass-card p-4 sm:p-5 cursor-pointer transition-colors duration-180 ${
+                isExpanded ? "border-[rgba(212,175,55,0.5)]" : ""
               }`}
               onClick={() => setExpandedRole(isExpanded ? null : index)}
             >
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
-                  <div className="flex items-center gap-3">
-                    <h4 className="text-lg font-bold text-[#F3F7F4]">{role.roleName}</h4>
-                    <span className="glass-badge glass-badge-primary">{role.careerLevel}</span>
+                  <div className="flex items-center gap-2.5">
+                    <h4 className="text-base font-bold text-[#F5E6C8]">
+                      {role.roleName}
+                    </h4>
+                    <span className="glass-badge glass-badge-primary rounded-[4px]">
+                      {role.careerLevel}
+                    </span>
                   </div>
-                  <p className="text-xs text-[#718078] mt-1">Industry: {role.industryFit}</p>
+                  <p className="text-xs text-[#6B7280] mt-1">
+                    Industry: {role.industryFit}
+                  </p>
                 </div>
                 <div className="flex items-center gap-3">
-                  <div className="glass-badge glass-badge-success text-sm py-1 px-3">
+                  <div className="glass-badge glass-badge-success text-xs py-1 px-2.5 rounded-[4px]">
                     {role.matchPercentage}% Match
                   </div>
-                  <span className={`text-[#AAB8AF] transition-transform ${isExpanded ? "rotate-180" : ""}`}>
+                  <span
+                    className={`text-[#6B7280] text-xs transition-transform duration-180 ${isExpanded ? "rotate-180" : ""}`}
+                  >
                     ▼
                   </span>
                 </div>
               </div>
 
-              <p className="text-xs sm:text-sm text-[#AAB8AF] mt-3 leading-relaxed">
+              <p className="text-xs text-[#6B7280] mt-2.5 leading-relaxed">
                 {role.reasoning}
               </p>
 
               {isExpanded && (
-                <div className="mt-4 pt-4 border-t border-white/10 grid sm:grid-cols-2 gap-4">
+                <div className="mt-4 pt-4 border-t border-[rgba(107,114,128,0.2)] grid sm:grid-cols-2 gap-4">
                   <div>
-                    <h5 className="text-xs font-semibold uppercase text-[#94B69E] mb-2">Matching Skills</h5>
+                    <h5 className="text-xs font-semibold uppercase text-[#D4AF37] mb-2">
+                      Matching Skills
+                    </h5>
                     <div className="flex flex-wrap gap-1.5">
                       {role.requiredSkills.map((skill, sIdx) => (
-                        <span key={sIdx} className="glass-badge glass-badge-primary">
+                        <span
+                          key={sIdx}
+                          className="glass-badge glass-badge-primary rounded-[4px] text-xs"
+                        >
                           {skill}
                         </span>
                       ))}
@@ -84,10 +98,15 @@ export const RoleRecommendationsCard: React.FC<RoleRecommendationsProps> = ({
                   </div>
                   {role.missingSkills.length > 0 && (
                     <div>
-                      <h5 className="text-xs font-semibold uppercase text-[#E4C58A] mb-2">Development Areas</h5>
+                      <h5 className="text-xs font-semibold uppercase text-[#F59E0B] mb-2">
+                        Development Areas
+                      </h5>
                       <div className="flex flex-wrap gap-1.5">
                         {role.missingSkills.map((skill, sIdx) => (
-                          <span key={sIdx} className="glass-badge glass-badge-warning">
+                          <span
+                            key={sIdx}
+                            className="glass-badge glass-badge-warning rounded-[4px] text-xs"
+                          >
                             {skill}
                           </span>
                         ))}

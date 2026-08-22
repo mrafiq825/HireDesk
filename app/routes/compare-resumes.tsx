@@ -18,7 +18,11 @@ export function meta({}: Route.MetaArgs) {
         "Compare 2-5 finalists side-by-side with HireDesk's AI ranking algorithm. Get objective scores, skill gap analysis, and a clear top-candidate recommendation.",
     },
     { name: "robots", content: "noindex, nofollow" },
-    { tagName: "link", rel: "canonical", href: "https://hiredesk.vercel.app/compare-resumes" },
+    {
+      tagName: "link",
+      rel: "canonical",
+      href: "https://hiredesk.vercel.app/compare-resumes",
+    },
   ];
 }
 
@@ -62,7 +66,8 @@ const CompareResumes = () => {
     if (files.length < 2 || files.length > 5) {
       setError({
         show: true,
-        message: "Please select between 2 and 5 resumes for candidate comparison.",
+        message:
+          "Please select between 2 and 5 resumes for candidate comparison.",
         type: "warning",
       });
       return;
@@ -87,10 +92,7 @@ const CompareResumes = () => {
     try {
       const response = await aiService.compareResumes(currentFiles);
       setComparisonResults(response);
-      localStorage.setItem(
-        "compare-resumes-results",
-        JSON.stringify(response)
-      );
+      localStorage.setItem("compare-resumes-results", JSON.stringify(response));
       setToastMessage("Candidate comparison complete!");
       setToastType("success");
       setShowToast(true);
@@ -112,41 +114,46 @@ const CompareResumes = () => {
 
   return (
     <ProtectedRoute>
-      <div className="min-h-screen bg-[#07110D] relative overflow-hidden text-[#F3F7F4]">
-        <div className="absolute top-0 right-1/4 w-[500px] h-[500px] rounded-full bg-[#94B69E]/10 blur-[130px] pointer-events-none" />
-
-        <nav className="relative z-50 border-b border-white/10 bg-[#07110D]/80 backdrop-blur-xl">
+      <div className="min-h-screen bg-[#171717] relative text-[#F5E6C8]">
+        <nav className="relative z-50 border-b border-[rgba(107,114,128,0.2)] bg-[#171717]">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center h-16 sm:h-20">
+            <div className="flex justify-between items-center h-16">
               <Link
                 to="/dashboard"
-                className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-[#AAB8AF] hover:text-[#94B69E]"
+                className="flex items-center gap-2 px-3 py-1.5 rounded-[6px] bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] text-xs font-semibold text-[#6B7280] hover:text-[#D4AF37] transition-colors duration-180"
               >
                 ← Dashboard
               </Link>
               <div className="text-center">
-                <h1 className="text-xl sm:text-2xl font-bold text-[#F3F7F4]">Find Best Fit</h1>
-                <p className="text-xs text-[#718078]">Side-by-Side Finalist Candidate Comparison</p>
+                <h1 className="text-lg sm:text-xl font-bold text-[#F5E6C8]">
+                  Find Best Fit
+                </h1>
+                <p className="text-[11px] text-[#6B7280]">
+                  Side-by-Side Finalist Candidate Comparison
+                </p>
               </div>
               <div className="w-20" />
             </div>
           </div>
         </nav>
 
-        <main className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-          <div className="glass-ai p-8 rounded-3xl border border-[#94B69E]/30 text-center">
-            <span className="glass-badge glass-badge-primary mb-3">FINALIST EVALUATION</span>
-            <h1 className="text-3xl sm:text-4xl font-bold text-[#F3F7F4] mb-2">
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+          <div className="bg-[#1B1B1B] p-6 sm:p-8 rounded-[6px] border border-[rgba(107,114,128,0.2)] text-center">
+            <span className="glass-badge glass-badge-primary mb-3 rounded-[4px]">
+              FINALIST EVALUATION
+            </span>
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#F5E6C8] mb-2">
               Side-by-Side Candidate Ranking
             </h1>
-            <p className="text-sm text-[#AAB8AF]">
-              Upload 2 to 5 finalist resumes to generate comparative match scores, strengths, and winner recommendations.
+            <p className="text-xs sm:text-sm text-[#6B7280]">
+              Upload 2 to 5 finalist resumes to generate comparative match
+              scores, strengths, and winner recommendations.
             </p>
           </div>
 
-          <div className="glass-panel p-6 sm:p-8 space-y-6">
+          <div className="glass-panel p-6 sm:p-8 space-y-4">
             <div>
-              <label className="block text-xs font-semibold uppercase text-[#AAB8AF] mb-2">
+              <label className="block text-xs font-semibold uppercase text-[#6B7280] mb-1.5">
                 Select Resumes to Compare (2 - 5 PDF/DOCX)
               </label>
               <input
@@ -154,17 +161,17 @@ const CompareResumes = () => {
                 multiple
                 accept=".pdf,.doc,.docx"
                 onChange={handleFilesSelected}
-                className="glass-input w-full p-3 text-xs file:btn-primary file:mr-3 file:px-3 file:py-1 file:text-xs"
+                className="glass-input w-full p-2.5 text-xs file:btn-primary file:mr-3 file:px-3 file:py-1 file:text-xs file:rounded-[4px]"
               />
               {currentFiles.length > 0 && (
-                <p className="text-xs text-[#94B69E] mt-2 font-semibold">
+                <p className="text-xs text-[#D4AF37] mt-2 font-semibold">
                   {currentFiles.length} finalist file(s) selected
                 </p>
               )}
             </div>
 
             {error.show && (
-              <div className="p-3 glass-badge-danger w-full text-xs font-semibold rounded-xl">
+              <div className="p-3 glass-badge-danger w-full text-xs font-semibold rounded-[4px]">
                 {error.message}
               </div>
             )}
@@ -173,7 +180,7 @@ const CompareResumes = () => {
               <button
                 onClick={handleCompare}
                 disabled={isLoading || currentFiles.length < 2}
-                className="btn-primary px-8 py-3.5 text-sm font-semibold rounded-xl"
+                className="btn-primary px-6 py-2.5 text-xs sm:text-sm font-semibold rounded-[6px]"
               >
                 {isLoading ? "Comparing Finalists..." : "Compare Resumes"}
               </button>
@@ -183,25 +190,40 @@ const CompareResumes = () => {
           {comparisonResults && (
             <div className="space-y-6">
               <div className="flex justify-between items-center">
-                <h3 className="text-xl font-bold text-[#F3F7F4]">Comparison Report</h3>
+                <h3 className="text-lg sm:text-xl font-bold text-[#F5E6C8]">
+                  Comparison Report
+                </h3>
                 <button
                   onClick={() => {
                     setComparisonResults(null);
                     localStorage.removeItem("compare-resumes-results");
                   }}
-                  className="btn-secondary px-4 py-2 text-xs"
+                  className="btn-secondary px-4 py-2 text-xs rounded-[6px]"
                 >
                   Clear Results
                 </button>
               </div>
 
-              <ComparisonResultsDisplay results={comparisonResults} isLoading={isLoading} />
+              <ComparisonResultsDisplay
+                results={comparisonResults}
+                isLoading={isLoading}
+              />
             </div>
           )}
         </main>
 
-        <Toast show={showToast} message={toastMessage} type={toastType} onClose={() => setShowToast(false)} />
-        <RateLimitModal isOpen={showRateLimitModal} onClose={() => setShowRateLimitModal(false)} filesUploaded={0} uploadLimit={10} />
+        <Toast
+          show={showToast}
+          message={toastMessage}
+          type={toastType}
+          onClose={() => setShowToast(false)}
+        />
+        <RateLimitModal
+          isOpen={showRateLimitModal}
+          onClose={() => setShowRateLimitModal(false)}
+          filesUploaded={0}
+          uploadLimit={10}
+        />
       </div>
     </ProtectedRoute>
   );

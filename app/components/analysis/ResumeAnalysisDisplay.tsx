@@ -15,11 +15,11 @@ export const ResumeAnalysisDisplay: React.FC<ResumeAnalysisDisplayProps> = ({
 }) => {
   if (isLoading) {
     return (
-      <div className="space-y-8">
+      <div className="space-y-6">
         {[1, 2, 3, 4, 5].map((i) => (
           <div
             key={i}
-            className="h-64 bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm border border-slate-700/50 rounded-2xl animate-pulse"
+            className="h-48 bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] rounded-[6px] animate-pulse"
           ></div>
         ))}
       </div>
@@ -33,10 +33,8 @@ export const ResumeAnalysisDisplay: React.FC<ResumeAnalysisDisplayProps> = ({
         analysisData.questions) && (
         <section className="relative">
           <div className="mb-6">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">
-              <span className="bg-gradient-to-r from-slate-200 to-slate-300 bg-clip-text text-transparent">
-                Analysis Overview
-              </span>
+            <h2 className="text-xl sm:text-2xl font-bold text-[#F5E6C8]">
+              Analysis Overview
             </h2>
           </div>
           <AnalysisOverview analysis={analysisData} />

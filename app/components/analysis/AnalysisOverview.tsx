@@ -72,17 +72,19 @@ export const AnalysisOverview: React.FC<AnalysisOverviewProps> = ({
         >
           <div>
             <div className="flex items-center justify-between mb-3">
-              <span className="text-2xl">{item.icon}</span>
-              <span className={`glass-badge ${item.badgeClass}`}>
+              <span className="text-xl">{item.icon}</span>
+              <span
+                className={`glass-badge ${item.badgeClass} rounded-[4px] text-[10px]`}
+              >
                 {item.label}
               </span>
             </div>
-            <p className="text-xl sm:text-2xl font-bold text-[#F3F7F4] mt-1">
+            <p className="text-xl sm:text-2xl font-bold text-[#F5E6C8] mt-1">
               {item.value}
             </p>
           </div>
           {item.description && (
-            <p className="text-xs text-[#718078] mt-3 line-clamp-2 leading-relaxed">
+            <p className="text-xs text-[#6B7280] mt-3 line-clamp-2 leading-relaxed">
               {item.description}
             </p>
           )}

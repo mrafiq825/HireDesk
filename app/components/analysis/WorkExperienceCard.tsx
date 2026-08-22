@@ -18,9 +18,9 @@ export const WorkExperienceCard: React.FC<WorkExperienceProps> = ({
     <div className="glass-panel p-6 sm:p-8 relative overflow-hidden">
       <div className="mb-8 flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 rounded-xl bg-[#94B69E]/15 border border-[#94B69E]/30 flex items-center justify-center text-[#94B69E]">
+          <div className="w-8 h-8 rounded-[4px] bg-[#171717] border border-[rgba(212,175,55,0.3)] flex items-center justify-center text-[#D4AF37]">
             <svg
-              className="w-5 h-5"
+              className="w-4 h-4"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -34,40 +34,48 @@ export const WorkExperienceCard: React.FC<WorkExperienceProps> = ({
             </svg>
           </div>
           <div>
-            <h3 className="text-xl sm:text-2xl font-bold text-[#F3F7F4]">
+            <h3 className="text-lg sm:text-xl font-bold text-[#F5E6C8]">
               Work Experience
             </h3>
-            <p className="text-xs text-[#718078] mt-0.5">
-              {workExperience.length} Position{workExperience.length !== 1 ? "s" : ""} Analyzed
+            <p className="text-xs text-[#6B7280] mt-0.5">
+              {workExperience.length} Position
+              {workExperience.length !== 1 ? "s" : ""} Analyzed
             </p>
           </div>
         </div>
       </div>
 
       <div className="relative">
-        <div className="absolute left-4 sm:left-6 top-0 bottom-0 w-0.5 bg-[#94B69E]/30"></div>
+        <div className="absolute left-3.5 sm:left-5 top-0 bottom-0 w-px bg-[rgba(107,114,128,0.2)]"></div>
         <div className="space-y-6 sm:space-y-8">
           {workExperience.map((exp, index) => (
-            <div key={index} className="group relative pl-12 sm:pl-16">
-              <div className="absolute left-1.5 sm:left-3.5 top-1 w-5 h-5 rounded-full bg-[#07110D] border-2 border-[#94B69E] shadow-[0_0_10px_#94B69E] flex items-center justify-center">
-                <div className="w-1.5 h-1.5 bg-[#94B69E] rounded-full" />
+            <div key={index} className="group relative pl-10 sm:pl-14">
+              <div className="absolute left-1.5 sm:left-3 top-1 w-4 h-4 rounded-full bg-[#171717] border-2 border-[#D4AF37] flex items-center justify-center">
+                <div className="w-1 h-1 bg-[#D4AF37] rounded-full" />
               </div>
-              <div className="glass-card p-5 sm:p-6 space-y-3">
+              <div className="glass-card p-4 sm:p-5 space-y-2">
                 <div>
-                  <h4 className="text-lg font-bold text-[#F3F7F4] group-hover:text-[#94B69E] transition-colors">
+                  <h4 className="text-base font-bold text-[#F5E6C8] group-hover:text-[#D4AF37] transition-colors">
                     {exp.title}
                   </h4>
-                  <div className="flex items-center gap-3 mt-1">
-                    <span className="text-sm font-semibold text-[#94B69E]">{exp.company}</span>
-                    <span className="text-xs text-[#718078]">•</span>
-                    <span className="text-xs text-[#718078]">{exp.duration}</span>
+                  <div className="flex items-center gap-2 mt-0.5">
+                    <span className="text-xs font-semibold text-[#D4AF37]">
+                      {exp.company}
+                    </span>
+                    <span className="text-xs text-[#6B7280]">•</span>
+                    <span className="text-xs text-[#6B7280]">
+                      {exp.duration}
+                    </span>
                   </div>
                 </div>
 
-                <ul className="space-y-2 pt-2 border-t border-white/5">
+                <ul className="space-y-1.5 pt-2 border-t border-[rgba(107,114,128,0.2)]">
                   {exp.description.map((desc, descIndex) => (
-                    <li key={descIndex} className="flex items-start gap-2 text-xs sm:text-sm text-[#AAB8AF] leading-relaxed">
-                      <span className="text-[#94B69E] font-bold mt-0.5">•</span>
+                    <li
+                      key={descIndex}
+                      className="flex items-start gap-2 text-xs text-[#6B7280] leading-relaxed"
+                    >
+                      <span className="text-[#D4AF37] font-bold mt-0.5">•</span>
                       <span>{desc}</span>
                     </li>
                   ))}

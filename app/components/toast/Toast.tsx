@@ -38,19 +38,23 @@ const Toast: React.FC<ToastComponentProps> = ({
 
   return (
     <div className="fixed bottom-6 right-6 z-50 max-w-sm w-full">
-      <div className="glass-floating p-4 border border-white/20 shadow-2xl flex items-start justify-between gap-3">
+      <div className="bg-[#1B1B1B] p-4 border border-[rgba(107,114,128,0.2)] rounded-[6px] flex items-start justify-between gap-3">
         <div className="space-y-1">
           <div className="flex items-center gap-2">
-            <span className={`glass-badge ${getTypeBadge()} uppercase text-[10px]`}>
+            <span
+              className={`glass-badge ${getTypeBadge()} uppercase text-[10px]`}
+            >
               {type}
             </span>
-            {title && <span className="font-bold text-xs text-[#F3F7F4]">{title}</span>}
+            {title && (
+              <span className="font-bold text-xs text-[#F5E6C8]">{title}</span>
+            )}
           </div>
-          <p className="text-xs text-[#AAB8AF] leading-relaxed">{message}</p>
+          <p className="text-xs text-[#6B7280] leading-relaxed">{message}</p>
         </div>
         <button
           onClick={onClose}
-          className="text-[#718078] hover:text-[#F3F7F4] text-xs p-1"
+          className="text-[#6B7280] hover:text-[#F5E6C8] text-xs p-1 cursor-pointer"
         >
           ✕
         </button>

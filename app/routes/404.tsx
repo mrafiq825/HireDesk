@@ -3,29 +3,36 @@ import Navbar from "@layout/Navbar";
 
 const NotFound = () => {
   return (
-    <div className="min-h-screen bg-[#07110D] relative overflow-hidden text-[#F3F7F4]">
+    <div className="min-h-screen bg-[#171717] relative text-[#F5E6C8]">
       <Navbar />
 
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-[#94B69E]/10 blur-[150px] pointer-events-none" />
-
-      <main className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-20 text-center space-y-8">
-        <div className="glass-panel p-10 sm:p-14 space-y-6">
-          <span className="glass-badge glass-badge-danger text-sm py-1.5 px-4">404 NOT FOUND</span>
-          <h1 className="text-6xl sm:text-8xl font-bold text-[#F3F7F4]">
-            40<span className="text-[#94B69E]">4</span>
+      <main className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-36 pb-20 text-center space-y-8">
+        <div className="glass-panel p-8 sm:p-12 space-y-4">
+          <span className="glass-badge glass-badge-danger text-xs py-1 px-3 rounded-[4px]">
+            404 NOT FOUND
+          </span>
+          <h1 className="text-5xl sm:text-7xl font-bold text-[#F5E6C8]">
+            40<span className="text-[#D4AF37]">4</span>
           </h1>
-          <h2 className="text-2xl sm:text-3xl font-bold text-[#F3F7F4]">
+          <h2 className="text-xl sm:text-2xl font-bold text-[#F5E6C8]">
             Page Not Found
           </h2>
-          <p className="text-sm sm:text-base text-[#AAB8AF] max-w-lg mx-auto leading-relaxed">
-            The page you are trying to access does not exist or has been relocated.
+          <p className="text-xs sm:text-sm text-[#6B7280] max-w-md mx-auto leading-relaxed">
+            The page you are trying to access does not exist or has been
+            relocated.
           </p>
 
-          <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/" className="btn-primary px-8 py-3.5 text-sm font-semibold rounded-xl">
+          <div className="pt-3 flex flex-col sm:flex-row gap-3 justify-center">
+            <Link
+              to="/"
+              className="btn-primary px-6 py-2.5 text-xs sm:text-sm font-semibold rounded-[6px]"
+            >
               Return Home
             </Link>
-            <Link to="/dashboard" className="btn-secondary px-8 py-3.5 text-sm font-semibold rounded-xl">
+            <Link
+              to="/dashboard"
+              className="btn-secondary px-6 py-2.5 text-xs sm:text-sm font-semibold rounded-[6px]"
+            >
               Open Dashboard
             </Link>
           </div>

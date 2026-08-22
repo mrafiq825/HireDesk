@@ -20,9 +20,9 @@ export const EducationCard: React.FC<EducationProps> = ({
     <div className="glass-panel p-6 sm:p-8 relative overflow-hidden">
       <div className="mb-6 flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 rounded-xl bg-[#94B69E]/15 border border-[#94B69E]/30 flex items-center justify-center text-[#94B69E]">
+          <div className="w-8 h-8 rounded-[4px] bg-[#171717] border border-[rgba(212,175,55,0.3)] flex items-center justify-center text-[#D4AF37]">
             <svg
-              className="w-5 h-5"
+              className="w-4 h-4"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -36,10 +36,10 @@ export const EducationCard: React.FC<EducationProps> = ({
             </svg>
           </div>
           <div>
-            <h3 className="text-xl sm:text-2xl font-bold text-[#F3F7F4]">
+            <h3 className="text-lg sm:text-xl font-bold text-[#F5E6C8]">
               Education & Key Highlights
             </h3>
-            <p className="text-xs text-[#718078]">
+            <p className="text-xs text-[#6B7280]">
               Academic Background and Verified Resume Highlights
             </p>
           </div>
@@ -49,16 +49,27 @@ export const EducationCard: React.FC<EducationProps> = ({
       <div className="space-y-6">
         {education.length > 0 && (
           <div className="space-y-3">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#94B69E]">Education History</h4>
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#D4AF37]">
+              Education History
+            </h4>
             <div className="grid sm:grid-cols-2 gap-3">
               {education.map((edu, index) => (
-                <div key={index} className="glass-card p-4 flex flex-col justify-between">
+                <div
+                  key={index}
+                  className="glass-card p-4 flex flex-col justify-between"
+                >
                   <div>
                     <div className="flex justify-between items-start">
-                      <h5 className="font-bold text-sm text-[#F3F7F4]">{edu.degree}</h5>
-                      <span className="glass-badge glass-badge-primary">{edu.year}</span>
+                      <h5 className="font-bold text-xs text-[#F5E6C8]">
+                        {edu.degree}
+                      </h5>
+                      <span className="glass-badge glass-badge-primary rounded-[4px]">
+                        {edu.year}
+                      </span>
                     </div>
-                    <p className="text-xs text-[#AAB8AF] mt-1">{edu.institution}</p>
+                    <p className="text-xs text-[#6B7280] mt-1">
+                      {edu.institution}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -67,13 +78,20 @@ export const EducationCard: React.FC<EducationProps> = ({
         )}
 
         {highlights.length > 0 && (
-          <div className="space-y-3 pt-4 border-t border-white/10">
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#94B69E]">Key Highlights</h4>
+          <div className="space-y-3 pt-4 border-t border-[rgba(107,114,128,0.2)]">
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-[#D4AF37]">
+              Key Highlights
+            </h4>
             <div className="space-y-2">
               {highlights.map((highlight, index) => (
-                <div key={index} className="glass-card p-3.5 flex items-start gap-3">
-                  <span className="text-[#94B69E] text-sm">✨</span>
-                  <p className="text-xs sm:text-sm text-[#AAB8AF] leading-relaxed">{highlight}</p>
+                <div
+                  key={index}
+                  className="glass-card p-3 flex items-start gap-2.5"
+                >
+                  <span className="text-[#D4AF37] text-xs">✨</span>
+                  <p className="text-xs text-[#6B7280] leading-relaxed">
+                    {highlight}
+                  </p>
                 </div>
               ))}
             </div>

@@ -8,9 +8,9 @@ export const SkillsCard: React.FC<SkillsProps> = ({ skills }) => {
     <div className="glass-panel p-6 sm:p-8 relative overflow-hidden">
       <div className="mb-6 flex items-center justify-between">
         <div className="flex items-center space-x-3">
-          <div className="w-10 h-10 rounded-xl bg-[#94B69E]/15 border border-[#94B69E]/30 flex items-center justify-center text-[#94B69E]">
+          <div className="w-8 h-8 rounded-[4px] bg-[#171717] border border-[rgba(212,175,55,0.3)] flex items-center justify-center text-[#D4AF37]">
             <svg
-              className="w-5 h-5"
+              className="w-4 h-4"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -23,11 +23,11 @@ export const SkillsCard: React.FC<SkillsProps> = ({ skills }) => {
               />
             </svg>
           </div>
-          <h3 className="text-xl sm:text-2xl font-bold text-[#F3F7F4]">
+          <h3 className="text-lg sm:text-xl font-bold text-[#F5E6C8]">
             Skills Breakdown
           </h3>
         </div>
-        <span className="glass-badge glass-badge-primary">
+        <span className="glass-badge glass-badge-primary rounded-[4px]">
           {skills.length} Competencies
         </span>
       </div>
@@ -38,25 +38,27 @@ export const SkillsCard: React.FC<SkillsProps> = ({ skills }) => {
             key={skillIndex}
             onMouseEnter={() => setHoveredIndex(skillIndex)}
             onMouseLeave={() => setHoveredIndex(null)}
-            className={`glass-card p-3 sm:p-4 transition-all duration-200 ${
-              hoveredIndex === skillIndex ? "border-[#94B69E]/50 text-[#94B69E]" : "text-[#F3F7F4]"
+            className={`glass-card p-3 sm:p-4 transition-colors duration-180 ${
+              hoveredIndex === skillIndex
+                ? "border-[rgba(212,175,55,0.5)] text-[#D4AF37]"
+                : "text-[#F5E6C8]"
             }`}
           >
-            <p className="text-sm font-semibold truncate">
-              {skill}
-            </p>
+            <p className="text-xs font-semibold truncate">{skill}</p>
             <div
-              className={`h-0.5 mt-2 bg-[#94B69E] transition-all duration-300 ${
-                hoveredIndex === skillIndex ? "w-full shadow-[0_0_8px_#94B69E]" : "w-0"
+              className={`h-0.5 mt-2 bg-[#D4AF37] transition-all duration-180 ${
+                hoveredIndex === skillIndex ? "w-full" : "w-0"
               }`}
             />
           </div>
         ))}
       </div>
 
-      <div className="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-[#718078]">
+      <div className="pt-4 border-t border-[rgba(107,114,128,0.2)] flex items-center justify-between text-xs text-[#6B7280]">
         <span>Extracted via AI Parsing</span>
-        <span className="font-semibold text-[#94B69E]">High Confidence Score</span>
+        <span className="font-semibold text-[#D4AF37]">
+          High Confidence Score
+        </span>
       </div>
     </div>
   );

@@ -65,7 +65,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta name="author" content="HireDesk" />
         <meta name="generator" content="React Router v7" />
         <meta name="color-scheme" content="dark" />
-        <meta name="theme-color" content="#0f172a" />
+        <meta name="theme-color" content="#171717" />
 
         {/* === Default Open Graph (overridden per-route via <Meta />) === */}
         <meta property="og:site_name" content={SITE_NAME} />

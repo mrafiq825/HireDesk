@@ -55,15 +55,15 @@ const TipsModal = ({ isOpen, onClose }: TipsModalProps) => {
   if (!isOpen) return null;
 
   return createPortal(
-    <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-[9999] p-4">
-      <div className="bg-gray-800 rounded-xl shadow-2xl border border-gray-700 max-w-md w-full mx-4 animate-in fade-in duration-200">
-        <div className="flex items-center justify-between p-6 border-b border-gray-700">
-          <h2 className="text-xl font-semibold text-white flex items-center gap-2">
-            💡 HR Hiring Tips
+    <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-[9999] p-4">
+      <div className="bg-[#1B1B1B] rounded-[6px] border border-[rgba(107,114,128,0.2)] max-w-md w-full mx-4">
+        <div className="flex items-center justify-between p-6 border-b border-[rgba(107,114,128,0.2)]">
+          <h2 className="text-lg font-bold text-[#F5E6C8] flex items-center gap-2">
+            Hiring Tips
           </h2>
           <button
             onClick={onClose}
-            className="text-gray-400 hover:text-white transition-colors p-1 cursor-pointer"
+            className="text-[#6B7280] hover:text-[#F5E6C8] transition-colors p-1 cursor-pointer"
             aria-label="Close tips"
           >
             <svg
@@ -84,11 +84,11 @@ const TipsModal = ({ isOpen, onClose }: TipsModalProps) => {
 
         <div className="p-6">
           <div className="text-center mb-4">
-            <div className="text-4xl mb-3">{hiringTips[currentTip].icon}</div>
-            <h3 className="text-lg font-semibold text-white mb-3">
+            <div className="text-3xl mb-3">{hiringTips[currentTip].icon}</div>
+            <h3 className="text-base font-semibold text-[#F5E6C8] mb-2">
               {hiringTips[currentTip].title}
             </h3>
-            <p className="text-gray-300 text-sm leading-relaxed">
+            <p className="text-[#6B7280] text-xs leading-relaxed">
               {hiringTips[currentTip].content}
             </p>
           </div>
@@ -96,10 +96,10 @@ const TipsModal = ({ isOpen, onClose }: TipsModalProps) => {
           <div className="flex items-center justify-between mt-6">
             <button
               onClick={prevTip}
-              className="flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors text-sm cursor-pointer"
+              className="flex items-center gap-1.5 text-[#6B7280] hover:text-[#F5E6C8] transition-colors text-xs cursor-pointer"
             >
               <svg
-                className="w-4 h-4"
+                className="w-3.5 h-3.5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -114,13 +114,15 @@ const TipsModal = ({ isOpen, onClose }: TipsModalProps) => {
               Previous
             </button>
 
-            <div className="flex gap-2">
+            <div className="flex gap-1.5">
               {hiringTips.map((_, index) => (
                 <button
                   key={index}
                   onClick={() => setCurrentTip(index)}
                   className={`w-2 h-2 rounded-full transition-colors ${
-                    index === currentTip ? "bg-blue-400" : "bg-gray-600"
+                    index === currentTip
+                      ? "bg-[#D4AF37]"
+                      : "bg-[rgba(107,114,128,0.3)]"
                   }`}
                   aria-label={`Go to tip ${index + 1}`}
                 />
@@ -129,11 +131,11 @@ const TipsModal = ({ isOpen, onClose }: TipsModalProps) => {
 
             <button
               onClick={nextTip}
-              className="flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors text-sm cursor-pointer"
+              className="flex items-center gap-1.5 text-[#6B7280] hover:text-[#F5E6C8] transition-colors text-xs cursor-pointer"
             >
               Next
               <svg
-                className="w-4 h-4"
+                className="w-3.5 h-3.5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -149,7 +151,7 @@ const TipsModal = ({ isOpen, onClose }: TipsModalProps) => {
           </div>
 
           <div className="text-center mt-4">
-            <span className="text-xs text-gray-500">
+            <span className="text-[11px] text-[#6B7280]">
               Tip {currentTip + 1} of {hiringTips.length}
             </span>
           </div>
@@ -158,14 +160,14 @@ const TipsModal = ({ isOpen, onClose }: TipsModalProps) => {
         <div className="px-6 pb-6">
           <button
             onClick={onClose}
-            className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2 px-4 rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all duration-200 font-medium cursor-pointer"
+            className="btn-primary w-full py-2.5 px-4 text-xs font-semibold rounded-[6px]"
           >
-            Got it!
+            Got it
           </button>
         </div>
       </div>
     </div>,
-    document.body
+    document.body,
   );
 };
 

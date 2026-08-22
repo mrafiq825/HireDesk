@@ -11,36 +11,34 @@ const Toast = ({ toast, onClose }: ToastProps) => {
 
   const handleClose = () => {
     setIsLeaving(true);
-    setTimeout(() => onClose(toast.id), 300);
+    setTimeout(() => onClose(toast.id), 180);
   };
 
-  const getToastStyles = () => {
-    const baseStyles = "border-l-4 shadow-lg backdrop-blur-sm";
-
+  const getBorderColor = () => {
     switch (toast.type) {
       case "success":
-        return `${baseStyles} bg-green-900/90 border-green-500 text-green-100`;
+        return "border-l-[#D4AF37]";
       case "error":
-        return `${baseStyles} bg-red-900/90 border-red-500 text-red-100`;
+        return "border-l-[#EF4444]";
       case "warning":
-        return `${baseStyles} bg-yellow-900/90 border-yellow-500 text-yellow-100`;
+        return "border-l-[#F59E0B]";
       case "info":
       default:
-        return `${baseStyles} bg-blue-900/90 border-blue-500 text-blue-100`;
+        return "border-l-[#D4AF37]";
     }
   };
 
   const getIconStyles = () => {
     switch (toast.type) {
       case "success":
-        return "text-green-400";
+        return "text-[#D4AF37]";
       case "error":
-        return "text-red-400";
+        return "text-[#EF4444]";
       case "warning":
-        return "text-yellow-400";
+        return "text-[#F59E0B]";
       case "info":
       default:
-        return "text-blue-400";
+        return "text-[#D4AF37]";
     }
   };
 
@@ -49,7 +47,7 @@ const Toast = ({ toast, onClose }: ToastProps) => {
       case "success":
         return (
           <svg
-            className="w-5 h-5"
+            className="w-4 h-4"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -65,7 +63,7 @@ const Toast = ({ toast, onClose }: ToastProps) => {
       case "error":
         return (
           <svg
-            className="w-5 h-5"
+            className="w-4 h-4"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -81,7 +79,7 @@ const Toast = ({ toast, onClose }: ToastProps) => {
       case "warning":
         return (
           <svg
-            className="w-5 h-5"
+            className="w-4 h-4"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -98,7 +96,7 @@ const Toast = ({ toast, onClose }: ToastProps) => {
       default:
         return (
           <svg
-            className="w-5 h-5"
+            className="w-4 h-4"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -117,26 +115,31 @@ const Toast = ({ toast, onClose }: ToastProps) => {
   return (
     <div
       className={`
-        transform transition-all duration-300 ease-out
+        transition-all duration-180 ease-out
         ${isVisible && !isLeaving ? "translate-x-0 opacity-100" : "translate-x-full opacity-0"}
-        ${isLeaving ? "scale-95" : ""}
-        max-w-sm w-full p-4 rounded-lg ${getToastStyles()}
+        max-w-sm w-full p-4 rounded-[6px] bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] border-l-4 ${getBorderColor()}
       `}
     >
       <div className="flex items-start">
-        <div className={`flex-shrink-0 ${getIconStyles()}`}>{getIcon()}</div>
+        <div className={`flex-shrink-0 mt-0.5 ${getIconStyles()}`}>
+          {getIcon()}
+        </div>
 
         <div className="ml-3 flex-1">
           {toast.title && (
-            <h4 className="text-sm font-semibold mb-1">{toast.title}</h4>
+            <h4 className="text-xs font-bold text-[#F5E6C8] mb-0.5">
+              {toast.title}
+            </h4>
           )}
-          <p className="text-sm leading-relaxed">{toast.message}</p>
+          <p className="text-xs text-[#6B7280] leading-relaxed">
+            {toast.message}
+          </p>
 
           {toast.action && (
-            <div className="mt-3">
+            <div className="mt-2">
               <button
                 onClick={toast.action.onClick}
-                className="text-xs font-medium underline hover:no-underline transition-all duration-200"
+                className="text-xs font-medium text-[#D4AF37] underline hover:no-underline cursor-pointer"
               >
                 {toast.action.label}
               </button>
@@ -146,12 +149,12 @@ const Toast = ({ toast, onClose }: ToastProps) => {
 
         <button
           onClick={handleClose}
-          className="flex-shrink-0 ml-4 text-white/60 hover:text-white transition-colors duration-200"
+          className="flex-shrink-0 ml-3 text-[#6B7280] hover:text-[#F5E6C8] transition-colors p-1 cursor-pointer"
           title="Close notification"
           aria-label="Close notification"
         >
           <svg
-            className="w-4 h-4"
+            className="w-3.5 h-3.5"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

@@ -13,7 +13,11 @@ export function meta({}: Route.MetaArgs) {
         "Didn't receive your verification email? Enter your address to get a new secure activation link sent instantly to your inbox.",
     },
     { name: "robots", content: "noindex, nofollow" },
-    { tagName: "link", rel: "canonical", href: "https://hiredesk.vercel.app/resend-verification" },
+    {
+      tagName: "link",
+      rel: "canonical",
+      href: "https://hiredesk.vercel.app/resend-verification",
+    },
   ];
 }
 
@@ -38,7 +42,7 @@ export default function ResendVerification() {
     } catch (error: any) {
       setMessageType("error");
       setMessage(
-        error.message || "Failed to send verification email. Please try again."
+        error.message || "Failed to send verification email. Please try again.",
       );
     } finally {
       setIsLoading(false);
@@ -48,52 +52,41 @@ export default function ResendVerification() {
   return (
     <>
       <NavbarWithModal />
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden flex items-center justify-center pt-20">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -inset-10 opacity-50">
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/10 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-            <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2s"></div>
-          </div>
-          <div className="absolute inset-0 bg-grid-slate-700/[0.04] bg-[size:20px_20px]"></div>
-        </div>
-
+      <div className="min-h-screen bg-[#171717] relative flex items-center justify-center pt-20 pb-12 text-[#F5E6C8]">
         <div className="relative z-10 w-full max-w-md mx-auto px-4">
-          <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-slate-800/80 to-slate-900/80 backdrop-blur-xl border border-slate-700/50 shadow-2xl">
-            <div className="relative bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-800 p-6 sm:p-8">
-              <div className="absolute inset-0 bg-black/20"></div>
-              <div className="relative">
-                <div className="flex items-center justify-center mb-4">
-                  <div className="relative inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/10 border border-white/20">
-                    <svg
-                      className="w-6 h-6 text-white"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                      />
-                    </svg>
-                  </div>
+          <div className="rounded-[6px] overflow-hidden bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)]">
+            <div className="p-6 sm:p-8 border-b border-[rgba(107,114,128,0.2)] text-center">
+              <div className="flex items-center justify-center mb-3">
+                <div className="w-10 h-10 rounded-[4px] bg-[#171717] border border-[rgba(212,175,55,0.3)] text-[#D4AF37] flex items-center justify-center">
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                    />
+                  </svg>
                 </div>
-                <h1 className="text-3xl font-bold text-white text-center mb-2">
-                  Resend Verification
-                </h1>
-                <p className="text-indigo-100 text-center text-sm">
-                  We'll send you a new verification link
-                </p>
               </div>
+              <h1 className="text-xl sm:text-2xl font-bold text-[#F5E6C8] mb-1">
+                Resend Verification
+              </h1>
+              <p className="text-[#6B7280] text-xs">
+                We'll send you a new verification link
+              </p>
             </div>
 
-            <div className="p-6 sm:p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="p-6 sm:p-8 space-y-5">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium text-slate-300 mb-2"
+                    className="block text-xs font-semibold uppercase text-[#6B7280] mb-1.5"
                   >
                     Email Address
                   </label>
@@ -105,18 +98,30 @@ export default function ResendVerification() {
                     placeholder="Enter your email address"
                     required
                     disabled={isLoading}
-                    className="w-full px-4 py-3 bg-slate-700/50 border border-slate-600/50 rounded-lg text-white placeholder-slate-400 focus:outline-none focus:border-indigo-500/50 focus:ring-2 focus:ring-indigo-500/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="glass-input w-full p-2.5 text-xs sm:text-sm"
                   />
                 </div>
+
+                {message && (
+                  <div
+                    className={`p-3 rounded-[4px] text-xs font-semibold ${
+                      messageType === "success"
+                        ? "glass-badge-success"
+                        : "glass-badge-danger"
+                    }`}
+                  >
+                    {message}
+                  </div>
+                )}
 
                 <button
                   type="submit"
                   disabled={isLoading || !email}
-                  className="w-full px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold rounded-lg hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 cursor-pointer"
+                  className="btn-primary w-full py-2.5 text-xs sm:text-sm font-semibold rounded-[6px] cursor-pointer"
                 >
                   {isLoading ? (
                     <div className="flex items-center justify-center gap-2">
-                      <div className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin"></div>
+                      <div className="w-3.5 h-3.5 rounded-full border-2 border-[#171717] border-t-transparent animate-spin"></div>
                       <span>Sending...</span>
                     </div>
                   ) : (
@@ -125,25 +130,24 @@ export default function ResendVerification() {
                 </button>
               </form>
 
-              <div className="my-8 relative">
+              <div className="my-4 relative">
                 <div className="absolute inset-0 flex items-center">
-                  <div className="w-full border-t border-slate-700/50"></div>
+                  <div className="w-full border-t border-[rgba(107,114,128,0.2)]"></div>
                 </div>
-                <div className="relative flex justify-center text-sm">
-                  <span className="px-3 bg-slate-800/80 text-slate-400 font-medium">
+                <div className="relative flex justify-center text-xs">
+                  <span className="px-2 bg-[#1B1B1B] text-[#6B7280]">
                     Other Options
                   </span>
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 gap-3">
+              <div className="grid grid-cols-1 gap-2.5">
                 <button
                   onClick={() => navigate("/login")}
-                  className="group relative px-6 py-3 font-semibold text-slate-200 rounded-xl overflow-hidden transition-all duration-300 border border-indigo-500/30 hover:border-indigo-500/60 hover:bg-indigo-600/10 hover:shadow-lg hover:shadow-indigo-500/20 flex items-center justify-center gap-2 cursor-pointer"
+                  className="btn-secondary w-full py-2 text-xs font-semibold rounded-[6px] flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-indigo-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <svg
-                    className="w-4 h-4 relative z-10"
+                    className="w-3.5 h-3.5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -155,16 +159,15 @@ export default function ResendVerification() {
                       d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3v-1"
                     />
                   </svg>
-                  <span className="relative z-10">Back to Login</span>
+                  <span>Back to Login</span>
                 </button>
 
                 <button
                   onClick={() => navigate("/signup")}
-                  className="group relative px-6 py-3 font-semibold text-slate-200 rounded-xl overflow-hidden transition-all duration-300 border border-purple-500/30 hover:border-purple-500/60 hover:bg-purple-600/10 hover:shadow-lg hover:shadow-purple-500/20 flex items-center justify-center gap-2 cursor-pointer"
+                  className="btn-secondary w-full py-2 text-xs font-semibold rounded-[6px] flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <svg
-                    className="w-4 h-4 relative z-10"
+                    className="w-3.5 h-3.5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -176,16 +179,15 @@ export default function ResendVerification() {
                       d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"
                     />
                   </svg>
-                  <span className="relative z-10">Create New Account</span>
+                  <span>Create New Account</span>
                 </button>
 
                 <button
                   onClick={() => navigate("/")}
-                  className="group relative px-6 py-3 font-semibold text-slate-300 rounded-xl overflow-hidden transition-all duration-300 border border-slate-600/30 hover:border-slate-600/60 hover:bg-slate-700/20 hover:shadow-lg hover:shadow-slate-600/10 flex items-center justify-center gap-2 cursor-pointer"
+                  className="btn-secondary w-full py-2 text-xs font-semibold rounded-[6px] flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-r from-slate-600/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <svg
-                    className="w-4 h-4 relative z-10"
+                    className="w-3.5 h-3.5"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -197,25 +199,25 @@ export default function ResendVerification() {
                       d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0z"
                     />
                   </svg>
-                  <span className="relative z-10">Back to Home</span>
+                  <span>Back to Home</span>
                 </button>
               </div>
 
-              <div className="mt-6 p-4 rounded-lg bg-slate-700/20 border border-slate-700/50">
-                <p className="text-xs text-slate-400">
-                  <strong>Didn't receive the email?</strong> Check your spam
-                  folder or try again with a different email address.
+              <div className="p-3 rounded-[4px] bg-[#171717] border border-[rgba(107,114,128,0.2)]">
+                <p className="text-[11px] text-[#6B7280] leading-relaxed">
+                  <strong className="text-[#D4AF37]">
+                    Didn't receive the email?
+                  </strong>{" "}
+                  Check your spam folder or try again with a different email
+                  address.
                 </p>
               </div>
             </div>
           </div>
 
-          <p className="text-center mt-6 text-sm text-slate-400">
+          <p className="text-center mt-4 text-xs text-[#6B7280]">
             Need help?{" "}
-            <a
-              href="/contact"
-              className="text-indigo-400 hover:text-indigo-300"
-            >
+            <a href="/contact" className="text-[#D4AF37] hover:underline">
               Contact support
             </a>
           </p>

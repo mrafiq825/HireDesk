@@ -13,7 +13,11 @@ export function meta({}: Route.MetaArgs) {
         "Click the link in your inbox to verify your email address and activate your HireDesk account. Verification links are valid for 24 hours.",
     },
     { name: "robots", content: "noindex, nofollow" },
-    { tagName: "link", rel: "canonical", href: "https://hiredesk.vercel.app/verify-email" },
+    {
+      tagName: "link",
+      rel: "canonical",
+      href: "https://hiredesk.vercel.app/verify-email",
+    },
   ];
 }
 
@@ -35,7 +39,7 @@ export default function VerifyEmail() {
         setStatus("error");
         setMessage("Verification token is missing");
         setErrorDetails(
-          "No verification token found in the URL. Please check your email for the correct verification link."
+          "No verification token found in the URL. Please check your email for the correct verification link.",
         );
         return;
       }
@@ -54,7 +58,7 @@ export default function VerifyEmail() {
         setMessage("Email verification failed");
         setErrorDetails(
           error.message ||
-            "The verification link may have expired or is invalid. Please request a new verification email."
+            "The verification link may have expired or is invalid. Please request a new verification email.",
         );
       }
     };
@@ -69,119 +73,107 @@ export default function VerifyEmail() {
   return (
     <>
       <NavbarWithModal />
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden flex items-center justify-center pt-20">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute -inset-10 opacity-50">
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-500/10 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
-            <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2s"></div>
-          </div>
-          <div className="absolute inset-0 bg-grid-slate-700/[0.04] bg-[size:20px_20px]"></div>
-        </div>
-
+      <div className="min-h-screen bg-[#171717] relative flex items-center justify-center pt-20 pb-12 text-[#F5E6C8]">
         <div className="relative z-10 w-full max-w-md mx-auto px-4">
-          {status === "loading" && (
-            <div className="text-center">
-              <div className="mb-6 flex justify-center">
-                <div className="relative w-16 h-16">
-                  <div className="absolute inset-0 rounded-full border-4 border-slate-700/30"></div>
-                  <div className="absolute inset-0 rounded-full border-4 border-transparent border-t-indigo-500 border-r-purple-500 animate-spin"></div>
+          <div className="rounded-[6px] overflow-hidden bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] p-6 sm:p-8">
+            {status === "loading" && (
+              <div className="text-center space-y-3">
+                <div className="flex justify-center mb-4">
+                  <div className="w-8 h-8 rounded-full border-2 border-[#D4AF37] border-t-transparent animate-spin"></div>
                 </div>
-              </div>
-              <h1 className="text-2xl font-bold text-white mb-2">
-                Verifying Your Email
-              </h1>
-              <p className="text-slate-400">
-                Please wait while we verify your email address...
-              </p>
-            </div>
-          )}
-
-          {status === "success" && (
-            <div className="text-center">
-              <div className="mb-6 flex justify-center">
-                <div className="relative inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-green-500/20 to-emerald-500/20 border border-green-500/30">
-                  <svg
-                    className="w-8 h-8 text-green-400 animate-bounce"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-green-300 to-emerald-300 bg-clip-text text-transparent mb-2">
-                {message}
-              </h1>
-              <p className="text-slate-300 mb-6">{errorDetails}</p>
-
-              <div className="space-y-3">
-                <div className="flex items-center justify-center gap-2 text-sm text-slate-400">
-                  <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
-                  <span>Redirecting to dashboard...</span>
-                </div>
-                <button
-                  onClick={() => navigate("/dashboard")}
-                  className="w-full px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold rounded-lg hover:from-green-600 hover:to-emerald-700 transition-all duration-300 transform hover:scale-105"
-                >
-                  Go to Dashboard
-                </button>
-              </div>
-            </div>
-          )}
-
-          {status === "error" && (
-            <div className="text-center">
-              <div className="mb-6 flex justify-center">
-                <div className="relative inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-to-br from-red-500/20 to-rose-500/20 border border-red-500/30">
-                  <svg
-                    className="w-8 h-8 text-red-400"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </div>
-              </div>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-red-300 to-rose-300 bg-clip-text text-transparent mb-2">
-                {message}
-              </h1>
-              <p className="text-slate-300 mb-8">{errorDetails}</p>
-
-              <div className="space-y-3">
-                <button
-                  onClick={() => navigate("/resend-verification")}
-                  className="w-full px-6 py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold rounded-lg hover:from-indigo-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105"
-                >
-                  Resend Verification Email
-                </button>
-                <button
-                  onClick={() => navigate("/login")}
-                  className="w-full px-6 py-3 bg-slate-700/50 border border-slate-600/50 text-slate-200 font-semibold rounded-lg hover:bg-slate-700/70 hover:border-slate-600 transition-all duration-300"
-                >
-                  Back to Login
-                </button>
-              </div>
-
-              <div className="mt-6 p-4 rounded-lg bg-slate-800/50 border border-slate-700/50">
-                <p className="text-xs text-slate-400">
-                  <strong>Tip:</strong> Verification links expire after 24
-                  hours. If your link has expired, you can request a new one.
+                <h1 className="text-xl font-bold text-[#F5E6C8]">
+                  Verifying Your Email
+                </h1>
+                <p className="text-xs text-[#6B7280]">
+                  Please wait while we verify your email address...
                 </p>
               </div>
-            </div>
-          )}
+            )}
+
+            {status === "success" && (
+              <div className="text-center space-y-3">
+                <div className="flex justify-center mb-3">
+                  <div className="w-10 h-10 rounded-[4px] bg-[#171717] border border-[rgba(212,175,55,0.3)] text-[#D4AF37] flex items-center justify-center">
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M5 13l4 4L19 7"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <h1 className="text-xl font-bold text-[#D4AF37]">{message}</h1>
+                <p className="text-xs text-[#6B7280]">{errorDetails}</p>
+
+                <div className="pt-3 space-y-2.5">
+                  <div className="flex items-center justify-center gap-1.5 text-xs text-[#6B7280]">
+                    <div className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-pulse"></div>
+                    <span>Redirecting to dashboard...</span>
+                  </div>
+                  <button
+                    onClick={() => navigate("/dashboard")}
+                    className="btn-primary w-full py-2.5 text-xs sm:text-sm font-semibold rounded-[6px]"
+                  >
+                    Go to Dashboard
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {status === "error" && (
+              <div className="text-center space-y-3">
+                <div className="flex justify-center mb-3">
+                  <div className="w-10 h-10 rounded-[4px] bg-[#171717] border border-[rgba(239,68,68,0.3)] text-[#EF4444] flex items-center justify-center">
+                    <svg
+                      className="w-5 h-5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <h1 className="text-xl font-bold text-[#EF4444]">{message}</h1>
+                <p className="text-xs text-[#6B7280]">{errorDetails}</p>
+
+                <div className="pt-3 space-y-2.5">
+                  <button
+                    onClick={() => navigate("/resend-verification")}
+                    className="btn-primary w-full py-2.5 text-xs sm:text-sm font-semibold rounded-[6px]"
+                  >
+                    Resend Verification Email
+                  </button>
+                  <button
+                    onClick={() => navigate("/login")}
+                    className="btn-secondary w-full py-2 text-xs font-semibold rounded-[6px]"
+                  >
+                    Back to Login
+                  </button>
+                </div>
+
+                <div className="mt-4 p-3 rounded-[4px] bg-[#171717] border border-[rgba(107,114,128,0.2)]">
+                  <p className="text-[11px] text-[#6B7280]">
+                    <strong className="text-[#D4AF37]">Tip:</strong>{" "}
+                    Verification links expire after 24 hours. If your link has
+                    expired, you can request a new one.
+                  </p>
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </>

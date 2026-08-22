@@ -7,36 +7,39 @@ const ScoreGauge: React.FC<{ score: number; label: string }> = ({
 }) => {
   return (
     <div className="flex flex-col items-center space-y-2">
-      <div className="relative w-28 h-28 flex items-center justify-center">
-        <svg className="w-full h-full transform -rotate-90" viewBox="0 0 120 120">
+      <div className="relative w-24 h-24 flex items-center justify-center">
+        <svg
+          className="w-full h-full transform -rotate-90"
+          viewBox="0 0 120 120"
+        >
           <circle
             cx="60"
             cy="60"
             r="52"
             fill="none"
-            stroke="rgba(255, 255, 255, 0.08)"
-            strokeWidth="8"
+            stroke="rgba(107, 114, 128, 0.2)"
+            strokeWidth="7"
           />
           <circle
             cx="60"
             cy="60"
             r="52"
             fill="none"
-            stroke="#94B69E"
-            strokeWidth="8"
+            stroke="#D4AF37"
+            strokeWidth="7"
             strokeDasharray={`${(score / 100) * 326.7} 326.7`}
             strokeLinecap="round"
-            className="transition-all duration-1000 shadow-[0_0_12px_#94B69E]"
+            className="transition-all duration-500"
           />
         </svg>
 
         <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-2xl font-bold text-[#F3F7F4]">{score}</span>
-          <span className="text-[10px] text-[#718078]">/100</span>
+          <span className="text-xl font-bold text-[#F5E6C8]">{score}</span>
+          <span className="text-[10px] text-[#6B7280]">/100</span>
         </div>
       </div>
 
-      <p className="text-center text-xs font-semibold text-[#AAB8AF]">
+      <p className="text-center text-xs font-semibold text-[#6B7280]">
         {label}
       </p>
     </div>
@@ -59,9 +62,9 @@ export const AdvancedAnalytics: React.FC<AdvancedAnalyticsProps> = ({
         <div className="glass-panel p-6 sm:p-8 relative overflow-hidden">
           <div className="mb-6 flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-xl bg-[#94B69E]/15 border border-[#94B69E]/30 flex items-center justify-center text-[#94B69E]">
+              <div className="w-8 h-8 rounded-[4px] bg-[#171717] border border-[rgba(212,175,55,0.3)] flex items-center justify-center text-[#D4AF37]">
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -75,15 +78,15 @@ export const AdvancedAnalytics: React.FC<AdvancedAnalyticsProps> = ({
                 </svg>
               </div>
               <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-[#F3F7F4]">
+                <h3 className="text-lg sm:text-xl font-bold text-[#F5E6C8]">
                   Resume Quality Scorecard
                 </h3>
-                <p className="text-xs text-[#718078]">
+                <p className="text-xs text-[#6B7280]">
                   Automated Multi-Metric Candidate Evaluation
                 </p>
               </div>
             </div>
-            <span className="glass-badge glass-badge-primary">
+            <span className="glass-badge glass-badge-primary rounded-[4px]">
               Overall {Math.round(resumeScore.overall_score)}%
             </span>
           </div>
@@ -112,8 +115,10 @@ export const AdvancedAnalytics: React.FC<AdvancedAnalyticsProps> = ({
           </div>
 
           {resumeScore.reasoning && (
-            <div className="glass-ai p-4 rounded-xl text-xs sm:text-sm text-[#AAB8AF] leading-relaxed mb-6">
-              <span className="text-[#94B69E] font-semibold">AI Evaluation Summary: </span>
+            <div className="bg-[#171717] border border-[rgba(107,114,128,0.2)] p-4 rounded-[6px] text-xs text-[#6B7280] leading-relaxed mb-6">
+              <span className="text-[#D4AF37] font-semibold">
+                AI Evaluation Summary:{" "}
+              </span>
               {resumeScore.reasoning}
             </div>
           )}
@@ -121,11 +126,13 @@ export const AdvancedAnalytics: React.FC<AdvancedAnalyticsProps> = ({
           <div className="grid sm:grid-cols-2 gap-4">
             {resumeScore.strengths && (
               <div className="glass-card p-4">
-                <h4 className="text-xs font-semibold uppercase text-[#94B69E] mb-3">Key Strengths</h4>
-                <ul className="space-y-1.5 text-xs text-[#AAB8AF]">
+                <h4 className="text-xs font-semibold uppercase text-[#D4AF37] mb-3">
+                  Key Strengths
+                </h4>
+                <ul className="space-y-1.5 text-xs text-[#6B7280]">
                   {resumeScore.strengths.map((str: string, idx: number) => (
                     <li key={idx} className="flex items-center gap-2">
-                      <span className="text-[#94B69E]">✓</span>
+                      <span className="text-[#D4AF37]">✓</span>
                       <span>{str}</span>
                     </li>
                   ))}
@@ -135,11 +142,13 @@ export const AdvancedAnalytics: React.FC<AdvancedAnalyticsProps> = ({
 
             {resumeScore.weaknesses && (
               <div className="glass-card p-4">
-                <h4 className="text-xs font-semibold uppercase text-[#E4C58A] mb-3">Areas for Review</h4>
-                <ul className="space-y-1.5 text-xs text-[#AAB8AF]">
+                <h4 className="text-xs font-semibold uppercase text-[#F59E0B] mb-3">
+                  Areas for Review
+                </h4>
+                <ul className="space-y-1.5 text-xs text-[#6B7280]">
                   {resumeScore.weaknesses.map((weak: string, idx: number) => (
                     <li key={idx} className="flex items-center gap-2">
-                      <span className="text-[#E4C58A]">!</span>
+                      <span className="text-[#F59E0B]">!</span>
                       <span>{weak}</span>
                     </li>
                   ))}
@@ -155,9 +164,9 @@ export const AdvancedAnalytics: React.FC<AdvancedAnalyticsProps> = ({
         <div className="glass-panel p-6 sm:p-8 relative overflow-hidden">
           <div className="mb-6 flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 rounded-xl bg-[#94B69E]/15 border border-[#94B69E]/30 flex items-center justify-center text-[#94B69E]">
+              <div className="w-8 h-8 rounded-[4px] bg-[#171717] border border-[rgba(212,175,55,0.3)] flex items-center justify-center text-[#D4AF37]">
                 <svg
-                  className="w-5 h-5"
+                  className="w-4 h-4"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -171,10 +180,10 @@ export const AdvancedAnalytics: React.FC<AdvancedAnalyticsProps> = ({
                 </svg>
               </div>
               <div>
-                <h3 className="text-xl sm:text-2xl font-bold text-[#F3F7F4]">
+                <h3 className="text-lg sm:text-xl font-bold text-[#F5E6C8]">
                   Personality & Work Style Insights
                 </h3>
-                <p className="text-xs text-[#718078]">
+                <p className="text-xs text-[#6B7280]">
                   Behavioral & Team Culture Evaluation
                 </p>
               </div>
@@ -186,12 +195,16 @@ export const AdvancedAnalytics: React.FC<AdvancedAnalyticsProps> = ({
               Object.entries(personalityInsights.traits).map(([key, value]) => (
                 <div key={key} className="glass-card p-4">
                   <div className="flex justify-between items-center text-xs mb-2">
-                    <span className="font-semibold text-[#F3F7F4] capitalize">{key.replace(/_/g, " ")}</span>
-                    <span className="font-bold text-[#94B69E]">{value as number}%</span>
+                    <span className="font-semibold text-[#F5E6C8] capitalize">
+                      {key.replace(/_/g, " ")}
+                    </span>
+                    <span className="font-bold text-[#D4AF37]">
+                      {value as number}%
+                    </span>
                   </div>
-                  <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
+                  <div className="w-full h-1.5 bg-[#171717] rounded-full overflow-hidden border border-[rgba(107,114,128,0.2)]">
                     <div
-                      className="h-full bg-[#94B69E] rounded-full shadow-[0_0_8px_#94B69E]"
+                      className="h-full bg-[#D4AF37] rounded-full"
                       style={{ width: `${value as number}%` }}
                     />
                   </div>
@@ -200,8 +213,10 @@ export const AdvancedAnalytics: React.FC<AdvancedAnalyticsProps> = ({
           </div>
 
           {personalityInsights.work_style && (
-            <div className="glass-card p-4 text-xs text-[#AAB8AF] leading-relaxed">
-              <span className="font-semibold text-[#94B69E] block mb-1">Workplace Leadership Style:</span>
+            <div className="glass-card p-4 text-xs text-[#6B7280] leading-relaxed">
+              <span className="font-semibold text-[#D4AF37] block mb-1">
+                Workplace Leadership Style:
+              </span>
               {personalityInsights.work_style}
             </div>
           )}

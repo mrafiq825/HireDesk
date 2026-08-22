@@ -109,24 +109,24 @@ function ResumeUpload({
   };
 
   return (
-    <div className="max-w-xl mx-auto glass-panel p-6 sm:p-8 relative overflow-hidden">
-      <h2 className="text-xl sm:text-2xl font-bold text-[#F3F7F4] mb-6 text-center">
+    <div className="max-w-xl mx-auto bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] rounded-[6px] p-6 sm:p-8">
+      <h2 className="text-lg sm:text-xl font-bold text-[#F5E6C8] mb-6 text-center">
         Upload Candidate Resume
       </h2>
 
       {isPremium && (
-        <div className="mb-4 glass-badge glass-badge-primary w-full justify-center py-2">
-          <span>✨ Enterprise Deep Intelligence Active</span>
+        <div className="mb-4 glass-badge glass-badge-primary w-full justify-center py-1.5 rounded-[4px]">
+          <span>Enterprise Intelligence Active</span>
         </div>
       )}
 
       <div
-        className={`relative p-8 sm:p-10 border-2 border-dashed rounded-2xl text-center cursor-pointer transition-all duration-300 ${
+        className={`relative p-8 sm:p-10 border border-dashed rounded-[6px] text-center cursor-pointer transition-colors duration-180 ${
           isLoading
-            ? "bg-white/5 border-white/20 cursor-not-allowed"
+            ? "bg-[#171717] border-[rgba(107,114,128,0.2)] cursor-not-allowed"
             : selectedFile
-              ? "glass-ai border-[#94B69E]"
-              : "border-white/20 hover:border-[#94B69E] hover:bg-white/5"
+              ? "bg-[#171717] border-[#D4AF37]"
+              : "bg-[#171717] border-[rgba(107,114,128,0.3)] hover:border-[#D4AF37]"
         }`}
         onClick={openFileDialog}
         onDrop={handleDrop}
@@ -145,37 +145,38 @@ function ResumeUpload({
 
         {isLoading ? (
           <div className="flex flex-col items-center">
-            <div className="animate-spin rounded-full h-10 w-10 border-2 border-[#94B69E] border-t-transparent shadow-[0_0_12px_#94B69E]" />
-            <p className="mt-4 text-sm font-semibold text-[#94B69E]">
+            <div className="animate-spin rounded-full h-8 w-8 border-2 border-[#D4AF37] border-t-transparent" />
+            <p className="mt-4 text-xs font-semibold text-[#D4AF37]">
               Analyzing Candidate Resume...
             </p>
           </div>
         ) : selectedFile ? (
           <>
-            <DocumentIcon className="mx-auto h-12 w-12 text-[#94B69E]" />
-            <p className="mt-4 text-sm font-semibold text-[#F3F7F4]">
+            <DocumentIcon className="mx-auto h-10 w-10 text-[#D4AF37]" />
+            <p className="mt-4 text-xs font-semibold text-[#F5E6C8]">
               {selectedFile.name}
             </p>
-            <p className="mt-1 text-xs text-[#718078]">
+            <p className="mt-1 text-[11px] text-[#6B7280]">
               {(selectedFile.size / 1024).toFixed(1)} KB • Ready for Analysis
             </p>
           </>
         ) : (
           <>
-            <CloudArrowUpIcon className="mx-auto h-12 w-12 text-[#AAB8AF]" />
-            <p className="mt-4 text-sm font-semibold text-[#F3F7F4]">
+            <CloudArrowUpIcon className="mx-auto h-10 w-10 text-[#6B7280]" />
+            <p className="mt-4 text-xs font-semibold text-[#F5E6C8]">
               Drag & Drop resume or click to browse
             </p>
-            <p className="mt-1 text-xs text-[#718078]">
+            <p className="mt-1 text-[11px] text-[#6B7280]">
               Supports PDF, DOC, and DOCX files
             </p>
           </>
         )}
       </div>
 
-      <div className="mt-4 text-center space-y-1">
-        <p className="text-xs text-[#718078]">
-          Instant extraction of skills, experience, leadership traits & interview questions
+      <div className="mt-4 text-center">
+        <p className="text-[11px] text-[#6B7280]">
+          Instant extraction of skills, experience, leadership traits &
+          interview questions
         </p>
       </div>
     </div>
