@@ -83,45 +83,93 @@ const Home = () => {
     <div className="min-h-screen bg-[#171717] relative text-[#F5E6C8]">
       <Navbar />
 
-      {/* HERO SECTION */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-6xl mx-auto text-center space-y-8">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-[4px] bg-[#1B1B1B] border border-[rgba(212,175,55,0.4)] text-[#D4AF37] text-xs font-semibold uppercase tracking-wider">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37]" />
-            <span>Enterprise AI Recruitment</span>
+      {/* HERO SECTION - FULL SCREEN */}
+      <section className="min-h-screen min-h-[100dvh] flex flex-col justify-center items-center pt-24 sm:pt-28 pb-12 px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-6xl w-full mx-auto text-center flex flex-col justify-center items-center space-y-6 sm:space-y-7 my-auto">
+          {/* Live Status & Value Proposition Badge */}
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#1B1B1B] border border-[rgba(212,175,55,0.4)] text-xs font-medium">
+            <span className="flex h-2 w-2 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D4AF37] opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#D4AF37]"></span>
+            </span>
+            <span className="text-[#D4AF37] font-semibold tracking-wider uppercase text-[11px]">
+              Next-Gen AI Recruiter
+            </span>
+            <span className="text-[rgba(107,114,128,0.5)]">|</span>
+            <span className="text-[#F5E6C8] hidden sm:inline">
+              10 Free Analyses on Signup
+            </span>
           </div>
 
-          <div className="space-y-4 max-w-4xl mx-auto">
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-[#F5E6C8] tracking-tight leading-tight">
-              Transform Talent Decisions with{" "}
+          {/* High-Impact Display Headline */}
+          <div className="space-y-3 max-w-4xl mx-auto">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-[#F5E6C8] tracking-tight leading-[1.1]">
+              Screen 100+ Resumes in Minutes, Not Days with{" "}
               <span className="text-[#D4AF37]">Precision AI</span>
             </h1>
-            <p className="text-base sm:text-lg text-[#6B7280] max-w-2xl mx-auto leading-relaxed">
-              Empower your recruitment team with deep resume intelligence, batch
-              screening, candidate comparison, and automated fit analysis in
-              seconds.
+            <p className="text-sm sm:text-base lg:text-lg text-[#6B7280] max-w-2xl mx-auto leading-relaxed">
+              Eliminate resume screening fatigue. HireDesk automatically
+              extracts candidate qualifications, flags missing skills, ranks
+              finalists, and generates tailored interview questions.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 justify-center items-center pt-4">
+          {/* Call-to-Action Group & Trust Badges */}
+          <div className="space-y-3 pt-1 w-full max-w-xl mx-auto">
+            <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+              <Link
+                to="/dashboard"
+                className="btn-primary w-full sm:w-auto px-8 py-3.5 text-sm font-semibold rounded-[6px] flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <span>Start HireDesk</span>
+                <span>→</span>
+              </Link>
+            </div>
+            <div className="flex flex-wrap justify-center items-center gap-x-5 gap-y-1 text-xs text-[#6B7280] pt-1">
+              <span className="flex items-center gap-1.5">
+                <span className="text-[#D4AF37]">✓</span> No Credit Card
+                Required
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="text-[#D4AF37]">✓</span> PDF & DOCX Parsing
+              </span>
+              <span className="flex items-center gap-1.5">
+                <span className="text-[#D4AF37]">✓</span> Strict Data Privacy
+              </span>
+            </div>
+          </div>
+
+          {/* Quick Workflow Navigation Pills */}
+          <div className="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto pt-2">
             <Link
-              to="/dashboard"
-              className="btn-primary px-7 py-3 text-sm font-semibold rounded-[6px] flex items-center justify-center gap-2 cursor-pointer"
+              to="/hiredesk-analyze"
+              className="px-3.5 py-1.5 rounded-[4px] bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] text-xs text-[#F5E6C8] hover:text-[#D4AF37] hover:border-[rgba(212,175,55,0.4)] transition-colors duration-180 flex items-center gap-2"
             >
-              <span>Launch HireDesk Workspace</span>
-              <span>→</span>
+              <span>Smart Review</span>
             </Link>
             <Link
-              to="/about"
-              className="btn-secondary px-7 py-3 text-sm font-semibold rounded-[6px] flex items-center justify-center gap-2"
+              to="/batch-analyze"
+              className="px-3.5 py-1.5 rounded-[4px] bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] text-xs text-[#F5E6C8] hover:text-[#D4AF37] hover:border-[rgba(212,175,55,0.4)] transition-colors duration-180 flex items-center gap-2"
             >
-              <span>Explore Platform Features</span>
+              <span>Batch Screening</span>
+            </Link>
+            <Link
+              to="/compare-resumes"
+              className="px-3.5 py-1.5 rounded-[4px] bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] text-xs text-[#F5E6C8] hover:text-[#D4AF37] hover:border-[rgba(212,175,55,0.4)] transition-colors duration-180 flex items-center gap-2"
+            >
+              <span>Find Best Fit</span>
+            </Link>
+            <Link
+              to="/selection-candidates"
+              className="px-3.5 py-1.5 rounded-[4px] bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] text-xs text-[#F5E6C8] hover:text-[#D4AF37] hover:border-[rgba(212,175,55,0.4)] transition-colors duration-180 flex items-center gap-2"
+            >
+              <span>Quick Screen</span>
             </Link>
           </div>
 
           {/* Key Metrics Strip */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto pt-14">
-            <div className="bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] rounded-[6px] p-5 text-center">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl w-full mx-auto pt-4 sm:pt-6">
+            <div className="bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] rounded-[6px] p-4 sm:p-5 text-center">
               <p className="text-2xl sm:text-3xl font-bold text-[#D4AF37]">
                 70%
               </p>
@@ -129,7 +177,7 @@ const Home = () => {
                 Hiring Time Saved
               </p>
             </div>
-            <div className="bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] rounded-[6px] p-5 text-center">
+            <div className="bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] rounded-[6px] p-4 sm:p-5 text-center">
               <p className="text-2xl sm:text-3xl font-bold text-[#D4AF37]">
                 500+
               </p>
@@ -137,7 +185,7 @@ const Home = () => {
                 Active HR Teams
               </p>
             </div>
-            <div className="bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] rounded-[6px] p-5 text-center">
+            <div className="bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] rounded-[6px] p-4 sm:p-5 text-center">
               <p className="text-2xl sm:text-3xl font-bold text-[#D4AF37]">
                 10x
               </p>
@@ -145,7 +193,7 @@ const Home = () => {
                 Screening Speed
               </p>
             </div>
-            <div className="bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] rounded-[6px] p-5 text-center">
+            <div className="bg-[#1B1B1B] border border-[rgba(107,114,128,0.2)] rounded-[6px] p-4 sm:p-5 text-center">
               <p className="text-2xl sm:text-3xl font-bold text-[#D4AF37]">
                 99.4%
               </p>

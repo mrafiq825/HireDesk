@@ -21,7 +21,7 @@
   background: #1b1b1b;
   border: 1px solid rgba(107, 114, 128, 0.2);
   box-shadow: none !important;
-  font-family: var(--font-family-sans, "Inter", sans-serif);
+  font-family: var(--font-body, "Inter", sans-serif);
 }
 
 .card-bg,
@@ -46,11 +46,12 @@
 
 .form h2 {
   text-align: center;
-  font-weight: 700;
+  font-weight: 600;
   color: #f5e6c8;
   margin-bottom: 20px;
   font-size: 24px;
-  font-family: inherit;
+  font-family: var(--font-heading, "Fraunces", serif);
+  font-optical-sizing: auto;
   letter-spacing: -0.02em;
 }
 
