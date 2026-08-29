@@ -1,42 +1,52 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 100" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
   <defs>
-    <linearGradient id="hd-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#2563eb" />
-      <stop offset="50%" stop-color="#3b82f6" />
-      <stop offset="100%" stop-color="#8b5cf6" />
+    <linearGradient id="hd-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F3E0A3" />
+      <stop offset="35%" stop-color="#D4AF37" />
+      <stop offset="100%" stop-color="#99771A" />
     </linearGradient>
-    <linearGradient id="hd-grad-light" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#60a5fa" />
-      <stop offset="100%" stop-color="#c084fc" />
+    <linearGradient id="hd-gold-spark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFDF5" />
+      <stop offset="50%" stop-color="#F5E6C8" />
+      <stop offset="100%" stop-color="#D4AF37" />
     </linearGradient>
+    <radialGradient id="hd-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#D4AF37" stop-opacity="0" />
+    </radialGradient>
   </defs>
+
+  <!-- Background Base Container -->
+  <rect width="100" height="100" rx="20" fill="#171717" />
+  <rect x="1" y="1" width="98" height="98" rx="19" stroke="url(#hd-gold)" stroke-width="1.5" stroke-opacity="0.35" />
+
+  <!-- Subtle Ambient Glow Behind Node -->
+  <circle cx="56" cy="50" r="18" fill="url(#hd-glow)" />
+
+  <!-- Geometric Monogram "H" Stem -->
+  <!-- Left Vertical Stem of H -->
+  <rect x="24" y="24" width="7" height="52" rx="3.5" fill="url(#hd-gold)" />
+
+  <!-- Horizontal Crossbar of H -->
+  <rect x="24" y="47" width="28" height="6.5" rx="3" fill="url(#hd-gold)" />
+
+  <!-- Monogram "D" - Spine & Dynamic Curve -->
+  <path d="M49 24 H62 C74.5 24 83 34.5 83 50 C83 65.5 74.5 76 62 76 H49" stroke="url(#hd-gold)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+
+  <!-- AI Intelligence Core Node & Constellation Lines -->
+  <!-- Central Spark Node -->
+  <circle cx="53" cy="50" r="4.5" fill="url(#hd-gold-spark)" />
   
-  <!-- Laptop Base/Base Stand -->
-  <path d="M10 78 C10 75 14 74 18 74 L102 74 C106 74 110 75 110 78 C110 82 104 84 98 84 L22 84 C16 84 10 82 10 78 Z" fill="url(#hd-grad)" />
-  <path d="M50 74 L70 74 C70 76 68 77 66 77 L54 77 C52 77 50 76 50 74 Z" fill="#0f172a" opacity="0.6" />
+  <!-- Neural Branch Lines -->
+  <line x1="53" y1="50" x2="65" y2="40" stroke="url(#hd-gold)" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.85" />
+  <line x1="53" y1="50" x2="68" y2="58" stroke="url(#hd-gold)" stroke-width="2.2" stroke-linecap="round" stroke-opacity="0.85" />
+  <line x1="65" y1="40" x2="72" y2="42" stroke="url(#hd-gold)" stroke-width="2" stroke-linecap="round" stroke-opacity="0.75" />
 
-  <!-- Laptop Screen Outer Frame -->
-  <rect x="16" y="16" width="88" height="56" rx="8" stroke="url(#hd-grad)" stroke-width="4.5" fill="none" />
+  <!-- Connected Sub-Nodes -->
+  <circle cx="65" cy="40" r="3.2" fill="url(#hd-gold-spark)" />
+  <circle cx="68" cy="58" r="3.2" fill="url(#hd-gold-spark)" />
+  <circle cx="72" cy="42" r="2.2" fill="url(#hd-gold-spark)" />
 
-  <!-- Person Silhouette -->
-  <circle cx="60" cy="46" r="7" fill="url(#hd-grad)" />
-  <path d="M47 62 C47 54 53 52 60 52 C67 52 73 54 73 62 Z" fill="url(#hd-grad)" />
-
-  <!-- Network Nodes & Connecting Lines -->
-  <!-- Top central node above head -->
-  <circle cx="60" cy="28" r="3.5" fill="url(#hd-grad-light)" />
-  <line x1="60" y1="28" x2="60" y2="39" stroke="url(#hd-grad-light)" stroke-width="2.5" stroke-linecap="round" />
-
-  <!-- Left node -->
-  <circle cx="37" cy="35" r="3.5" fill="url(#hd-grad-light)" />
-  <line x1="37" y1="35" x2="60" y2="28" stroke="url(#hd-grad-light)" stroke-width="2.5" stroke-linecap="round" />
-  <line x1="37" y1="35" x2="28" y2="47" stroke="url(#hd-grad-light)" stroke-width="2.5" stroke-linecap="round" />
-  <circle cx="28" cy="47" r="3.5" fill="url(#hd-grad-light)" />
-
-  <!-- Right node -->
-  <circle cx="83" cy="35" r="3.5" fill="url(#hd-grad-light)" />
-  <line x1="83" y1="35" x2="60" y2="28" stroke="url(#hd-grad-light)" stroke-width="2.5" stroke-linecap="round" />
-
-  <!-- Checkmark Badge on Bottom Right Screen -->
-  <path d="M78 52 L83 57 L93 47" stroke="url(#hd-grad-light)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+  <!-- Diamond Precision Flare -->
+  <path d="M53 43 L54.5 49 L60.5 50 L54.5 51 L53 57 L51.5 51 L45.5 50 L51.5 49 Z" fill="url(#hd-gold-spark)" opacity="0.9" />
 </svg>

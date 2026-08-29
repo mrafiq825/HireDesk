@@ -1,54 +1,58 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 90" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 76" fill="none">
   <defs>
-    <linearGradient id="hd-grad-full" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#2563eb" />
-      <stop offset="50%" stop-color="#3b82f6" />
-      <stop offset="100%" stop-color="#8b5cf6" />
+    <linearGradient id="hd-lockup-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F3E0A3" />
+      <stop offset="40%" stop-color="#D4AF37" />
+      <stop offset="100%" stop-color="#99771A" />
     </linearGradient>
-    <linearGradient id="hd-grad-light-full" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#60a5fa" />
-      <stop offset="100%" stop-color="#c084fc" />
-    </linearGradient>
-    <linearGradient id="hd-text-desk" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#3b82f6" />
-      <stop offset="100%" stop-color="#8b5cf6" />
+    <linearGradient id="hd-lockup-spark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFDF5" />
+      <stop offset="50%" stop-color="#F5E6C8" />
+      <stop offset="100%" stop-color="#D4AF37" />
     </linearGradient>
   </defs>
-  
-  <g transform="translate(5, 0) scale(0.9)">
-    <path d="M10 78 C10 75 14 74 18 74 L102 74 C106 74 110 75 110 78 C110 82 104 84 98 84 L22 84 C16 84 10 82 10 78 Z" fill="url(#hd-grad)" />
-  <path d="M50 74 L70 74 C70 76 68 77 66 77 L54 77 C52 77 50 76 50 74 Z" fill="#0f172a" opacity="0.6" />
 
-  <!-- Laptop Screen Outer Frame -->
-  <rect x="16" y="16" width="88" height="56" rx="8" stroke="url(#hd-grad)" stroke-width="4.5" fill="none" />
+  <!-- HD Monogram Symbol (Left) -->
+  <g transform="translate(6, 6)">
+    <!-- Base container -->
+    <rect width="64" height="64" rx="14" fill="#1B1B1B" />
+    <rect x="0.75" y="0.75" width="62.5" height="62.5" rx="13.25" stroke="url(#hd-lockup-gold)" stroke-width="1.25" stroke-opacity="0.4" />
 
-  <!-- Person Silhouette -->
-  <circle cx="60" cy="46" r="7" fill="url(#hd-grad)" />
-  <path d="M47 62 C47 54 53 52 60 52 C67 52 73 54 73 62 Z" fill="url(#hd-grad)" />
+    <!-- H Left Stem -->
+    <rect x="15" y="15" width="5" height="34" rx="2.5" fill="url(#hd-lockup-gold)" />
 
-  <!-- Network Nodes & Connecting Lines -->
-  <!-- Top central node above head -->
-  <circle cx="60" cy="28" r="3.5" fill="url(#hd-grad-light)" />
-  <line x1="60" y1="28" x2="60" y2="39" stroke="url(#hd-grad-light)" stroke-width="2.5" stroke-linecap="round" />
+    <!-- H Crossbar -->
+    <rect x="15" y="30" width="18" height="4.5" rx="2" fill="url(#hd-lockup-gold)" />
 
-  <!-- Left node -->
-  <circle cx="37" cy="35" r="3.5" fill="url(#hd-grad-light)" />
-  <line x1="37" y1="35" x2="60" y2="28" stroke="url(#hd-grad-light)" stroke-width="2.5" stroke-linecap="round" />
-  <line x1="37" y1="35" x2="28" y2="47" stroke="url(#hd-grad-light)" stroke-width="2.5" stroke-linecap="round" />
-  <circle cx="28" cy="47" r="3.5" fill="url(#hd-grad-light)" />
+    <!-- D Curve -->
+    <path d="M31 15 H39.5 C48 15 54 22 54 32 C54 42 48 49 39.5 49 H31" stroke="url(#hd-lockup-gold)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
 
-  <!-- Right node -->
-  <circle cx="83" cy="35" r="3.5" fill="url(#hd-grad-light)" />
-  <line x1="83" y1="35" x2="60" y2="28" stroke="url(#hd-grad-light)" stroke-width="2.5" stroke-linecap="round" />
+    <!-- AI Node Core -->
+    <circle cx="34" cy="32" r="3" fill="url(#hd-lockup-spark)" />
+    
+    <!-- Neural Branches -->
+    <line x1="34" y1="32" x2="42" y2="25" stroke="url(#hd-lockup-gold)" stroke-width="1.6" stroke-linecap="round" stroke-opacity="0.85" />
+    <line x1="34" y1="32" x2="44" y2="38" stroke="url(#hd-lockup-gold)" stroke-width="1.6" stroke-linecap="round" stroke-opacity="0.85" />
+    
+    <!-- Neural Sub-Nodes -->
+    <circle cx="42" cy="25" r="2.2" fill="url(#hd-lockup-spark)" />
+    <circle cx="44" cy="38" r="2.2" fill="url(#hd-lockup-spark)" />
 
-  <!-- Checkmark Badge on Bottom Right Screen -->
-  <path d="M78 52 L83 57 L93 47" stroke="url(#hd-grad-light)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-
+    <!-- Diamond Precision Flare -->
+    <path d="M34 27 L35 31.5 L39.5 32 L35 32.5 L34 37 L33 32.5 L28.5 32 L33 31.5 Z" fill="url(#hd-lockup-spark)" opacity="0.9" />
   </g>
 
-  <!-- Text: HireDesk -->
-  <text x="130" y="58" font-family="'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif" font-size="46" font-weight="600" letter-spacing="-0.5px">
-    <tspan fill="#F8FAFC">Hire</tspan>
-    <tspan fill="url(#hd-text-desk)" font-weight="700">Desk</tspan>
-  </text>
+  <!-- Typography Wordmark (Right) -->
+  <g transform="translate(86, 12)">
+    <!-- Main "HireDesk" Brand Name -->
+    <text x="0" y="36" font-family="'Fraunces', 'Inter', system-ui, -apple-system, sans-serif" font-size="34" font-weight="600" letter-spacing="-0.02em">
+      <tspan fill="#F5E6C8">Hire</tspan>
+      <tspan fill="url(#hd-lockup-gold)" font-weight="700">Desk</tspan>
+    </text>
+
+    <!-- Subscript Tagline -->
+    <text x="2" y="52" font-family="'Inter', system-ui, -apple-system, sans-serif" font-size="8.5" font-weight="600" fill="#D4AF37" letter-spacing="0.22em" opacity="0.9">
+      PRECISION AI RECRUITMENT
+    </text>
+  </g>
 </svg>

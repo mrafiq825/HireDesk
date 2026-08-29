@@ -256,7 +256,7 @@ export const AuthCard: React.FC<AuthCardProps> = ({
         <div className="logo logo-1 flex items-center gap-3">
           <div className="w-10 h-10 rounded-[6px] bg-[#171717] flex items-center justify-center border border-[rgba(107,114,128,0.2)] overflow-hidden p-1.5">
             <img
-              src="/logo/logo-icon-transparent.png"
+              src="/logo/logo-icon.svg"
               alt="HireDesk Logo"
               className="w-full h-full object-contain"
             />
@@ -274,7 +274,7 @@ export const AuthCard: React.FC<AuthCardProps> = ({
         <div className="logo logo-2 flex items-center gap-3">
           <div className="w-10 h-10 rounded-[6px] bg-[#171717] flex items-center justify-center border border-[rgba(107,114,128,0.2)] overflow-hidden p-1.5">
             <img
-              src="/logo/logo-icon-transparent.png"
+              src="/logo/logo-icon.svg"
               alt="HireDesk Logo"
               className="w-full h-full object-contain"
             />

@@ -82,9 +82,9 @@ const Navbar = ({ onOpenTips }: NavbarProps) => {
               className="flex items-center hover:opacity-90 transition-opacity duration-180"
             >
               <img
-                src="/logo/logo-transparent.png"
+                src="/logo/logo.svg"
                 alt="HireDesk Logo"
-                className="h-8 w-auto object-contain"
+                className="h-8 sm:h-9 w-auto object-contain"
               />
             </Link>
           </div>

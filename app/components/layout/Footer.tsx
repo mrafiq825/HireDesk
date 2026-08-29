@@ -13,7 +13,7 @@ const Footer = () => {
               className="inline-flex items-center mb-6 hover:opacity-90 transition-opacity duration-180 cursor-pointer"
             >
               <img
-                src="/logo/logo-transparent.png"
+                src="/logo/logo.svg"
                 alt="HireDesk Logo"
                 className="h-8 w-auto object-contain"
               />
